@@ -4,6 +4,12 @@
 </template>
 
 <style lang="less">
+:root {
+  --orange: #f78b00;
+  --blue: #00285f;
+  --gray: #ededed;
+}
+
 *,
 #app {
   box-sizing: border-box;
