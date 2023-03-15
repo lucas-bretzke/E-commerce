@@ -23,7 +23,7 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import NavBar from "@/components/baseNavBar/BaseNavBar.vue";
-import Header from "./components/Header/Header.vue";
+import Header from "./components/Header.vue";
 import InputLarge from "./components/InputLarge.vue";
 
 @Options({
