@@ -44,6 +44,7 @@ export default class Header extends Vue {}
 
   .container-img {
     width: 50%;
+    height: 100%;
     .img-header {
       width: 100%;
       padding: 30% 0%;
