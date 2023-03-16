@@ -33,6 +33,7 @@
         />
       </header>
     </div>
+    <ProductCarousel/>
   </main>
 </template>
 
@@ -42,6 +43,7 @@ import NavBar from "@/components/baseNavBar/BaseNavBar.vue";
 import InputLarge from "./components/InputLarge.vue";
 import ImageSlider from "../../components/ImageSlider.vue";
 import ValueMarker from "../../components/ValueMarker.vue";
+import ProductCarousel from "@/components/productCarousel/ProductCarousel.vue";
 
 @Options({
   components: {
@@ -49,6 +51,7 @@ import ValueMarker from "../../components/ValueMarker.vue";
     InputLarge,
     ImageSlider,
     ValueMarker,
+    ProductCarousel,
   },
 })
 export default class HomeView extends Vue {
