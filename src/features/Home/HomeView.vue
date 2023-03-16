@@ -5,11 +5,22 @@
         <template #Left> <span class="logo">FASHION AVENUE</span> </template>
         <template #Right>
           <li>
-            <a href="">NOVIDADES</a>
+            <a href="">NEWS</a>
             <a href="">TEEN</a>
             <a href="">ABOUT</a>
-            <a href="">PROMOÇÔES</a>
-            <button>LOGIN</button>
+            <a href="">PROMOTIONS</a>
+            <button class="cart-btn">
+              <ValueMarker
+                v-if="$store.state.itemsInCart > 0"
+                :value="0"
+                class="ValueMarker"
+              />
+              <font-awesome-icon
+                icon="fa-solid fa-cart-shopping"
+                class="ic_cart-shopping"
+              />
+            </button>
+            <button class="btn-login">LOGIN</button>
           </li>
         </template>
       </NavBar>
@@ -30,12 +41,14 @@ import { Options, Vue } from "vue-class-component";
 import NavBar from "@/components/baseNavBar/BaseNavBar.vue";
 import InputLarge from "./components/InputLarge.vue";
 import ImageSlider from "../../components/ImageSlider.vue";
+import ValueMarker from "../../components/ValueMarker.vue";
 
 @Options({
   components: {
     NavBar,
     InputLarge,
     ImageSlider,
+    ValueMarker,
   },
 })
 export default class HomeView extends Vue {
@@ -60,13 +73,13 @@ export default class HomeView extends Vue {
 .center {
   max-width: 1000px;
   min-width: 300px;
-  margin: 0px auto;
+  margin: 0 auto;
 }
 
 .background-top {
   width: 100%;
   height: 500px;
-  margin: 0px 0px 200px 0px;
+  margin: 0 0 200px 0;
   align-items: center;
   background-color: var(--color-primary);
 }
@@ -80,18 +93,19 @@ export default class HomeView extends Vue {
     // position: fixed;
     width: 1000px;
     max-width: 1000px;
-    margin: 0px auto;
+    margin: 0 auto;
     background-color: var(--color-primary);
 
     .logo {
-      padding: 50px 0px;
+      padding: 50px 0;
       font-size: 22px;
       font-weight: 600;
       -webkit-text-stroke: 1px #737373;
     }
 
     a {
-      padding: 10px 20px;
+      padding: 10px 0;
+      margin: 0 10px;
       font-size: 17px;
       color: var(--color-secundary);
       text-decoration: none;
@@ -103,7 +117,33 @@ export default class HomeView extends Vue {
       transition: 0.5s;
     }
 
-    button {
+    .cart-btn {
+      margin: 0 10px;
+      border: none;
+      background: transparent;
+    }
+    .cart-btn:hover {
+      cursor: pointer;
+      transition: 0.5s;
+      color: white;
+    }
+
+    .ValueMarker {
+      position: absolute;
+      margin-left: 15px;
+      margin-top: 14px;
+      z-index: 2;
+    }
+
+    .ic_cart-shopping {
+      padding-top: 1px;
+      width: 25px;
+      height: 25px;
+      margin-right: 5px;
+      z-index: 1;
+    }
+
+    .btn-login {
       padding: 10px 35px;
       font-size: 16px;
       color: var(--color-secundary);
@@ -113,7 +153,7 @@ export default class HomeView extends Vue {
       background-color: var(----color-primary);
     }
 
-    button:hover {
+    .btn-login:hover {
       transition: 0.5s;
       color: white;
       background-color: var(--color-secundary);
