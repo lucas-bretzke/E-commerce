@@ -1,0 +1,64 @@
+{
+    "RoupasFemininas": {
+        "Blusas": [
+            {
+                "nome": "Blusa Floral",
+                "marca": "Zara",
+                "preco": 89.99
+            },
+            {
+                "nome": "Blusa de Linho",
+                "marca": "Renner",
+                "preco": 69.99
+            }
+        ],
+        "Shorts": [
+            {
+                "nome": "Shorts Jeans",
+                "marca": "Levi's",
+                "preco": 129.99
+            },
+            {
+                "nome": "Shorts Estampado",
+                "marca": "Farm",
+                "preco": 89.99
+            }
+        ],
+        "Tênis": [
+            {
+                "nome": "Tênis Branco",
+                "marca": "Adidas",
+                "preco": 249.99
+            },
+            {
+                "nome": "Tênis Rosa",
+                "marca": "Nike",
+                "preco": 199.99
+            }
+        ],
+        "Vestidos": [
+            {
+                "nome": "Vestido de Flores",
+                "marca": "C&A",
+                "preco": 129.99
+            },
+            {
+                "nome": "Vestido Longo",
+                "marca": "Renner",
+                "preco": 189.99
+            }
+        ],
+        "Bolsas": [
+            {
+                "nome": "Bolsa de Couro",
+                "marca": "Schutz",
+                "preco": 399.99
+            },
+            {
+                "nome": "Bolsa de Praia",
+                "marca": "Farm",
+                "preco": 79.99
+            }
+        ]
+    }
+}
