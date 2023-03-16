@@ -108,7 +108,7 @@ export default class ImageSlider extends Vue {
     opacity: 0.4;
     border-radius: 50%;
     color: white;
-    background-color: black;
+    background-color: var(--color-secundary);
     cursor: pointer;
     border: none;
     z-index: 1;

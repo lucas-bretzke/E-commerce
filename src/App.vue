@@ -5,9 +5,15 @@
 
 <style lang="less">
 :root {
-  --orange: #f78b00;
-  --blue: #00285f;
+  --color-primary: #d2b48c;
+  --color-secundary: black;
   --gray: #ededed;
+//   #F0E68C - Amarelo Areia
+// #D2B48C - Marrom Rosado
+// #BC8F8F - Marrom Coral
+// #8B4513 - Marrom Tabaco
+// #6B8E23 - Verde Oliva
+// #228B22 - Verde Floresta
 }
 
 *,
