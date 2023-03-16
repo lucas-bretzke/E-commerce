@@ -33,7 +33,7 @@ export default class InputLarge extends Vue {}
       width: 100%;
       padding: 10px;
       border: none;
-      border-radius: 5px 0px 0px 5px;
+      border-radius: 5px 0 0 5px;
       outline: none;
     }
 
@@ -42,7 +42,7 @@ export default class InputLarge extends Vue {}
       padding: 15px;
       font-size: 16px;
       border: none;
-      border-radius: 0px 5px 5px 0px;
+      border-radius: 0 5px 5px 0;
       color: white;
       background-color: var(--blue);
       transition: 0.5s;
