@@ -51,7 +51,10 @@ import ProductCarousel from "@/components/productCarousel/ProductCarousel.vue";
     InputLarge,
     ImageSlider,
     ValueMarker,
+<<<<<<< HEAD
     ProductCarousel,
+=======
+>>>>>>> 4baf352d49f84da72973cf64106a2743f6ec6bf8
   },
 })
 export default class HomeView extends Vue {
