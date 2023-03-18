@@ -33,7 +33,7 @@
         />
       </header>
     </div>
-    <ProductCarousel/>
+    <ProductCarousel />
   </main>
 </template>
 
