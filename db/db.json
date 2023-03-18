@@ -1,18 +1,69 @@
 {
     "RoupasFemininas": {
-        "Blusas": [
+        "blusas": [
             {
-                "nome": "Blusa Floral",
-                "marca": "Zara",
-                "preco": 89.99
+              "nome": "Blusa Floral",
+              "preco": 89.99,
+              "tamanhos": ["pp", "p", "m"]
             },
             {
-                "nome": "Blusa de Linho",
-                "marca": "Renner",
-                "preco": 69.99
+              "nome": "Blusa Listrada",
+              "preco": 69.99,
+              "tamanhos": ["p", "gg"]
+            },
+            {
+              "nome": "Blusa Estampada",
+              "preco": 129.99,
+              "tamanhos": ["m", "g"]
+            },
+            {
+              "nome": "Blusa Branca",
+              "preco": 59.99,
+              "tamanhos": ["p", "m", "gg"]
+            },
+            {
+              "nome": "Blusa Preta",
+              "preco": 79.99,
+              "tamanhos": ["pp", "g"]
+            },
+            {
+              "nome": "Blusa de Renda",
+              "preco": 149.99,
+              "tamanhos": ["m", "xgg"]
+            },
+            {
+              "nome": "Blusa Cropped",
+              "preco": 69.99,
+              "tamanhos": ["p", "m", "g"]
+            },
+            {
+              "nome": "Blusa Ciganinha",
+              "preco": 99.99,
+              "tamanhos": ["pp", "m", "gg"]
+            },
+            {
+              "nome": "Blusa Manga Longa",
+              "preco": 119.99,
+              "tamanhos": ["pp", "g", "xgg"]
+            },
+            {
+              "nome": "Blusa ombro a ombro",
+              "preco": 79.99,
+              "tamanhos": ["p", "g"]
+            },
+            {
+              "nome": "Blusa Tie Dye",
+              "preco": 59.99,
+              "tamanhos": ["pp", "p", "gg", "xgg"]
+            },
+            {
+              "nome": "Blusa de Tricot",
+              "preco": 199.99,
+              "tamanhos": ["p", "m", "xgg"]
             }
-        ],
-        "Shorts": [
+            ]
+          ,          
+        "shorts": [
             {
                 "nome": "Shorts Jeans",
                 "marca": "Levi's",
@@ -24,7 +75,7 @@
                 "preco": 89.99
             }
         ],
-        "Tênis": [
+        "tenis": [
             {
                 "nome": "Tênis Branco",
                 "marca": "Adidas",
@@ -36,7 +87,7 @@
                 "preco": 199.99
             }
         ],
-        "Vestidos": [
+        "vestidos": [
             {
                 "nome": "Vestido de Flores",
                 "marca": "C&A",
@@ -48,7 +99,7 @@
                 "preco": 189.99
             }
         ],
-        "Bolsas": [
+        "bolsas": [
             {
                 "nome": "Bolsa de Couro",
                 "marca": "Schutz",
