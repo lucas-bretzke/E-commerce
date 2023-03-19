@@ -8,23 +8,24 @@
   </div>
   <main class="container">
     <section class="container_cards" ref="myScrollX">
-      <div v-for="item in dataItems.blusas" :key="item" class="card">
+      <div v-for="item in dataItems" :key="item" class="card">
         <div class="container-img">
           <img :src="item.img" alt="" />
-          <button class="btn-add-to-cart">
+          <button class="btn-add-to-cart" @click="addFavorite(item)">
             <FontAwesomeIcon
+              v-if="!item.favorite"
               icon="fa-regular fa-heart"
-              class="ic-heart-regular"
+              class="ic-heart"
             />
+            <FontAwesomeIcon v-else icon="fa-solid fa-heart" class="ic-heart" />
           </button>
           <div class="container-text">
             <p class="promotion">-{{ item.promotion }} %</p>
-            <p class="price">R${{ item.preco }}</p>
+            <p class="price">R${{ item.price }}</p>
           </div>
         </div>
-
         <div class="description">
-          <p>{{ item.nome }}</p>
+          <p>{{ item.name }}</p>
         </div>
       </div>
     </section>
@@ -33,6 +34,7 @@
 
 
 <script lang="ts">
+import axios from "axios";
 import productService from "@/services/productService";
 import { IBlusa } from "@/types";
 import { Vue, Options } from "vue-class-component";
@@ -40,6 +42,32 @@ import { Vue, Options } from "vue-class-component";
 @Options({ props: {} })
 export default class ProductCarousel extends Vue {
   public dataItems: IBlusa[] = [];
+  $store: any;
+
+  get countFavorites() {
+    for (const item of this.dataItems) {
+      if (item.favorite == true) {
+        this.$store.state.counterFavorites++;
+      }
+    }
+    return this.$store.state.counterFavorites;
+  }
+
+  public async addFavorite(item: any) {
+    try {
+      if (!item.favorite) {
+        item.favorite = true;
+        this.$store.state.counterFavorites++;
+      } else {
+        item.favorite = false;
+        this.$store.state.counterFavorites--;
+      }
+      await axios.put(`http://localhost:3000/blusas/${item.id}`, item);
+      console.log("PUT");
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   private async getItems() {
     try {
@@ -50,10 +78,10 @@ export default class ProductCarousel extends Vue {
     }
   }
 
-  public nextScrollRight() {
-    const myScrollX: any = this.$refs.myScrollX;
-    myScrollX.scroll.overscroll + 30;
-  }
+  // public nextScrollRight() {
+  //   const myScrollX: any = this.$refs.myScrollX;
+  //   myScrollX.scroll.overscroll + 30;
+  // }
 
   mounted() {
     this.getItems();
@@ -152,12 +180,12 @@ export default class ProductCarousel extends Vue {
           border: none;
           cursor: pointer;
           background-color: transparent;
-          .ic-heart-regular {
+          .ic-heart {
             height: 15px;
             width: 15px;
           }
-          .ic-heart-regular:hover {
-        transform: translateZ(0px) scale(105%);
+          .ic-heart:hover {
+            transform: translateZ(0px) scale(105%);
           }
         }
 

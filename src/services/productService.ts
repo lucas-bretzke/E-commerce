@@ -3,7 +3,7 @@ import { IBlusa } from '@/types'
 
 export default {
     get: async () => {
-        const response = await http.get<IBlusa[]>('/RoupasFemininas')
+        const response = await http.get<IBlusa[]>('/blusas')
         return response?.data
     }
 }
