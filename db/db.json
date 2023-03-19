@@ -4,65 +4,88 @@
             {
               "nome": "Blusa Floral",
               "preco": 89.99,
-              "tamanhos": ["pp", "p", "m"]
+              "tamanhos": ["pp", "p", "m"],
+              "promotion": 22,
+              "img": "/img/blusasFM/1.png"
             },
             {
               "nome": "Blusa Listrada",
               "preco": 69.99,
-              "tamanhos": ["p", "gg"]
+              "tamanhos": ["p", "gg"],
+              "promotion": 5,
+              "img": "/img/blusasFM/2.webp"
             },
             {
               "nome": "Blusa Estampada",
               "preco": 129.99,
-              "tamanhos": ["m", "g"]
+              "tamanhos": ["m", "g"],
+              "promotion": 5,
+              "img": "/img/blusasFM/6.jpg"
             },
             {
               "nome": "Blusa Branca",
               "preco": 59.99,
-              "tamanhos": ["p", "m", "gg"]
+              "tamanhos": ["p", "m", "gg"],
+              "promotion": 15,
+              "img": "/img/blusasFM/7.webp"
             },
             {
               "nome": "Blusa Preta",
               "preco": 79.99,
-              "tamanhos": ["pp", "g"]
+              "tamanhos": ["pp", "g"],
+              "promotion": 22,
+              "img": "/img/blusasFM/8.png"
             },
             {
-              "nome": "Blusa de Renda",
-              "preco": 149.99,
-              "tamanhos": ["m", "xgg"]
+              "nome": "Blusa Floral",
+              "preco": 89.99,
+              "tamanhos": ["pp", "p", "m"],
+              "promotion": 22,
+              "img": "/img/blusasFM/1.png"
             },
             {
-              "nome": "Blusa Cropped",
+              "nome": "Blusa Listrada",
               "preco": 69.99,
-              "tamanhos": ["p", "m", "g"]
+              "tamanhos": ["p", "gg"],
+              "promotion": 5,
+              "img": "/img/blusasFM/2.webp"
             },
             {
-              "nome": "Blusa Ciganinha",
-              "preco": 99.99,
-              "tamanhos": ["pp", "m", "gg"]
+              "nome": "Blusa Estampada",
+              "preco": 129.99,
+              "tamanhos": ["m", "g"],
+              "promotion": 5,
+              "img": "/img/blusasFM/6.jpg"
             },
             {
-              "nome": "Blusa Manga Longa",
-              "preco": 119.99,
-              "tamanhos": ["pp", "g", "xgg"]
-            },
-            {
-              "nome": "Blusa ombro a ombro",
-              "preco": 79.99,
-              "tamanhos": ["p", "g"]
-            },
-            {
-              "nome": "Blusa Tie Dye",
+              "nome": "Blusa Branca",
               "preco": 59.99,
-              "tamanhos": ["pp", "p", "gg", "xgg"]
+              "tamanhos": ["p", "m", "gg"],
+              "promotion": 15,
+              "img": "/img/blusasFM/7.webp"
             },
             {
-              "nome": "Blusa de Tricot",
-              "preco": 199.99,
-              "tamanhos": ["p", "m", "xgg"]
-            }
-            ]
-          ,          
+              "nome": "Blusa Preta",
+              "preco": 79.99,
+              "tamanhos": ["pp", "g"],
+              "promotion": 22,
+              "img": "/img/blusasFM/8.png"
+            },        
+            {
+              "nome": "Blusa Branca",
+              "preco": 59.99,
+              "tamanhos": ["p", "m", "gg"],
+              "promotion": 15,
+              "img": "/img/blusasFM/7.webp"
+            },
+            {
+              "nome": "Blusa Preta",
+              "preco": 79.99,
+              "tamanhos": ["pp", "g"],
+              "promotion": 22,
+              "img": "/img/blusasFM/8.png"
+            }        
+        ],          
         "shorts": [
             {
                 "nome": "Shorts Jeans",
