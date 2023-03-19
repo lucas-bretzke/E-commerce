@@ -44,15 +44,6 @@ export default class ProductCarousel extends Vue {
   public dataItems: IBlusa[] = [];
   $store: any;
 
-  get countFavorites() {
-    for (const item of this.dataItems) {
-      if (item.favorite == true) {
-        this.$store.state.counterFavorites++;
-      }
-    }
-    return this.$store.state.counterFavorites;
-  }
-
   public async addFavorite(item: any) {
     try {
       if (!item.favorite) {
@@ -73,6 +64,9 @@ export default class ProductCarousel extends Vue {
     try {
       const response = await productService.get();
       this.dataItems = response;
+      for (const item of response) {
+        if (item.favorite) this.$store.state.counterFavorites++;
+      }
     } catch (error) {
       console.log(error);
     }
