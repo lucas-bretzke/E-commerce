@@ -5,10 +5,11 @@ import router from './router'
 import store from './store'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCartShopping, faArrowRight } from '@fortawesome/free-solid-svg-icons'
-import { faHeart } from '@fortawesome/free-regular-svg-icons'
+import { faCartShopping, faArrowRight, faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons'
+import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-library.add(faCartShopping, faArrowRight, faHeart)
+
+library.add(faCartShopping, faArrowRight, solidHeart, regularHeart)
 
 
 createApp(App).component("FontAwesomeIcon", FontAwesomeIcon).use(store).use(router).mount('#app')
