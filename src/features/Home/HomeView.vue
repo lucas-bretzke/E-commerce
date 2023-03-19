@@ -15,7 +15,7 @@
                 :value="0"
                 class="ValueMarker"
               />
-              <font-awesome-icon
+              <FontAwesomeIcon
                 icon="fa-solid fa-cart-shopping"
                 class="ic_cart-shopping"
               />
