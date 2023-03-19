@@ -1,138 +1,209 @@
 {
-    "RoupasFemininas": {
-        "blusas": [
-            {
-              "nome": "Blusa Floral",
-              "preco": 89.99,
-              "tamanhos": ["pp", "p", "m"],
-              "promotion": 22,
-              "img": "/img/blusasFM/1.png"
-            },
-            {
-              "nome": "Blusa Listrada",
-              "preco": 69.99,
-              "tamanhos": ["p", "gg"],
-              "promotion": 5,
-              "img": "/img/blusasFM/2.webp"
-            },
-            {
-              "nome": "Blusa Estampada",
-              "preco": 129.99,
-              "tamanhos": ["m", "g"],
-              "promotion": 5,
-              "img": "/img/blusasFM/6.jpg"
-            },
-            {
-              "nome": "Blusa Branca",
-              "preco": 59.99,
-              "tamanhos": ["p", "m", "gg"],
-              "promotion": 15,
-              "img": "/img/blusasFM/7.webp"
-            },
-            {
-              "nome": "Blusa Preta",
-              "preco": 79.99,
-              "tamanhos": ["pp", "g"],
-              "promotion": 22,
-              "img": "/img/blusasFM/8.png"
-            },
-            {
-              "nome": "Blusa Floral",
-              "preco": 89.99,
-              "tamanhos": ["pp", "p", "m"],
-              "promotion": 22,
-              "img": "/img/blusasFM/1.png"
-            },
-            {
-              "nome": "Blusa Listrada",
-              "preco": 69.99,
-              "tamanhos": ["p", "gg"],
-              "promotion": 5,
-              "img": "/img/blusasFM/2.webp"
-            },
-            {
-              "nome": "Blusa Estampada",
-              "preco": 129.99,
-              "tamanhos": ["m", "g"],
-              "promotion": 5,
-              "img": "/img/blusasFM/6.jpg"
-            },
-            {
-              "nome": "Blusa Branca",
-              "preco": 59.99,
-              "tamanhos": ["p", "m", "gg"],
-              "promotion": 15,
-              "img": "/img/blusasFM/7.webp"
-            },
-            {
-              "nome": "Blusa Preta",
-              "preco": 79.99,
-              "tamanhos": ["pp", "g"],
-              "promotion": 22,
-              "img": "/img/blusasFM/8.png"
-            },        
-            {
-              "nome": "Blusa Branca",
-              "preco": 59.99,
-              "tamanhos": ["p", "m", "gg"],
-              "promotion": 15,
-              "img": "/img/blusasFM/7.webp"
-            },
-            {
-              "nome": "Blusa Preta",
-              "preco": 79.99,
-              "tamanhos": ["pp", "g"],
-              "promotion": 22,
-              "img": "/img/blusasFM/8.png"
-            }        
-        ],          
-        "shorts": [
-            {
-                "nome": "Shorts Jeans",
-                "marca": "Levi's",
-                "preco": 129.99
-            },
-            {
-                "nome": "Shorts Estampado",
-                "marca": "Farm",
-                "preco": 89.99
-            }
-        ],
-        "tenis": [
-            {
-                "nome": "Tênis Branco",
-                "marca": "Adidas",
-                "preco": 249.99
-            },
-            {
-                "nome": "Tênis Rosa",
-                "marca": "Nike",
-                "preco": 199.99
-            }
-        ],
-        "vestidos": [
-            {
-                "nome": "Vestido de Flores",
-                "marca": "C&A",
-                "preco": 129.99
-            },
-            {
-                "nome": "Vestido Longo",
-                "marca": "Renner",
-                "preco": 189.99
-            }
-        ],
-        "bolsas": [
-            {
-                "nome": "Bolsa de Couro",
-                "marca": "Schutz",
-                "preco": 399.99
-            },
-            {
-                "nome": "Bolsa de Praia",
-                "marca": "Farm",
-                "preco": 79.99
-            }
-        ]
+  "user": {
+    "name": "",
+    "phone": 0,
+    "email": "",
+    "address": "",
+    "credit-card-number": ""
+  },
+  "blusas": [
+    {
+      "name": "Blusa Floral",
+      "price": 89.99,
+      "sizes": [
+        "pp",
+        "p",
+        "m"
+      ],
+      "promotion": 22,
+      "img": "/img/blusasFM/1.png",
+      "favorite": true,
+      "id": 1
+    },
+    {
+      "name": "Blusa Listrada",
+      "price": 69.99,
+      "sizes": [
+        "p",
+        "gg"
+      ],
+      "promotion": 5,
+      "img": "/img/blusasFM/2.webp",
+      "favorite": false,
+      "id": 2
+    },
+    {
+      "name": "Blusa Estampada",
+      "price": 129.99,
+      "sizes": [
+        "m",
+        "g"
+      ],
+      "promotion": 5,
+      "img": "/img/blusasFM/6.jpg",
+      "favorite": true,
+      "id": 3
+    },
+    {
+      "name": "Blusa Branca",
+      "price": 59.99,
+      "sizes": [
+        "p",
+        "m",
+        "gg"
+      ],
+      "promotion": 15,
+      "img": "/img/blusasFM/7.webp",
+      "favorite": false,
+      "id": 4
+    },
+    {
+      "name": "Blusa Preta",
+      "price": 79.99,
+      "sizes": [
+        "pp",
+        "g"
+      ],
+      "promotion": 22,
+      "img": "/img/blusasFM/8.png",
+      "favorite": false,
+      "id": 5
+    },
+    {
+      "name": "Blusa Floral",
+      "price": 89.99,
+      "sizes": [
+        "pp",
+        "p",
+        "m"
+      ],
+      "promotion": 22,
+      "img": "/img/blusasFM/1.png",
+      "favorite": false,
+      "id": 6
+    },
+    {
+      "name": "Blusa Listrada",
+      "price": 69.99,
+      "sizes": [
+        "p",
+        "gg"
+      ],
+      "promotion": 5,
+      "img": "/img/blusasFM/2.webp",
+      "favorite": false,
+      "id": 7
+    },
+    {
+      "name": "Blusa Estampada",
+      "price": 129.99,
+      "sizes": [
+        "m",
+        "g"
+      ],
+      "promotion": 5,
+      "img": "/img/blusasFM/6.jpg",
+      "favorite": false,
+      "id": 8
+    },
+    {
+      "name": "Blusa Branca",
+      "price": 59.99,
+      "sizes": [
+        "p",
+        "m",
+        "gg"
+      ],
+      "promotion": 15,
+      "img": "/img/blusasFM/7.webp",
+      "favorite": false,
+      "id": 9
+    },
+    {
+      "name": "Blusa Preta",
+      "price": 79.99,
+      "sizes": [
+        "pp",
+        "g"
+      ],
+      "promotion": 22,
+      "img": "/img/blusasFM/8.png",
+      "favorite": false,
+      "id": 10
+    },
+    {
+      "name": "Blusa Branca",
+      "price": 59.99,
+      "sizes": [
+        "p",
+        "m",
+        "gg"
+      ],
+      "promotion": 15,
+      "img": "/img/blusasFM/7.webp",
+      "favorite": false,
+      "id": 11
+    },
+    {
+      "name": "Blusa Preta",
+      "price": 79.99,
+      "sizes": [
+        "pp",
+        "g"
+      ],
+      "promotion": 22,
+      "img": "/img/blusasFM/8.png",
+      "favorite": false,
+      "id": 12
     }
+  ],
+  "shorts": [
+    {
+      "name": "Shorts Jeans",
+      "marca": "Levi's",
+      "price": 129.99
+    },
+    {
+      "name": "Shorts Estampado",
+      "marca": "Farm",
+      "price": 89.99
+    }
+  ],
+  "tenis": [
+    {
+      "name": "Tênis Branco",
+      "marca": "Adidas",
+      "price": 249.99
+    },
+    {
+      "name": "Tênis Rosa",
+      "marca": "Nike",
+      "price": 199.99
+    }
+  ],
+  "vestidos": [
+    {
+      "name": "Vestido de Flores",
+      "marca": "C&A",
+      "price": 129.99
+    },
+    {
+      "name": "Vestido Longo",
+      "marca": "Renner",
+      "price": 189.99
+    }
+  ],
+  "bolsas": [
+    {
+      "name": "Bolsa de Couro",
+      "marca": "Schutz",
+      "price": 399.99
+    },
+    {
+      "name": "Bolsa de Praia",
+      "marca": "Farm",
+      "price": 79.99
+    }
+  ],
+  "favorites": []
 }
