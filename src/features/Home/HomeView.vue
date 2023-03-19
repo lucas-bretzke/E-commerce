@@ -11,8 +11,7 @@
             <a href="">PROMOTIONS</a>
             <button class="cart-btn">
               <ValueMarker
-                v-if="$store.state.itemsInCart > 0"
-                :value="0"
+                v-if="$store.state.counterFavorites > 0"
                 class="ValueMarker"
               />
               <FontAwesomeIcon

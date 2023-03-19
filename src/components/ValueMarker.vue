@@ -1,6 +1,6 @@
 <template>
   <div class="counter">
-    {{ value }}
+    {{ $store.state.counterFavorites }}
   </div>
 </template>
 
@@ -8,9 +8,6 @@
 import { Options, Vue } from "vue-class-component";
 
 @Options({
-  props: {
-    value: { type: Array, required: true },
-  },
 })
 export default class Counter extends Vue {}
 </script>
