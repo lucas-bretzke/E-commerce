@@ -1,5 +1,9 @@
 export interface IBlusa {
     nome: String,
-    preco: Number,
-    tamanhos: Array<String>,
+    price: Number,
+    promotion: Number,
+    img: String,
+    favorite: Boolean;
+    sizes: Array<String>,
+    id: Number
 }
