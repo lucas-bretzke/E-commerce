@@ -29,8 +29,8 @@
         />
       </header>
     </div>
-    <ProductCarousel />
-    <ProductCarousel />
+    <ProductCarousel title="NOVIDADES" />
+    <ProductCarousel title="PROMOÇÕES"/>
   </main>
 </template>
 

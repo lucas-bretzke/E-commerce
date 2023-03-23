@@ -1,7 +1,7 @@
 <template>
   <div class="see-more-buttons">
     <button class="see-news-button">
-      NOVIDADES
+      {{ title }}
       <FontAwesomeIcon icon="fa-solid fa-arrow-right" class="ic-arrow" />
     </button>
     <button class="see-all-button" @click="nextScrollRight">VER TUDO</button>
@@ -40,6 +40,9 @@ import { IBlusa } from "@/types";
 import { Vue, Options } from "vue-class-component";
 
 @Options({
+  props: {
+    title: { type: String, required: true },
+  },
   watch: {
     "$store.state.getDone": function () {
       setTimeout(() => {
@@ -52,7 +55,7 @@ export default class ProductCarousel extends Vue {
   public dataItems: IBlusa[] = [];
   $store: any;
 
-  public async addFavorite(item: any) {
+  public async addFavorite(item: IBlusa) {
     try {
       if (!item.favorite) item.favorite = true;
       else item.favorite = false;
