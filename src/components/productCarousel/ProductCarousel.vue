@@ -39,22 +39,25 @@ import productService from "@/services/productService";
 import { IBlusa } from "@/types";
 import { Vue, Options } from "vue-class-component";
 
-@Options({ props: {} })
+@Options({
+  watch: {
+    "$store.state.getDone": function () {
+      setTimeout(() => {
+        this.getItems();
+      }, 2000);
+    },
+  },
+})
 export default class ProductCarousel extends Vue {
   public dataItems: IBlusa[] = [];
   $store: any;
 
   public async addFavorite(item: any) {
     try {
-      if (!item.favorite) {
-        item.favorite = true;
-        this.$store.state.counterFavorites++;
-      } else {
-        item.favorite = false;
-        this.$store.state.counterFavorites--;
-      }
+      if (!item.favorite) item.favorite = true;
+      else item.favorite = false;
+      this.$store.state.getDone = !this.$store.state.getDone;
       await axios.put(`http://localhost:3000/blusas/${item.id}`, item);
-      console.log("PUT");
     } catch (error) {
       console.log(error);
     }
@@ -64,18 +67,10 @@ export default class ProductCarousel extends Vue {
     try {
       const response = await productService.get();
       this.dataItems = response;
-      for (const item of response) {
-        if (item.favorite) this.$store.state.counterFavorites++;
-      }
     } catch (error) {
       console.log(error);
     }
   }
-
-  // public nextScrollRight() {
-  //   const myScrollX: any = this.$refs.myScrollX;
-  //   myScrollX.scroll.overscroll + 30;
-  // }
 
   mounted() {
     this.getItems();
