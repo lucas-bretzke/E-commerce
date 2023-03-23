@@ -10,10 +10,7 @@
             <a href="">ABOUT</a>
             <a href="">PROMOTIONS</a>
             <button class="cart-btn">
-              <ValueMarker
-                v-if="$store.state.counterFavorites > 0"
-                class="ValueMarker"
-              />
+              <ValueMarker class="ValueMarker" />
               <FontAwesomeIcon
                 icon="fa-solid fa-cart-shopping"
                 class="ic_cart-shopping"
@@ -32,6 +29,7 @@
         />
       </header>
     </div>
+    <ProductCarousel />
     <ProductCarousel />
   </main>
 </template>
