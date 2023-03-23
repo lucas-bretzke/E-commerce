@@ -2,7 +2,8 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    counterFavorites: 0
+    counterFavorites: 0,
+    getDone: false
   },
   getters: {
   },
