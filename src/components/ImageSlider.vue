@@ -9,8 +9,12 @@
         :class="{ active: index === currentIndex }"
       />
       <div v-show="sliderControls" class="slider-controls">
-        <button @click="prevImage">{{ "<<" }}</button>
-        <button @click="nextImage">{{ ">>" }}</button>
+        <button @click="prevImage">
+          <FontAwesomeIcon icon="fa-solid fa-chevron-left" size="xl" />
+        </button>
+        <button @click="nextImage">
+          <FontAwesomeIcon icon="fa-solid fa-chevron-right" size="xl" />
+        </button>
       </div>
       <span
         v-show="progressionBar"
