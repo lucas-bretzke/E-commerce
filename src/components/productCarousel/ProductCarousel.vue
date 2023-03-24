@@ -25,7 +25,25 @@
           </div>
         </div>
         <div class="description">
-          <p>{{ item.name }}</p>
+          <h5>{{ item.name }}</h5>
+          <h5>{{ item.collection }}</h5>
+          <div class="sizes">
+            <span :class="item.sizes[0] ? 'size' : ''">{{
+              item.sizes[0]
+            }}</span>
+            <span :class="item.sizes[1] ? 'size' : ''">{{
+              item.sizes[1]
+            }}</span>
+            <span :class="item.sizes[2] ? 'size' : ''">{{
+              item.sizes[2]
+            }}</span>
+            <span :class="item.sizes[3] ? 'size' : ''">{{
+              item.sizes[3]
+            }}</span>
+            <span :class="item.sizes[4] ? 'size' : ''">{{
+              item.sizes[4]
+            }}</span>
+          </div>
         </div>
       </div>
     </section>
@@ -158,7 +176,6 @@ export default class ProductCarousel extends Vue {
         height: 270px;
         background-color: rgb(220, 220, 220);
         display: flex;
-        // align-items: flex-end;
 
         img {
           width: 100%;
@@ -185,7 +202,6 @@ export default class ProductCarousel extends Vue {
           margin-left: -245px;
           margin-top: 228px;
           font-size: 13px;
-          transition: 0.3s ease-out;
 
           .promotion {
             width: 80%;
@@ -211,9 +227,18 @@ export default class ProductCarousel extends Vue {
         flex-direction: column;
         justify-content: center;
 
-        p {
-          font-size: 13px;
-          margin-bottom: 5px;
+        .sizes {
+          position: relative;
+          display: flex;
+          justify-content: flex-start;
+          bottom: -15px;
+          .size {
+            padding: 5px;
+            margin-right: 7px;
+            font-size: 13px;
+            margin-bottom: 5px;
+            border: 1px solid black;
+          }
         }
       }
     }
@@ -227,6 +252,7 @@ export default class ProductCarousel extends Vue {
           transform: translateY(-10px);
           -webkit-transform: translateY(-10px);
           -moz-transform: translateY(-10px);
+          transition: 0.3s ease-out;
         }
       }
     }
