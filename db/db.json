@@ -9,6 +9,7 @@
   "blusas": [
     {
       "name": "Blusa Floral",
+      "collection": "summe",
       "price": 89.99,
       "sizes": [
         "pp",
@@ -22,6 +23,7 @@
     },
     {
       "name": "Blusa Listrada",
+      "collection": "summe",
       "price": 69.99,
       "sizes": [
         "p",
@@ -34,6 +36,7 @@
     },
     {
       "name": "Blusa Estampada",
+      "collection": "summe",
       "price": 129.99,
       "sizes": [
         "m",
@@ -46,6 +49,7 @@
     },
     {
       "name": "Blusa Branca",
+      "collection": "summe",
       "price": 59.99,
       "sizes": [
         "p",
@@ -59,6 +63,7 @@
     },
     {
       "name": "Blusa Preta",
+      "collection": "summe",
       "price": 79.99,
       "sizes": [
         "pp",
@@ -71,6 +76,7 @@
     },
     {
       "name": "Blusa Floral",
+      "collection": "summe",
       "price": 89.99,
       "sizes": [
         "pp",
@@ -84,6 +90,7 @@
     },
     {
       "name": "Blusa Listrada",
+      "collections": "summer",
       "price": 69.99,
       "sizes": [
         "p",
@@ -96,6 +103,7 @@
     },
     {
       "name": "Blusa Estampada",
+      "collections": "summer",
       "price": 129.99,
       "sizes": [
         "m",
@@ -108,6 +116,7 @@
     },
     {
       "name": "Blusa Branca",
+      "collections": "summer",
       "price": 59.99,
       "sizes": [
         "p",
@@ -121,6 +130,7 @@
     },
     {
       "name": "Blusa Preta",
+      "collections": "summer",
       "price": 79.99,
       "sizes": [
         "pp",
@@ -133,6 +143,7 @@
     },
     {
       "name": "Blusa Branca",
+      "collections": "summe",
       "price": 59.99,
       "sizes": [
         "p",
@@ -146,6 +157,7 @@
     },
     {
       "name": "Blusa Preta",
+      "collections": "summe",
       "price": 79.99,
       "sizes": [
         "pp",
