@@ -24,7 +24,7 @@
         <ImageSlider
           :images="images"
           :progressionBar="true"
-          :sliderControls="false"
+          :sliderControls="true"
           :setInterval="5000"
         />
       </header>
