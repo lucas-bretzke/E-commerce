@@ -5,10 +5,10 @@
       <FontAwesomeIcon icon="fa-solid fa-arrow-right" class="ic-arrow" />
     </button>
     <div class="view-more-buttons">
-      <button class="move-scroll" @click="moveScroll(-1200)">
+      <button class="move-scroll" @click="moveScroll(-942)">
         <FontAwesomeIcon icon="fa-solid fa-chevron-left" size="xl" />
       </button>
-      <button class="move-scroll" @click="moveScroll(+1200)">
+      <button class="move-scroll" @click="moveScroll(+942)">
         <FontAwesomeIcon icon="fa-solid fa-chevron-right" size="xl" />
       </button>
     </div>
@@ -158,7 +158,7 @@ export default class ProductCarousel extends Vue {
 .container {
   height: auto;
   min-height: 380px;
-  margin-left: 9vw;
+  padding-left: 9vw;
   overflow-x: scroll;
   overscroll-behavior-x: smooth;
   overflow-y: hidden;
