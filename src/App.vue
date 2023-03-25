@@ -1,7 +1,41 @@
 <template>
   <!-- <router-link to="/"></router-link> -->
+  <div class="background-top">
+    <NavBar class="navBar">
+      <template #Left> <span class="logo">FASHION AVENUE</span> </template>
+      <template #Right>
+        <li>
+          <a href="">NEWS</a>
+          <a href="">TEEN</a>
+          <a href="">ABOUT</a>
+          <a href="">PROMOTIONS</a>
+          <button class="cart-btn">
+            <ValueMarker class="ValueMarker" />
+            <FontAwesomeIcon
+              icon="fa-solid fa-cart-shopping"
+              class="ic_cart-shopping"
+            />
+          </button>
+          <button class="btn-login">LOGIN</button>
+        </li>
+      </template>
+    </NavBar>
+  </div>
   <router-view />
 </template>
+
+
+<script lang="ts">
+import NavBar from "@/components/baseNavBar/BaseNavBar.vue";
+import ValueMarker from "@/components/ValueMarker.vue";
+
+import { Options, Vue } from "vue-class-component";
+
+@Options({
+  components: { NavBar,ValueMarker },
+})
+export default class HomeView extends Vue {}
+</script>
 
 <style lang="less">
 :root {
@@ -21,5 +55,83 @@
   margin: 0;
   padding: 0;
   font-family: Avenir, Helvetica, Arial, sans-serif;
+}
+
+.background-top {
+  width: 100%;
+  height: auto;
+  align-items: center;
+  background-color: var(--color-primary);
+}
+.navBar {
+  list-style: none;
+  // position: fixed;
+  width: 1000px;
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: var(--color-primary);
+
+  .logo {
+    padding: 50px 0;
+    font-size: 22px;
+    font-weight: 600;
+    -webkit-text-stroke: 1px #737373;
+  }
+
+  a {
+    padding: 10px 0;
+    margin: 0 10px;
+    font-size: 17px;
+    color: var(--color-secundary);
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  a:hover {
+    color: white;
+    transition: 0.5s;
+  }
+
+  .cart-btn {
+    margin: 0 10px;
+    border: none;
+    background: transparent;
+  }
+  .cart-btn:hover {
+    cursor: pointer;
+    transition: 0.5s;
+    color: white;
+  }
+
+  .ValueMarker {
+    position: absolute;
+    margin-left: 15px;
+    margin-top: 14px;
+    z-index: 2;
+  }
+
+  .ic_cart-shopping {
+    padding-top: 1px;
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
+    z-index: 1;
+  }
+
+  .btn-login {
+    padding: 10px 35px;
+    font-size: 16px;
+    color: var(--color-secundary);
+    cursor: pointer;
+    border-radius: 5px;
+    border: solid 1px black;
+    background-color: var(----color-primary);
+  }
+
+  .btn-login:hover {
+    transition: 0.5s;
+    color: white;
+    background-color: var(--color-secundary);
+  }
 }
 </style>
