@@ -4,10 +4,17 @@
       {{ title }}
       <FontAwesomeIcon icon="fa-solid fa-arrow-right" class="ic-arrow" />
     </button>
-    <button class="see-all-button" @click="nextScrollRight">VER TUDO</button>
+    <div class="view-more-buttons">
+      <button class="move-scroll" @click="moveScroll(-1200)">
+        <FontAwesomeIcon icon="fa-solid fa-chevron-left" size="xl" />
+      </button>
+      <button class="move-scroll" @click="moveScroll(+1200)">
+        <FontAwesomeIcon icon="fa-solid fa-chevron-right" size="xl" />
+      </button>
+    </div>
   </div>
-  <main class="container">
-    <section class="container_cards" ref="myScrollX">
+  <main class="container" ref="myScrollX">
+    <section class="container_cards">
       <div v-for="item in dataItems" :key="item" class="card">
         <div class="container-img">
           <img :src="item.img" alt="" />
@@ -26,7 +33,7 @@
         </div>
         <div class="description">
           <h5>{{ item.name }}</h5>
-          <h5>{{ item.collection }}</h5>
+          <p>{{ item.collection }}</p>
           <div class="sizes">
             <span :class="item.sizes[0] ? 'size' : ''">{{
               item.sizes[0]
@@ -72,6 +79,11 @@ import { Vue, Options } from "vue-class-component";
 export default class ProductCarousel extends Vue {
   public dataItems: IBlusa[] = [];
   $store: any;
+
+  public moveScroll(distance: number) {
+    const container = this.$refs.myScrollX as HTMLElement;
+    container.scrollLeft += distance;
+  }
 
   public async addFavorite(item: IBlusa) {
     try {
@@ -121,38 +133,32 @@ export default class ProductCarousel extends Vue {
   .see-news-button {
     font-size: 22px;
 
-    // .ic-arrow {
-    //   color: transparent;
-    //   margin-left: -19px;
-    //   transition: 0.3s;
-    // }
+    .ic-arrow {
+      transition: transform 0.3s ease-out;
+    }
   }
-  .see-all-button {
-    font-size: 15px;
-    border-bottom: 1px solid black;
+  .move-scroll {
+    font-size: 13px;
+    margin: 0px 6px;
+    padding: 10px 12px;
   }
   .see-news-button:hover {
     color: var(--color-primary);
     transform: translateX(10px);
 
-    // .ic-arrow {
-    //   color: var(--color-primary);
-    //   // margin-left: 0;
-    //   transform: translateX(19px);
-    // }
+    .ic-arrow {
+      animation: scale-fade 1s infinite ease-in-out;
+    }
   }
-  .see-all-button:hover {
-    color: var(--color-primary);
+  .move-scroll:hover {
     transform: translateZ(10px) scale(1.1);
-    border-bottom: 1px solid var(--color-primary);
+    background-color: var(--color-primary);
   }
 }
-
 .container {
-  width: 100%;
   height: auto;
   min-height: 380px;
-  margin-bottom: 40px;
+  margin-left: 9vw;
   overflow-x: scroll;
   overscroll-behavior-x: smooth;
   overflow-y: hidden;
@@ -166,7 +172,7 @@ export default class ProductCarousel extends Vue {
 
     .card {
       width: 21vw;
-      height: 360px;
+      height: 368px;
       margin: 0 10px;
       text-align: left;
       border: 1px solid transparent;
@@ -227,6 +233,10 @@ export default class ProductCarousel extends Vue {
         flex-direction: column;
         justify-content: center;
 
+        p {
+          font-size: 14px;
+        }
+
         .sizes {
           position: relative;
           display: flex;
@@ -259,15 +269,21 @@ export default class ProductCarousel extends Vue {
   }
 }
 .container::-webkit-scrollbar {
-  // display: none;
-  height: 7px;
+  display: none;
 }
-.container::-webkit-scrollbar-track {
-  // background: var(--color-primary);
-}
-.container::-webkit-scrollbar-thumb {
-  background: var(--color-primary);
-  border-radius: 20px;
-  border: 1px solid var(--color-terciary);
+
+@keyframes scale-fade {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 </style>
