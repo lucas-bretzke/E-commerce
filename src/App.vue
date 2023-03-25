@@ -2,14 +2,16 @@
   <!-- <router-link to="/"></router-link> -->
   <div class="background-top">
     <NavBar class="navBar">
-      <template #Left> <span class="logo">FASHION AVENUE</span> </template>
+      <template #Left>
+        <span class="logo" @click="$router.push('/')">FASHION AVENUE</span>
+      </template>
       <template #Right>
         <li>
           <a href="">NEWS</a>
           <a href="">TEEN</a>
           <a href="">ABOUT</a>
           <a href="">PROMOTIONS</a>
-          <button class="cart-btn">
+          <button class="cart-btn" @click="$router.push('/Favorites')">
             <ValueMarker class="ValueMarker" />
             <FontAwesomeIcon
               icon="fa-solid fa-cart-shopping"
@@ -32,7 +34,7 @@ import ValueMarker from "@/components/ValueMarker.vue";
 import { Options, Vue } from "vue-class-component";
 
 @Options({
-  components: { NavBar,ValueMarker },
+  components: { NavBar, ValueMarker },
 })
 export default class HomeView extends Vue {}
 </script>
@@ -75,6 +77,7 @@ export default class HomeView extends Vue {}
     padding: 50px 0;
     font-size: 22px;
     font-weight: 600;
+    cursor: pointer;
     -webkit-text-stroke: 1px #737373;
   }
 
