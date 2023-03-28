@@ -54,17 +54,6 @@ export default class ProductCarousel extends Vue {
     container.scrollLeft += distance;
   }
 
-  public async addFavorite(item: IBlusa) {
-    try {
-      if (!item.favorite) item.favorite = true;
-      else item.favorite = false;
-      this.$store.state.getDone = !this.$store.state.getDone;
-      await axios.put(`http://localhost:3000/blusas/${item.id}`, item);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
   private async getItems() {
     try {
       const response = await productService.get();
