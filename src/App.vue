@@ -7,10 +7,10 @@
       </template>
       <template #Right>
         <li>
-          <a href="">NEWS</a>
-          <a href="">TEEN</a>
-          <a href="">ABOUT</a>
-          <a href="">PROMOTIONS</a>
+          <a href="">NOVIDADES</a>
+          <a href="">INFANTIL</a>
+          <a href="">MARCAS</a>
+          <a href="">PROMOÇÕES</a>
           <button class="cart-btn" @click="$router.push('/Favorites')">
             <ValueMarker class="ValueMarker" />
             <FontAwesomeIcon
