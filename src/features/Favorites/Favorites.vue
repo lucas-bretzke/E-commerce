@@ -1,6 +1,8 @@
 <template>
   <div class="body">
-    <button class="scroll-to-top" @click="scrollToTop">Voltar ao topo</button>
+    <button class="scroll-to-top" @click="scrollToTop">
+      <FontAwesomeIcon icon="fa-solid fa-caret-up" /> Topo
+    </button>
     <h1>Favorites</h1>
     <main class="center">
       <section class="catalog-filters"></section>
@@ -55,16 +57,21 @@ export default class Favorites extends Vue {
 
 .scroll-to-top {
   position: fixed;
-  bottom: 20px;
+  width: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  bottom: 80px;
   right: 20px;
-  padding: 10px;
-  background-color: #ccc;
+  padding: 8px 13px;
+  background-color: #e6e6e6;
+  border-radius: 3px;
   border: none;
-  border-radius: 50%;
   cursor: pointer;
+  font-size: 14px;
 
   &:hover {
-    background-color: #aaa;
+    background-color: #d7d7d7;
   }
 }
 
@@ -81,7 +88,6 @@ h1 {
   max-width: 1200px;
   display: flex;
   margin: 0 auto;
-  // padding: 20px;
   justify-content: space-between;
 
   .catalog-filters {
