@@ -43,7 +43,7 @@ import productService from "@/services/productService";
 })
 export default class CardItems extends Vue {
   $store: any;
-  item: any;
+  item!: IBlusa;
 
   public async addFavorite(item: IBlusa) {
     try {
