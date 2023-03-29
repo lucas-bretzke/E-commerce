@@ -1,13 +1,15 @@
 <template>
-  <h1>Favorites</h1>
-  <main class="center">
-    <section class="catalog-filters"></section>
-    <section class="container-cards">
-      <div v-for="item in dataItems" :key="item">
-        <BaseCardItems v-if="item.favorite" :item="item" />
-      </div>
-    </section>
-  </main>
+  <div class="body">
+    <h1>Favorites</h1>
+    <main class="center">
+      <section class="catalog-filters"></section>
+      <section class="container-cards">
+        <div v-for="item in dataItems" :key="item">
+          <BaseCardItems v-if="item.favorite" :item="item" />
+        </div>
+      </section>
+    </main>
+  </div>
 </template>
 
 
@@ -15,7 +17,7 @@
 import { IBlusa } from "@/types";
 import productService from "@/services/productService";
 import { Options, Vue } from "vue-class-component";
-import BaseCardItems from "@/components/BaseCardItem.vue";
+import BaseCardItems from "@/components/base/CardItem.vue";
 
 @Options({ components: { BaseCardItems } })
 export default class Favorites extends Vue {
@@ -39,18 +41,24 @@ export default class Favorites extends Vue {
 
 
 <style lang="less" scoped>
+.body {
+  background-color: #baa67f;
+}
+
 h1 {
   width: 1200px;
-  margin: 40px auto;
+  margin: 0 auto;
+  padding: 40px 0;
   display: flex;
   font-size: 35px;
+  font-weight: 600;
+  -webkit-text-stroke: 1px #737373;
 }
 .center {
   max-width: 1200px;
   display: flex;
   margin: 0 auto;
   justify-content: space-between;
-  border: 1px solid red;
 
   .catalog-filters {
     width: 228px;
@@ -64,7 +72,6 @@ h1 {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    border: 1px solid blue;
   }
 }
 </style>

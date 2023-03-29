@@ -41,7 +41,7 @@ import { IBlusa } from "@/types";
     item: { type: Object, required: true },
   },
 })
-export default class BaseCardItems extends Vue {
+export default class CardItems extends Vue {
   $store: any;
   item: any;
 

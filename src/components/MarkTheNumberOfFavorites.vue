@@ -17,13 +17,13 @@ import { Options, Vue } from "vue-class-component";
     },
   },
 })
-export default class ValueMarker extends Vue {
+export default class MarkTheNumberOfFavorites extends Vue {
   $store: any;
 
   private async addBlouseNumbers() {
     try {
       const response = await productService.get();
-       this.$store.state.counterFavorites = 0
+      this.$store.state.counterFavorites = 0;
       const favoriteItems = response.filter((item) => item.favorite);
       this.$store.state.counterFavorites += favoriteItems.length;
     } catch (error) {

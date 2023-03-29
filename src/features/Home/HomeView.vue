@@ -18,7 +18,7 @@
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import ImageSlider from "../../components/ImageSlider.vue";
-import ProductCarousel from "@/components/productCarousel/ProductCarousel.vue";
+import ProductCarousel from "@/components/ProductCarousel.vue";
 
 @Options({
   components: {

@@ -27,8 +27,8 @@
 
 
 <script lang="ts">
-import NavBar from "@/components/baseNavBar/BaseNavBar.vue";
-import ValueMarker from "@/components/ValueMarker.vue";
+import NavBar from "@/components/base/NavBar.vue";
+import ValueMarker from "@/components/MarkTheNumberOfFavorites.vue";
 
 import { Options, Vue } from "vue-class-component";
 

@@ -24,9 +24,8 @@
 
 
 <script lang="ts">
-import axios from "axios";
 import productService from "@/services/productService";
-import BaseCardItems from "@/components/BaseCardItem.vue";
+import BaseCardItems from "@/components/base/CardItem.vue";
 import { IBlusa } from "@/types";
 import { Vue, Options } from "vue-class-component";
 
