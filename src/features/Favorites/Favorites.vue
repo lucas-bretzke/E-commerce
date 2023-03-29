@@ -1,11 +1,12 @@
 <template>
   <div class="body">
+    <button class="scroll-to-top" @click="scrollToTop">Voltar ao topo</button>
     <h1>Favorites</h1>
     <main class="center">
       <section class="catalog-filters"></section>
       <section class="container-cards">
         <div v-for="item in dataItems" :key="item">
-          <BaseCardItems v-if="item.favorite" :item="item" />
+          <BaseCardItems v-if="item.favorite" :item="item" class="card" />
         </div>
       </section>
     </main>
@@ -33,6 +34,13 @@ export default class Favorites extends Vue {
     }
   }
 
+  scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // opcional, adiciona uma animação suave
+    });
+  }
+
   mounted() {
     this.getItems();
   }
@@ -42,7 +50,22 @@ export default class Favorites extends Vue {
 
 <style lang="less" scoped>
 .body {
-  background-color: #baa67f;
+  // background-color: #e8e7e3;
+}
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px;
+  background-color: #ccc;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #aaa;
+  }
 }
 
 h1 {
@@ -58,6 +81,7 @@ h1 {
   max-width: 1200px;
   display: flex;
   margin: 0 auto;
+  // padding: 20px;
   justify-content: space-between;
 
   .catalog-filters {
@@ -72,6 +96,12 @@ h1 {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+
+    .card {
+      margin-bottom: 20px;
+      border-bottom: 1px solid black;
+      border-radius: 2px;
+    }
   }
 }
 </style>

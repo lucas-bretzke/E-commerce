@@ -32,9 +32,9 @@
 
 
 <script lang="ts">
-import axios from "axios";
-import { Vue, Options } from "vue-class-component";
 import { IBlusa } from "@/types";
+import { Vue, Options } from "vue-class-component";
+import productService from "@/services/productService";
 
 @Options({
   props: {
@@ -47,9 +47,8 @@ export default class CardItems extends Vue {
 
   public async addFavorite(item: IBlusa) {
     try {
-      if (!item.favorite) item.favorite = true;
-      else item.favorite = false;
-      await axios.put(`http://localhost:3000/blusas/${item.id}`, item);
+      item.favorite ? (item.favorite = false) : (item.favorite = true);
+      await productService.putBLusa(item);
       this.$store.state.getDone = !this.$store.state.getDone;
     } catch (error) {
       console.log(error);
@@ -98,6 +97,7 @@ export default class CardItems extends Vue {
           padding: 2px 2px 2px 2px;
           margin-bottom: 4px;
           font-weight: bold;
+          color: rgba(0, 0, 0, 0.569);
           background-color: white;
         }
         .price {
