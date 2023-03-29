@@ -1,7 +1,12 @@
 <template>
   <div class="card">
     <section class="container-img">
-      <img :src="item.img" alt="" />
+      <div class="img-item" :style="`background-image: url(${item.img})`">
+        <div class="container-text">
+          <p class="promotion">-{{ item.promotion }} %</p>
+          <p class="price">R${{ item.price }}</p>
+        </div>
+      </div>
       <button class="btn-add-to-cart" @click="addFavorite(item)">
         <FontAwesomeIcon
           v-if="!item.favorite"
@@ -10,10 +15,6 @@
         />
         <FontAwesomeIcon v-else icon="fa-solid fa-heart" class="ic-heart" />
       </button>
-      <div class="container-text">
-        <p class="promotion">-{{ item.promotion }} %</p>
-        <p class="price">R${{ item.price }}</p>
-      </div>
     </section>
     <section class="description">
       <h5>{{ item.name }}</h5>
@@ -62,7 +63,7 @@ export default class BaseCardItems extends Vue {
 
 <style scoped lang="less">
 .card {
-  width: 21vw;
+  width: 300px;
   height: 368px;
   margin: 0 10px;
   text-align: left;
@@ -71,51 +72,60 @@ export default class BaseCardItems extends Vue {
   .container-img {
     width: 100%;
     height: 270px;
-    background-color: rgb(220, 220, 220);
     display: flex;
+    background-color: rgb(220, 220, 220);
+    padding: 10px;
 
-    img {
+    .img-item {
       width: 100%;
       height: 100%;
+      background-position: center;
+      background-size: cover;
+      display: flex;
+      align-items: flex-end;
+
+      .container-text {
+        font-size: 14px;
+        margin-bottom: -10px;
+
+        .promotion {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: auto;
+          max-width: 41px;
+          padding: 2px 2px 2px 2px;
+          margin-bottom: 4px;
+          font-weight: bold;
+          background-color: white;
+        }
+        .price {
+          width: auto;
+          padding: 4px 4px 0 4px;
+          background-color: white;
+        }
+      }
     }
 
     .btn-add-to-cart {
       height: 30px;
       margin-left: -30px;
-      margin-top: 15px;
+      margin-top: 5px;
       border: none;
       cursor: pointer;
       background-color: transparent;
+
       .ic-heart {
         height: 15px;
         width: 15px;
       }
+
       .ic-heart:hover {
         transform: translateZ(0px) scale(105%);
       }
     }
-
-    .container-text {
-      margin-left: -245px;
-      margin-top: 228px;
-      font-size: 13px;
-
-      .promotion {
-        width: 80%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 2px 2px 2px 2px;
-        margin-bottom: 4px;
-        font-weight: bold;
-        background-color: white;
-      }
-      .price {
-        padding: 4px 4px 0 4px;
-        background-color: white;
-      }
-    }
   }
+
   .description {
     width: 100%;
     height: auto;
@@ -148,13 +158,11 @@ export default class BaseCardItems extends Vue {
   cursor: pointer;
   border: 1px solid black;
 
-  .container-img {
-    .container-text {
-      transform: translateY(-10px);
-      -webkit-transform: translateY(-10px);
-      -moz-transform: translateY(-10px);
-      transition: 0.3s ease-out;
-    }
+  .container-img .img-item .container-text {
+    transform: translateY(-10px);
+    -webkit-transform: translateY(-10px);
+    -moz-transform: translateY(-10px);
+    transition: 0.3s ease-out;
   }
 }
 </style>
