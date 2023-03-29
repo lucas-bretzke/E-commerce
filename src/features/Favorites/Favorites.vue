@@ -30,7 +30,6 @@ export default class Favorites extends Vue {
     try {
       const response = await productService.get();
       this.dataItems = response;
-      console.log("get favorites");
     } catch (error) {
       console.log(error);
     }
@@ -39,7 +38,7 @@ export default class Favorites extends Vue {
   scrollToTop() {
     window.scrollTo({
       top: 0,
-      behavior: "smooth", // opcional, adiciona uma animação suave
+      behavior: "smooth",
     });
   }
 

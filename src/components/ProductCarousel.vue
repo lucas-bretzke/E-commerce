@@ -96,7 +96,7 @@ export default class ProductCarousel extends Vue {
   }
   .move-scroll {
     font-size: 13px;
-    margin: 0px 6px;
+    margin: 0 6px;
     padding: 10px 12px;
   }
   .see-news-button:hover {
