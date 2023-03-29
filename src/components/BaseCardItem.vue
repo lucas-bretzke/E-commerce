@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <section class="container-img">
+    <section class="container">
       <div class="img-item" :style="`background-image: url(${item.img})`">
         <div class="container-text">
           <p class="promotion">-{{ item.promotion }} %</p>
@@ -69,7 +69,7 @@ export default class BaseCardItems extends Vue {
   text-align: left;
   border: 1px solid transparent;
 
-  .container-img {
+  .container {
     width: 100%;
     height: 270px;
     display: flex;
@@ -87,6 +87,7 @@ export default class BaseCardItems extends Vue {
       .container-text {
         font-size: 14px;
         margin-bottom: -10px;
+        margin-left: -4px;
 
         .promotion {
           display: flex;
@@ -158,7 +159,7 @@ export default class BaseCardItems extends Vue {
   cursor: pointer;
   border: 1px solid black;
 
-  .container-img .img-item .container-text {
+  .container .img-item .container-text {
     transform: translateY(-10px);
     -webkit-transform: translateY(-10px);
     -moz-transform: translateY(-10px);
