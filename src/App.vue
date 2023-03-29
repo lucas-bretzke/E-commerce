@@ -1,5 +1,4 @@
 <template>
-  <!-- <router-link to="/"></router-link> -->
   <div class="background-top">
     <NavBar class="navBar">
       <template #Left>
