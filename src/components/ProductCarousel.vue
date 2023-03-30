@@ -50,6 +50,8 @@ export default class ProductCarousel extends Vue {
 
   public moveScroll(distance: number) {
     const container = this.$refs.myScrollX as HTMLElement;
+    container.style.scrollBehavior = "smooth";
+    container.style.scrollSnapType = "x mandatory";
     container.scrollLeft += distance;
   }
 
