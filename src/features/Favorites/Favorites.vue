@@ -28,7 +28,7 @@ export default class Favorites extends Vue {
 
   private async getItems() {
     try {
-      const response = await productService.get();
+      const response = await productService.getBlouses();
       this.dataItems = response;
     } catch (error) {
       console.log(error);
@@ -79,7 +79,7 @@ h1 {
   margin: 0 auto;
   padding: 40px 0;
   display: flex;
-  font-size: 35px;
+  font-size: 32px;
   font-weight: 600;
   -webkit-text-stroke: 1px #737373;
 }

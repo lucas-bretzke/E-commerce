@@ -2,12 +2,12 @@ import { http } from './config'
 import { IBlusa } from '@/types'
 
 export default {
-    get: async () => {
-        const response = await http.get<IBlusa[]>('/blusas')
+    getBlouses: async () => {
+        const response = await http.get<IBlusa[]>('/blouses')
         return response?.data
     },
-    putBlousa: async (request: IBlusa) => {
-        const response = await http.put<IBlusa>(`/blusas/${request.id}`, request)
+    putBlouse: async (request: IBlusa) => {
+        const response = await http.put<IBlusa>(`/blouses/${request.id}`, request)
         return response?.data
     }
 }
