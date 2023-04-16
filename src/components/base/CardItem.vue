@@ -3,7 +3,7 @@
     <section class="container">
       <div class="img-item" :style="`background-image: url(${item.img})`">
         <div class="container-text">
-          <p class="promotion">-{{ item.promotion }} %</p>
+          <p v-if="appearPromotion" class="promotion">-{{ item.discount }} %</p>
           <p class="price">R${{ item.price }}</p>
         </div>
       </div>
@@ -18,7 +18,7 @@
     </section>
     <section class="description">
       <h5>{{ item.name }}</h5>
-      <p>{{ item.collection }}</p>
+      <p>{{ item.brand }}</p>
       <div class="sizes">
         <span :class="item.sizes[0] ? 'size' : ''">{{ item.sizes[0] }}</span>
         <span :class="item.sizes[1] ? 'size' : ''">{{ item.sizes[1] }}</span>
@@ -39,6 +39,7 @@ import productService from "@/services/productService";
 @Options({
   props: {
     item: { type: Object, required: true },
+    appearPromotion: { type: Boolean, required: true },
   },
 })
 export default class CardItems extends Vue {
@@ -47,8 +48,8 @@ export default class CardItems extends Vue {
 
   public async addFavorite(item: IBlusa) {
     try {
-      item.favorite ? (item.favorite = false) : (item.favorite = true);
-      await productService.putBlousa(item);
+      item.favorite = !item.favorite;
+      await productService.putBlouse(item);
       this.$store.state.getDone = !this.$store.state.getDone;
     } catch (error) {
       console.log(error);
