@@ -16,7 +16,7 @@
         "p",
         "m"
       ],
-      "promotion": 22,
+      "discount": 22,
       "img": "/img/blusasFM/1.png",
       "favorite": true,
       "id": 1
@@ -29,7 +29,7 @@
         "p",
         "gg"
       ],
-      "promotion": 5,
+      "discount": 5,
       "img": "/img/blusasFM/2.webp",
       "favorite": true,
       "id": 2
@@ -42,7 +42,7 @@
         "m",
         "g"
       ],
-      "promotion": 5,
+      "discount": 5,
       "img": "/img/blusasFM/6.jpg",
       "favorite": false,
       "id": 3
@@ -56,7 +56,7 @@
         "m",
         "gg"
       ],
-      "promotion": 15,
+      "discount": 15,
       "img": "/img/blusasFM/7.webp",
       "favorite": false,
       "id": 4
@@ -69,7 +69,7 @@
         "pp",
         "g"
       ],
-      "promotion": 22,
+      "discount": 22,
       "img": "/img/blusasFM/8.png",
       "favorite": false,
       "id": 5
@@ -83,7 +83,7 @@
         "p",
         "m"
       ],
-      "promotion": 22,
+      "discount": 22,
       "img": "/img/blusasFM/1.png",
       "favorite": false,
       "id": 6
@@ -96,7 +96,7 @@
         "p",
         "gg"
       ],
-      "promotion": 5,
+      "discount": 5,
       "img": "/img/blusasFM/2.webp",
       "favorite": false,
       "id": 7
@@ -109,7 +109,7 @@
         "m",
         "g"
       ],
-      "promotion": 5,
+      "discount": 5,
       "img": "/img/blusasFM/6.jpg",
       "favorite": false,
       "id": 8
@@ -123,7 +123,7 @@
         "m",
         "gg"
       ],
-      "promotion": 15,
+      "discount": 15,
       "img": "/img/blusasFM/7.webp",
       "favorite": false,
       "id": 9
@@ -136,7 +136,7 @@
         "pp",
         "g"
       ],
-      "promotion": 22,
+      "discount": 22,
       "img": "/img/blusasFM/8.png",
       "favorite": false,
       "id": 10
@@ -150,7 +150,7 @@
         "m",
         "gg"
       ],
-      "promotion": 15,
+      "discount": 15,
       "img": "/img/blusasFM/7.webp",
       "favorite": false,
       "id": 11
@@ -163,7 +163,7 @@
         "pp",
         "g"
       ],
-      "promotion": 22,
+      "discount": 22,
       "img": "/img/blusasFM/8.png",
       "favorite": false,
       "id": 12

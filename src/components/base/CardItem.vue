@@ -3,7 +3,7 @@
     <section class="container">
       <div class="img-item" :style="`background-image: url(${item.img})`">
         <div class="container-text">
-          <p v-if="appearPromotion" class="promotion">-{{ item.discount }} %</p>
+          <p v-if="item.discount >= 1" class="promotion">-{{ item.discount }} %</p>
           <p class="price">R${{ item.price }}</p>
         </div>
       </div>
@@ -39,7 +39,7 @@ import productService from "@/services/productService";
 @Options({
   props: {
     item: { type: Object, required: true },
-    appearPromotion: { type: Boolean, required: true },
+    // promotionVisibility: { type: Boolean, required: true },
   },
 })
 export default class CardItems extends Vue {

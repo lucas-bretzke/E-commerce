@@ -16,7 +16,7 @@
   <main class="container" ref="myScrollX">
     <section class="container_cards">
       <div v-for="item in dataItems" :key="item">
-        <BaseCardItems :item="item" :appearPromotion="appearPromotion"/>
+        <CardItem :item="item"/>
       </div>
     </section>
   </main>
@@ -24,17 +24,17 @@
 
 
 <script lang="ts">
-import BaseCardItems from "@/components/base/CardItem.vue";
+import CardItem from "@/components/base/CardItem.vue";
 import { Vue, Options } from "vue-class-component";
 
 @Options({
   components: {
-    BaseCardItems,
+    CardItem,
   },
   props: {
     title: { type: String, required: true },
     dataItems: { type: Array, required: true },
-    appearPromotion: { type: Boolean, required: true },
+    // promotionVisibility: { type: Boolean, required: true },
   },
   watch: {
     "$store.state.getDone": function () {
