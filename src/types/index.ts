@@ -1,4 +1,4 @@
-export interface IBlusa {
+export interface IBlouse {
     nome: String,
     price: Number,
     promotion: Number,

@@ -17,14 +17,14 @@
 
 
 <script lang="ts">
-import { IBlusa } from "@/types";
+import { IBlouse } from "@/types";
 import productService from "@/services/productService";
 import { Options, Vue } from "vue-class-component";
 import BaseCardItems from "@/components/base/CardItem.vue";
 
 @Options({ components: { BaseCardItems } })
 export default class Favorites extends Vue {
-  public dataItems: IBlusa[] = [];
+  public dataItems: IBlouse[] = [];
 
   private async getItems() {
     try {

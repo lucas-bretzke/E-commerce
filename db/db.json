@@ -44,7 +44,7 @@
       ],
       "promotion": 5,
       "img": "/img/blusasFM/6.jpg",
-      "favorite": true,
+      "favorite": false,
       "id": 3
     },
     {
@@ -58,7 +58,7 @@
       ],
       "promotion": 15,
       "img": "/img/blusasFM/7.webp",
-      "favorite": true,
+      "favorite": false,
       "id": 4
     },
     {
@@ -71,7 +71,7 @@
       ],
       "promotion": 22,
       "img": "/img/blusasFM/8.png",
-      "favorite": true,
+      "favorite": false,
       "id": 5
     },
     {
@@ -85,7 +85,7 @@
       ],
       "promotion": 22,
       "img": "/img/blusasFM/1.png",
-      "favorite": true,
+      "favorite": false,
       "id": 6
     },
     {
@@ -98,7 +98,7 @@
       ],
       "promotion": 5,
       "img": "/img/blusasFM/2.webp",
-      "favorite": true,
+      "favorite": false,
       "id": 7
     },
     {
@@ -111,7 +111,7 @@
       ],
       "promotion": 5,
       "img": "/img/blusasFM/6.jpg",
-      "favorite": true,
+      "favorite": false,
       "id": 8
     },
     {
@@ -125,7 +125,7 @@
       ],
       "promotion": 15,
       "img": "/img/blusasFM/7.webp",
-      "favorite": true,
+      "favorite": false,
       "id": 9
     },
     {
@@ -138,7 +138,7 @@
       ],
       "promotion": 22,
       "img": "/img/blusasFM/8.png",
-      "favorite": true,
+      "favorite": false,
       "id": 10
     },
     {
@@ -152,7 +152,7 @@
       ],
       "promotion": 15,
       "img": "/img/blusasFM/7.webp",
-      "favorite": true,
+      "favorite": false,
       "id": 11
     },
     {
@@ -165,7 +165,7 @@
       ],
       "promotion": 22,
       "img": "/img/blusasFM/8.png",
-      "favorite": true,
+      "favorite": false,
       "id": 12
     }
   ],

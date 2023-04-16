@@ -32,7 +32,7 @@
 
 
 <script lang="ts">
-import { IBlusa } from "@/types";
+import { IBlouse } from "@/types";
 import { Vue, Options } from "vue-class-component";
 import productService from "@/services/productService";
 
@@ -44,9 +44,9 @@ import productService from "@/services/productService";
 })
 export default class CardItems extends Vue {
   $store: any;
-  item!: IBlusa;
+  item!: IBlouse;
 
-  public async addFavorite(item: IBlusa) {
+  public async addFavorite(item: IBlouse) {
     try {
       item.favorite = !item.favorite;
       await productService.putBlouse(item);

@@ -23,7 +23,7 @@
 import ImageSlider from "../../components/ImageSlider.vue";
 import ProductCarousel from "@/components/ProductCarousel.vue";
 import productService from "@/services/productService";
-import { IBlusa } from "@/types";
+import { IBlouse } from "@/types";
 import { Options, Vue } from "vue-class-component";
 
 @Options({
@@ -47,8 +47,7 @@ export default class HomeView extends Vue {
       alt: "Imagem 3",
     },
   ];
-  public dataBlouses: IBlusa[] = [];
-  public dataShorts: any[] = [];
+  public dataBlouses: IBlouse[] = [];
 
   public async getBlouses() {
     try {
