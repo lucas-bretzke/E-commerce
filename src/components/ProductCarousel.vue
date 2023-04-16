@@ -16,7 +16,7 @@
   <main class="container" ref="myScrollX">
     <section class="container_cards">
       <div v-for="item in dataItems" :key="item">
-        <BaseCardItems :item="item" />
+        <BaseCardItems :item="item" :appearPromotion="appearPromotion"/>
       </div>
     </section>
   </main>
@@ -24,9 +24,7 @@
 
 
 <script lang="ts">
-import productService from "@/services/productService";
 import BaseCardItems from "@/components/base/CardItem.vue";
-import { IBlusa } from "@/types";
 import { Vue, Options } from "vue-class-component";
 
 @Options({
@@ -35,6 +33,8 @@ import { Vue, Options } from "vue-class-component";
   },
   props: {
     title: { type: String, required: true },
+    dataItems: { type: Array, required: true },
+    appearPromotion: { type: Boolean, required: true },
   },
   watch: {
     "$store.state.getDone": function () {
@@ -45,7 +45,6 @@ import { Vue, Options } from "vue-class-component";
   },
 })
 export default class ProductCarousel extends Vue {
-  public dataItems: IBlusa[] = [];
   $store: any;
 
   public moveScroll(distance: number) {
@@ -55,13 +54,8 @@ export default class ProductCarousel extends Vue {
     container.scrollLeft += distance;
   }
 
-  private async getItems() {
-    try {
-      const response = await productService.get();
-      this.dataItems = response;
-    } catch (error) {
-      console.log(error);
-    }
+  getItems() {
+    this.$emit("getItems");
   }
 
   mounted() {
