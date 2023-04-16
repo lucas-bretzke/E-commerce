@@ -23,7 +23,7 @@
 import ImageSlider from "../../components/ImageSlider.vue";
 import ProductCarousel from "@/components/ProductCarousel.vue";
 import productService from "@/services/productService";
-import { IBlusa, IShorts } from "@/types";
+import { IBlusa } from "@/types";
 import { Options, Vue } from "vue-class-component";
 
 @Options({
@@ -54,14 +54,6 @@ export default class HomeView extends Vue {
     try {
       const response = await productService.getBlouses();
       this.dataBlouses = response;
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  public async getShorts() {
-    try {
-      const response = await productService.getShorts();
-      this.dataShorts = response;
     } catch (error) {
       console.log(error);
     }
