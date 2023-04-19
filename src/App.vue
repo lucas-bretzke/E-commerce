@@ -21,6 +21,7 @@
         </li>
       </template>
     </NavBar>
+    <Cookies v-show="$store.state.cookieAcceptanceModal" />
   </div>
   <router-view />
 </template>
@@ -29,11 +30,12 @@
 <script lang="ts">
 import NavBar from "@/components/base/NavBar.vue";
 import ValueMarker from "@/components/MarkTheNumberOfFavorites.vue";
+import Cookies from "@/components/Cookies.vue";
 
 import { Options, Vue } from "vue-class-component";
 
 @Options({
-  components: { NavBar, ValueMarker },
+  components: { NavBar, ValueMarker, Cookies },
 })
 export default class HomeView extends Vue {}
 </script>
@@ -127,7 +129,7 @@ export default class HomeView extends Vue {}
     cursor: pointer;
     border-radius: 5px;
     border: solid 1px black;
-    background-color: var(----color-primary);
+    background-color: var(--color-primary);
   }
 
   .btn-login:hover {

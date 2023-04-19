@@ -2,7 +2,7 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    cookieAcceptanceModal: false,
+    cookieAcceptanceModal: true,
     counterFavorites: 0,
     getDone: false
   },
