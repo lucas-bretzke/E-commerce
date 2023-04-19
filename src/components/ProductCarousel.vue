@@ -15,8 +15,8 @@
   </div>
   <main class="container" ref="myScrollX">
     <section class="container_cards">
-      <div v-for="item in dataItems" :key="item">
-        <CardItem :item="item"/>
+      <div v-for="item in dataItems.slice(0, 12)" :key="item">
+        <CardItem :item="item" />
       </div>
     </section>
   </main>
@@ -34,7 +34,6 @@ import { Vue, Options } from "vue-class-component";
   props: {
     title: { type: String, required: true },
     dataItems: { type: Array, required: true },
-    // promotionVisibility: { type: Boolean, required: true },
   },
   watch: {
     "$store.state.getDone": function () {
@@ -120,7 +119,7 @@ export default class ProductCarousel extends Vue {
   scrollbar-width: none;
 
   &_cards {
-    width: 3500px;
+    width: auto;
     display: flex;
   }
 }
