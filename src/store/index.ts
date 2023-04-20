@@ -2,8 +2,9 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    cookieAcceptanceModal: true,
+    itemIdInDetail: 0,
     counterFavorites: 0,
+    cookieAcceptanceModal: false,
     getDone: false
   },
   getters: {
