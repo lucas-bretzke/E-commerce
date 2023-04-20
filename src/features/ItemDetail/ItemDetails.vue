@@ -12,22 +12,44 @@
 </template>
 
 <script lang="ts">
+import productService from "@/services/productService";
 import { Options, Vue } from "vue-class-component";
 
 @Options({
   props: {
-    item: { type: Object, required: true },
+    itemId: { type: Number, required: true },
   },
 })
-export default class ItemDetails extends Vue {}
+export default class ItemDetails extends Vue {
+  public item = {};
+  public itemTeste = {};
+
+  private async getItemById(itemId: number) {
+    try {
+      const response = await productService.getBlousesById(itemId);
+      // this.itemTeste = response;
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+    console.log('itemId');
+    console.log(itemId);
+  }
+
+  mounted() {
+    this.getItemById;
+  }
+}
 </script>
 
 
 <style scoped lang="less">
 .item-details {
+  position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 1000;
 
   img {
     max-width: 100%;
