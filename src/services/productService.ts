@@ -6,6 +6,10 @@ export default {
         const response = await http.get<IBlouse[]>('/blouses')
         return response?.data
     },
+    getBlousesById: async (id: number) => {
+        const response = await http.get(`/blouses/${id}`)
+        return response
+    },
     putBlouse: async (request: IBlouse) => {
         const response = await http.put<IBlouse>(`/blouses/${request.id}`, request)
         return response?.data
