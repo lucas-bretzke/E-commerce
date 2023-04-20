@@ -7,15 +7,19 @@
       Preço com desconto: R$ {{ item.price - item.discount }}
     </p>
     <p v-else>Preço: R$ {{ item.price }}</p>
-    <p>Tamanhos disponíveis: {{ item.sizes.join(", ") }}</p>
+    <!-- <p>Tamanhos disponíveis: {{ item.sizes.join(", ") }}</p> -->
   </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 
-@Options({})
-export default class HomeView extends Vue {}
+@Options({
+  props: {
+    item: { type: Object, required: true },
+  },
+})
+export default class ItemDetails extends Vue {}
 </script>
 
 
