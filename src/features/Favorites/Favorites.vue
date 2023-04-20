@@ -3,12 +3,19 @@
     <button class="scroll-to-top" @click="scrollToTop">
       <FontAwesomeIcon icon="fa-solid fa-caret-up" /> Topo
     </button>
-    <h1>Favorites</h1>
+    <h1>Favoritos</h1>
     <main class="center">
       <section class="catalog-filters"></section>
       <section class="container-cards">
-        <div v-for="item in dataItems" :key="item">
-          <BaseCardItems v-if="item.favorite" :item="item" class="card" />
+        <p v-if="$store.state.counterFavorites === 0" class="msg-error">
+          <FontAwesomeIcon
+            icon="fa-solid fa-cart-shopping"
+            class="ic_cart-shopping"
+          />
+          SEU CARRINHO ESTÁ VAZIO!
+        </p>
+        <div v-else v-for="item in dataItems" :key="item">
+          <CardItems :item="item.favorite" class="card" />
         </div>
       </section>
     </main>
@@ -19,10 +26,10 @@
 <script lang="ts">
 import { IBlouse } from "@/types";
 import productService from "@/services/productService";
+import CardItems from "@/components/base/CardItem.vue";
 import { Options, Vue } from "vue-class-component";
-import BaseCardItems from "@/components/base/CardItem.vue";
 
-@Options({ components: { BaseCardItems } })
+@Options({ components: { CardItems } })
 export default class Favorites extends Vue {
   public dataItems: IBlouse[] = [];
 
@@ -107,6 +114,16 @@ h1 {
       border-bottom: 1px solid black;
       border-radius: 2px;
     }
+  }
+
+  .msg-error {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 26px;
+    padding: 4px 7px;
+    border-bottom: 1px solid black;
   }
 }
 </style>
