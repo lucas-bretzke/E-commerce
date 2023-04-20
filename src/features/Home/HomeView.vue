@@ -12,7 +12,6 @@
     </div>
     <ProductCarousel
       title="NOVIDADES"
-      :appearPromotion="false"
       :dataItems="dataBlouses"
       @getItems="getBlouses"
     />
