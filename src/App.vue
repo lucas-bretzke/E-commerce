@@ -2,7 +2,7 @@
   <div class="background-top">
     <NavBar class="navBar">
       <template #Left>
-        <span class="logo" @click="$router.push('/')">FASHION AVENUE</span>
+        <span class="logo" @click="$router.push('/')">{{ pageTitle }}</span>
       </template>
       <template #Right>
         <li>
@@ -36,8 +36,23 @@ import { Options, Vue } from "vue-class-component";
 
 @Options({
   components: { NavBar, ValueMarker, Cookies },
+  watch: {
+    $route: function () {
+      this.setPageTitle();
+    },
+  },
 })
-export default class HomeView extends Vue {}
+export default class App extends Vue {
+  public pageTitle: String = "";
+
+  private setPageTitle() {
+    const url: any = window.location.href;
+    const baseUrl = "http://localhost:8080";
+
+    if (url === `${baseUrl}/`) this.pageTitle = "FASHION AVENUE";
+    if (url === `${baseUrl}/Favorites`) this.pageTitle = "FAVORITOS";
+  }
+}
 </script>
 
 <style lang="less">
