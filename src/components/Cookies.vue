@@ -3,13 +3,13 @@
     <h1 class="title">Este site usa Cookies</h1>
     <button class="btn-close" @click="closeModal">X</button>
     <p>
-      Utilizamos cookies para melhorar sua experiência em nosso site e podermos
-      sugerir conteúdo relevante para você. Ao continuar, você concorda e aceita
-      nossa
+      Este site utiliza alguns cookies para controle de sessão, verificar seu
+      uso em nosso site e para marketing. Você pode aceitar todos ou configurar
+      quais deseja compartilhar.
     </p>
     <a @click="pageFake">Política de Privacidade</a>
     <button class="btn-accept" @click="toCcept">Aceitar</button>
-    <button class="btn-refuse">Recusar</button>
+    <button class="btn-refuse">Preferências</button>
   </section>
 </template>
 
