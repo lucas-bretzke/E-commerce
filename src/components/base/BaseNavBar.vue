@@ -10,7 +10,7 @@
 import { Options, Vue } from "vue-class-component";
 
 @Options({})
-export default class NavBar extends Vue {}
+export default class BaseNavBar extends Vue {}
 </script>
 
 <style scoped lang="less">
