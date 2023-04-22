@@ -116,10 +116,10 @@ export default class ImageSlider extends Vue {
     cursor: pointer;
     border: none;
     z-index: 1;
-  }
-
-  button:hover {
-    opacity: 0.2;
+    
+    &:hover {
+      opacity: 0.2;
+    }
   }
 }
 

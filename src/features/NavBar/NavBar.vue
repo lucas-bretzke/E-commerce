@@ -85,22 +85,23 @@ export default class NavBar extends Vue {
     color: var(--color-secundary);
     text-decoration: none;
     cursor: pointer;
-  }
 
-  a:hover {
-    color: white;
-    transition: 0.5s;
+    &:hover {
+      color: white;
+      transition: 0.5s;
+    }
   }
 
   .cart-btn {
     margin: 0 10px;
     border: none;
     background: transparent;
-  }
-  .cart-btn:hover {
-    cursor: pointer;
-    transition: 0.5s;
-    color: white;
+
+    &:hover {
+      cursor: pointer;
+      transition: 0.5s;
+      color: white;
+    }
   }
 
   .ValueMarker {
@@ -126,12 +127,12 @@ export default class NavBar extends Vue {
     border-radius: 5px;
     border: solid 1px black;
     background-color: var(--color-primary);
-  }
 
-  .btn-login:hover {
-    transition: 0.5s;
-    color: white;
-    background-color: var(--color-secundary);
+    &:hover {
+      transition: 0.5s;
+      color: white;
+      background-color: var(--color-secundary);
+    }
   }
 }
 </style>

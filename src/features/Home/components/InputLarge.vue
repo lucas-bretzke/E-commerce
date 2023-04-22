@@ -47,14 +47,14 @@ export default class InputLarge extends Vue {}
       background-color: var(--blue);
       transition: 0.5s;
       border: 1px solid transparent;
-    }
 
-    button:hover {
-      cursor: pointer;
-      font-weight: 600;
-      border: 1px solid var(--blue);
-      color: var(--blue);
-      background-color: var(--gray);
+      &:hover {
+        cursor: pointer;
+        font-weight: 600;
+        border: 1px solid var(--blue);
+        color: var(--blue);
+        background-color: var(--gray);
+      }
     }
   }
 }
