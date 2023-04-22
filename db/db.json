@@ -19,6 +19,7 @@
       "discount": 22,
       "img": "/img/blusasFM/1.png",
       "favorite": true,
+      "cart": true,
       "id": 1
     },
     {
@@ -32,6 +33,7 @@
       "discount": 5,
       "img": "/img/blusasFM/2.webp",
       "favorite": true,
+      "cart": false,
       "id": 2
     },
     {
@@ -44,7 +46,8 @@
       ],
       "discount": 5,
       "img": "/img/blusasFM/6.jpg",
-      "favorite": false,
+      "favorite": true,
+      "cart": false,
       "id": 3
     },
     {
@@ -59,6 +62,7 @@
       "discount": 15,
       "img": "/img/blusasFM/7.webp",
       "favorite": false,
+      "cart": false,
       "id": 4
     },
     {
@@ -72,6 +76,7 @@
       "discount": 22,
       "img": "/img/blusasFM/8.png",
       "favorite": false,
+      "cart": false,
       "id": 5
     },
     {
@@ -86,6 +91,7 @@
       "discount": 22,
       "img": "/img/blusasFM/1.png",
       "favorite": false,
+      "cart": false,
       "id": 6
     },
     {
@@ -99,6 +105,7 @@
       "discount": 5,
       "img": "/img/blusasFM/2.webp",
       "favorite": false,
+      "cart": false,
       "id": 7
     },
     {
@@ -112,6 +119,7 @@
       "discount": 5,
       "img": "/img/blusasFM/6.jpg",
       "favorite": false,
+      "cart": false,
       "id": 8
     },
     {
@@ -126,6 +134,7 @@
       "discount": 15,
       "img": "/img/blusasFM/7.webp",
       "favorite": false,
+      "cart": false,
       "id": 9
     },
     {
@@ -139,6 +148,7 @@
       "discount": 22,
       "img": "/img/blusasFM/8.png",
       "favorite": false,
+      "cart": false,
       "id": 10
     },
     {
@@ -153,6 +163,7 @@
       "discount": 15,
       "img": "/img/blusasFM/7.webp",
       "favorite": false,
+      "cart": false,
       "id": 11
     },
     {
@@ -166,6 +177,7 @@
       "discount": 22,
       "img": "/img/blusasFM/8.png",
       "favorite": false,
+      "cart": false,
       "id": 12
     }
   ],

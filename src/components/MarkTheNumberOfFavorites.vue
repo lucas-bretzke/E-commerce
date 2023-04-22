@@ -1,6 +1,6 @@
 <template>
   <div class="counter">
-    {{ $store.state.counterFavorites }}
+    {{ $store.state.favoritesCounter }}
   </div>
 </template>
 
@@ -23,10 +23,10 @@ export default class MarkTheNumberOfFavorites extends Vue {
 
   private async addBlouseNumbers() {
     try {
-      this.$store.state.counterFavorites = 0;
+      this.$store.state.favoritesCounter = 0;
       const response = await productService.getBlouses();
       response.forEach((item: IBlouse) => {
-        if (item.favorite) this.$store.state.counterFavorites++;
+        if (item.favorite) this.$store.state.favoritesCounter++;
       });
     } catch (error) {
       console.log(error);

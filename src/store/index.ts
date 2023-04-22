@@ -3,7 +3,8 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
     itemIdInDetail: 0,
-    counterFavorites: 0,
+    favoritesCounter: 0,
+    cartCounter: 0,
     cookieAcceptanceModal: false,
     getDone: false
   },
