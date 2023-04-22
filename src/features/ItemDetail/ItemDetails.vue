@@ -17,7 +17,6 @@ import { Options, Vue } from "vue-class-component";
 
 @Options({
   props: {
-<<<<<<<< HEAD:src/features/ItemDetail/ItemDetails.vue
     itemId: { type: Number, required: true },
   },
 })
@@ -33,7 +32,7 @@ export default class ItemDetails extends Vue {
     } catch (error) {
       console.log(error);
     }
-    console.log('itemId');
+    console.log("itemId");
     console.log(itemId);
   }
 
@@ -41,12 +40,6 @@ export default class ItemDetails extends Vue {
     this.getItemById;
   }
 }
-========
-    item: { type: Object, required: true },
-  },
-})
-export default class ItemDetails extends Vue {}
->>>>>>>> afc594eb21e7a5898bc4b71712e572398d9d9df6:src/components/ItemDetails.vue
 </script>
 
 
