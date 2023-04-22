@@ -43,7 +43,7 @@ import { Options, Vue } from "vue-class-component";
   },
 })
 export default class App extends Vue {
-  public pageTitle: String = "";
+  public pageTitle = "";
 
   private setPageTitle() {
     const url: any = window.location.href;
