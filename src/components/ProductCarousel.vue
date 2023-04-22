@@ -16,7 +16,7 @@
   <main class="container" ref="myScrollX">
     <section class="container_cards">
       <div v-for="item in dataItems.slice(0, 12)" :key="item">
-        <CardItem :item="item" />
+        <CardItem :item="item" @click="showDetails(item.id)" />
       </div>
     </section>
   </main>
@@ -35,6 +35,7 @@ import { Vue, Options } from "vue-class-component";
     title: { type: String, required: true },
     dataItems: { type: Array, required: true },
   },
+  emits: ["getItems"],
   watch: {
     "$store.state.getDone": function () {
       setTimeout(() => {
@@ -53,10 +54,14 @@ export default class ProductCarousel extends Vue {
     container.scrollLeft += distance;
   }
 
-  getItems() {
-    this.$emit("getItems");
+  public showDetails(id: number) {
+    this.$router.push('/Details')
+    this.$store.state.itemIdInDetail = id;
   }
 
+  private getItems() {
+    this.$emit("getItems");
+  }
   mounted() {
     this.getItems();
   }
