@@ -4,6 +4,7 @@ export interface IBlouse {
     promotion: Number,
     img: String,
     favorite: Boolean;
+    cart: Boolean;
     sizes: Array<String>,
     id: Number
 }
