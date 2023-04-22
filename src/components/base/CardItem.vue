@@ -3,17 +3,23 @@
     <section class="container">
       <div class="img-item" :style="`background-image: url(${item.img})`">
         <div class="container-text">
-          <p v-if="item.discount >= 1" class="promotion">-{{ item.discount }} %</p>
+          <p v-if="item.discount >= 1" class="promotion">
+            -{{ item.discount }} %
+          </p>
           <p class="price">R${{ item.price }}</p>
         </div>
       </div>
-      <button class="btn-add-to-cart" @click="addFavorite(item)">
+      <button class="btn-add-to-favorite" @click.stop="addFavorite(item)">
         <FontAwesomeIcon
           v-if="!item.favorite"
           icon="fa-regular fa-heart"
           class="ic-heart"
         />
         <FontAwesomeIcon v-else icon="fa-solid fa-heart" class="ic-heart" />
+      </button>
+      <button class="btn-add-to-cart" @click.stop="addCart(item)">
+        <p v-if="!item.cart" class="is-heart">cart +</p>
+        <p v-else class="is-heart">cart -</p>
       </button>
     </section>
     <section class="description">
@@ -39,7 +45,6 @@ import productService from "@/services/productService";
 @Options({
   props: {
     item: { type: Object, required: true },
-    // promotionVisibility: { type: Boolean, required: true },
   },
 })
 export default class CardItems extends Vue {
@@ -49,6 +54,15 @@ export default class CardItems extends Vue {
   public async addFavorite(item: IBlouse) {
     try {
       item.favorite = !item.favorite;
+      await productService.putBlouse(item);
+      this.$store.state.getDone = !this.$store.state.getDone;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  public async addCart(item: IBlouse) {
+    try {
+      item.cart = !item.cart;
       await productService.putBlouse(item);
       this.$store.state.getDone = !this.$store.state.getDone;
     } catch (error) {
@@ -109,7 +123,7 @@ export default class CardItems extends Vue {
       }
     }
 
-    .btn-add-to-cart {
+    .btn-add-to-favorite {
       height: 30px;
       margin-left: -30px;
       margin-top: 5px;
@@ -118,13 +132,21 @@ export default class CardItems extends Vue {
       background-color: transparent;
 
       .ic-heart {
-        height: 15px;
-        width: 15px;
-      }
+        height: 16px;
+        width: 16px;
 
-      .ic-heart:hover {
-        transform: translateZ(0px) scale(105%);
+        &:hover {
+          transform: translateZ(0px) scale(105%);
+        }
       }
+    }
+    .btn-add-to-cart {
+      height: 30px;
+      margin-left: -30px;
+      margin-top: 30px;
+      border: none;
+      cursor: pointer;
+      background-color: transparent;
     }
   }
 
