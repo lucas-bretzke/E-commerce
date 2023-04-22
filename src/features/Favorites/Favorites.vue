@@ -3,7 +3,6 @@
     <button class="scroll-to-top" @click="scrollToTop">
       <FontAwesomeIcon icon="fa-solid fa-caret-up" /> Topo
     </button>
-    <h1>Favoritos</h1>
     <main class="center">
       <section class="catalog-filters"></section>
       <section class="container-cards">
@@ -15,7 +14,7 @@
           SEU CARRINHO ESTÁ VAZIO!
         </p>
         <div v-else v-for="item in dataItems" :key="item">
-          <CardItems :item="item.favorite" class="card" />
+          <CardItems v-if="item.favorite" :item="item" class="card" />
         </div>
       </section>
     </main>
@@ -57,9 +56,6 @@ export default class Favorites extends Vue {
 
 
 <style lang="less" scoped>
-.body {
-  // background-color: #e8e7e3;
-}
 
 .scroll-to-top {
   position: fixed;
@@ -93,7 +89,7 @@ h1 {
 .center {
   max-width: 1200px;
   display: flex;
-  margin: 0 auto;
+  margin: 30px auto;
   justify-content: space-between;
 
   .catalog-filters {
