@@ -55,7 +55,7 @@ export default class ProductCarousel extends Vue {
   }
 
   public showDetails(id: number) {
-    this.$router.push('/Details')
+    this.$router.push("/Details");
     this.$store.state.itemIdInDetail = id;
   }
 
@@ -93,23 +93,25 @@ export default class ProductCarousel extends Vue {
     .ic-arrow {
       transition: transform 0.3s ease-out;
     }
+
+    &:hover {
+      color: var(--color-primary);
+      transform: translateX(10px);
+
+      .ic-arrow {
+        animation: scale-fade 1s infinite ease-in-out;
+      }
+    }
   }
   .move-scroll {
     font-size: 13px;
     margin: 0 6px;
     padding: 10px 12px;
-  }
-  .see-news-button:hover {
-    color: var(--color-primary);
-    transform: translateX(10px);
 
-    .ic-arrow {
-      animation: scale-fade 1s infinite ease-in-out;
+    &:hover {
+      transform: translateZ(10px) scale(1.1);
+      background-color: var(--color-primary);
     }
-  }
-  .move-scroll:hover {
-    transform: translateZ(10px) scale(1.1);
-    background-color: var(--color-primary);
   }
 }
 .container {
