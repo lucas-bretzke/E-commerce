@@ -11,10 +11,10 @@
             icon="fa-solid fa-cart-shopping"
             class="ic_cart-shopping"
           />
-          SEU CARRINHO ESTÁ VAZIO!
+          NENHUM ITEM SALVO!
         </p>
-        <div v-else v-for="item in dataItems" :key="item">
-          <CardItems v-if="item.favorite" :item="item" class="card" />
+        <div v-else v-for="item in dataFavorites" :key="item">
+          <CardItems :item="item" class="card" />
         </div>
       </section>
     </main>
@@ -23,19 +23,18 @@
 
 
 <script lang="ts">
-import { IBlouse } from "@/types";
 import productService from "@/services/productService";
 import CardItems from "@/components/base/CardItem.vue";
 import { Options, Vue } from "vue-class-component";
 
 @Options({ components: { CardItems } })
 export default class Favorites extends Vue {
-  public dataItems: IBlouse[] = [];
+  public dataFavorites = [];
 
-  private async getItems() {
+  private async getFavorites() {
     try {
-      const response = await productService.getBlouses();
-      this.dataItems = response;
+      const response = await productService.getFavorites();
+      this.dataFavorites = response;
     } catch (error) {
       console.log(error);
     }
@@ -49,14 +48,13 @@ export default class Favorites extends Vue {
   }
 
   mounted() {
-    this.getItems();
+    this.getFavorites();
   }
 }
 </script>
 
 
 <style lang="less" scoped>
-
 .scroll-to-top {
   position: fixed;
   width: 76px;
