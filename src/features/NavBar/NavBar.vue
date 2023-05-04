@@ -17,7 +17,7 @@
               class="ic_cart-shopping"
             />
           </button>
-          <button class="cart-btn" @click="$router.push('/Favorites')">
+          <button class="cart-btn" @click="$router.push('/Cart')">
             <!-- <ValueMarker class="ValueMarker" /> -->
             <FontAwesomeIcon
               icon="fa-solid fa-cart-shopping"
