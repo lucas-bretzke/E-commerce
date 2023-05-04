@@ -6,7 +6,6 @@
 
 <script lang="ts">
 import productService from "@/services/productService";
-import { IBlouse } from "@/types";
 import { Options, Vue } from "vue-class-component";
 
 @Options({
@@ -24,10 +23,8 @@ export default class MarkTheNumberOfFavorites extends Vue {
   private async addBlouseNumbers() {
     try {
       this.$store.state.favoritesCounter = 0;
-      const response = await productService.getBlouses();
-      response.forEach((item: IBlouse) => {
-        if (item.favorite) this.$store.state.favoritesCounter++;
-      });
+      const response = await productService.getFavorites();
+      this.$store.state.favoritesCounter = response.length;
     } catch (error) {
       console.log(error);
     }

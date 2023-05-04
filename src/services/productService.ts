@@ -13,5 +13,9 @@ export default {
     putBlouse: async (request: IBlouse) => {
         const response = await http.put<IBlouse>(`/blouses/${request.id}`, request)
         return response?.data
-    }
+    },
+    getFavorites: async () => {
+        const response = await http.get<IBlouse[]>('/favorites')
+        return response?.data
+    },
 }
