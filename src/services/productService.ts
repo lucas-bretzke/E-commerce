@@ -14,8 +14,13 @@ export default {
         const response = await http.put<IBlouse>(`/blouses/${request.id}`, request)
         return response?.data
     },
+
     getFavorites: async () => {
-        const response = await http.get<IBlouse[]>('/favorites')
+        const response = await http.get('/favorites')
+        return response?.data
+    },
+    postItemInFavorites: async (item: any) => {
+        const response = await http.post('/favorites', item)
         return response?.data
     },
 }

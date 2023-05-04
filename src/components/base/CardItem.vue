@@ -61,7 +61,7 @@ export default class CardItems extends Vue {
       try {
         item.favorite = !item.favorite;
         this.editItem(item);
-        await axios.post("http://localhost:3000/favorites");
+        await productService.postItemInFavorites(item);
       } catch (error) {
         console.log("POST ERROR", error);
       }
