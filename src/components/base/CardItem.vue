@@ -9,7 +9,10 @@
           <p class="price">R${{ item.price }}</p>
         </div>
       </div>
-      <button class="btn-add-to-favorite" @click.stop="addFavorite(item)">
+      <button
+        class="btn-add-to-favorite"
+        @click.stop="addOrRemoveFromFavorites(item)"
+      >
         <FontAwesomeIcon
           v-if="!item.favorite"
           icon="fa-regular fa-heart"
@@ -24,6 +27,7 @@
     </section>
     <section class="description">
       <h5>{{ item.name }}</h5>
+      <h5>{{ item.colection }}</h5>
       <p>{{ item.brand }}</p>
       <div class="sizes">
         <span :class="item.sizes[0] ? 'size' : ''">{{ item.sizes[0] }}</span>
@@ -41,6 +45,7 @@
 import { IBlouse } from "@/types";
 import { Vue, Options } from "vue-class-component";
 import productService from "@/services/productService";
+import axios from "axios";
 
 @Options({
   props: {
@@ -51,15 +56,35 @@ export default class CardItems extends Vue {
   $store: any;
   item!: IBlouse;
 
-  public async addFavorite(item: IBlouse) {
+  public async addOrRemoveFromFavorites(item: IBlouse) {
+    if (!item.favorite) {
+      try {
+        item.favorite = !item.favorite;
+        this.editItem(item);
+        await axios.post("http://localhost:3000/favorites");
+      } catch (error) {
+        console.log("POST ERROR", error);
+      }
+    } else {
+      try {
+        item.favorite = !item.favorite;
+        this.editItem(item);
+        await axios.delete(`http://localhost:3000/favorites/${item.id}`);
+      } catch (error) {
+        console.log("DELETE ERROR", error);
+      }
+    }
+    this.$store.state.getDone = !this.$store.state.getDone;
+  }
+
+  public async editItem(item: IBlouse) {
     try {
-      item.favorite = !item.favorite;
       await productService.putBlouse(item);
-      this.$store.state.getDone = !this.$store.state.getDone;
     } catch (error) {
-      console.log(error);
+      console.log("PUT ERROR", error);
     }
   }
+
   public async addCart(item: IBlouse) {
     try {
       item.cart = !item.cart;
