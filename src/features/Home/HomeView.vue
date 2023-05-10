@@ -23,7 +23,7 @@
 import ImageSlider from "../../components/ImageSlider.vue";
 import ProductCarousel from "@/components/ProductCarousel.vue";
 import BackToTopButton from "@/components/BackToTopButton.vue"; // Adicionado o sinal de igual (=)
-import productService from "@/services/productService";
+import productApi from "@/services/productApi";
 import { IBlouse } from "@/types";
 import { Options, Vue } from "vue-class-component";
 
@@ -53,7 +53,7 @@ export default class HomeView extends Vue {
 
   public async getBlouses() {
     try {
-      const response = await productService.getBlouses();
+      const response = await productApi.getBlouses();
       this.dataBlouses = response;
     } catch (error) {
       console.log(error);

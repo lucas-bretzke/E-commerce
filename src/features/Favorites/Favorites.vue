@@ -21,7 +21,7 @@
 
 
 <script lang="ts">
-import productService from "@/services/productService";
+import productApi from "@/services/productApi";
 import CardItems from "@/components/base/CardItem.vue";
 import BackToTopButton from "@/components/BackToTopButton.vue"; // Adicionado o sinal de igual (=)
 import { Options, Vue } from "vue-class-component";
@@ -32,7 +32,7 @@ export default class Favorites extends Vue {
 
   private async getFavorites() {
     try {
-      const response = await productService.getFavorites();
+      const response = await productApi.getFavorites();
       this.dataFavorites = response;
     } catch (error) {
       console.log(error);

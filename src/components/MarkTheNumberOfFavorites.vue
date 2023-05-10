@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import productService from "@/services/productService";
+import productApi from "@/services/productApi";
 import { Options, Vue } from "vue-class-component";
 
 @Options({
@@ -23,7 +23,7 @@ export default class MarkTheNumberOfFavorites extends Vue {
   private async addBlouseNumbers() {
     try {
       this.$store.state.favoritesCounter = 0;
-      const response = await productService.getFavorites();
+      const response = await productApi.getFavorites();
       this.$store.state.favoritesCounter = response.length;
     } catch (error) {
       console.log(error);

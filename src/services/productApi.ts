@@ -19,8 +19,12 @@ export default {
         const response = await http.get('/favorites')
         return response?.data
     },
-    postItemInFavorites: async (item: any) => {
+    postItemInFavorites: async (item: IBlouse) => {
         const response = await http.post('/favorites', item)
+        return response?.data
+    },
+    deleteItemFromFavorites: async (id: any) => {
+        const response = await http.post(`/favorites${id}`)
         return response?.data
     },
 }

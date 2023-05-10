@@ -38,9 +38,7 @@ import { Vue, Options } from "vue-class-component";
   emits: ["getItems"],
   watch: {
     "$store.state.getDone": function () {
-      setTimeout(() => {
-        this.getItems();
-      }, 2000);
+      this.getItems();
     },
   },
 })

@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts">
-import productService from "@/services/productService";
+import productApi from "@/services/productApi";
 import { Options, Vue } from "vue-class-component";
 
 @Options({
@@ -26,7 +26,7 @@ export default class ItemDetails extends Vue {
 
   private async getItemById(itemId: number) {
     try {
-      const response = await productService.getBlousesById(itemId);
+      const response = await productApi.getBlousesById(itemId);
       // this.itemTeste = response;
       console.log(response);
     } catch (error) {
