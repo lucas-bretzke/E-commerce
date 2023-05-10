@@ -42,9 +42,9 @@
 
 
 <script lang="ts">
-import { IBlouse } from "@/types";
+import { IBlouse, IShoe } from "@/types";
 import { Vue, Options } from "vue-class-component";
-import productService from "@/services/productService";
+import productApi from "@/services/productApi";
 import axios from "axios";
 
 @Options({
@@ -54,44 +54,45 @@ import axios from "axios";
 })
 export default class CardItems extends Vue {
   $store: any;
-  item!: IBlouse;
+  item!: IBlouse | IShoe;
 
-  public async addOrRemoveFromFavorites(item: IBlouse) {
+  public async addOrRemoveFromFavorites(item: IBlouse | IShoe) {
     if (!item.favorite) {
-      try {
-        item.favorite = !item.favorite;
-        this.editItem(item);
-        await productService.postItemInFavorites(item);
-      } catch (error) {
-        console.log("POST ERROR", error);
-      }
+      this.addToFavorite(item);
     } else {
-      try {
-        item.favorite = !item.favorite;
-        this.editItem(item);
-        await axios.delete(`http://localhost:3000/favorites/${item.id}`);
-      } catch (error) {
-        console.log("DELETE ERROR", error);
-      }
+      this.deleteToFavorite(item);
     }
-    this.$store.state.getDone = !this.$store.state.getDone;
   }
 
-  public async editItem(item: IBlouse) {
+  public async addToFavorite(item: IBlouse | IShoe) {
     try {
-      await productService.putBlouse(item);
+      item.favorite = !item.favorite;
+      this.editItem(item);
+      await productApi.postItemInFavorites(item);
+    } catch (error) {
+      console.log("POST ERROR", error);
+    } finally {
+      this.$store.state.getDone = !this.$store.state.getDone;
+    }
+  }
+
+  public async deleteToFavorite(item: IBlouse | IShoe) {
+    try {
+      item.favorite = !item.favorite;
+      this.editItem(item);
+      await productApi.deleteItemFromFavorites(item.id);
+    } catch (error) {
+      console.log("DELETE ERROR", error);
+    } finally {
+      this.$store.state.getDone = !this.$store.state.getDone;
+    }
+  }
+
+  public async editItem(item: IBlouse | IShoe) {
+    try {
+      await productApi.putBlouse(item);
     } catch (error) {
       console.log("PUT ERROR", error);
-    }
-  }
-
-  public async addCart(item: IBlouse) {
-    try {
-      item.cart = !item.cart;
-      await productService.putBlouse(item);
-      this.$store.state.getDone = !this.$store.state.getDone;
-    } catch (error) {
-      console.log(error);
     }
   }
 }
