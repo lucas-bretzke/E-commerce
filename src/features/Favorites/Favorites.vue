@@ -1,8 +1,6 @@
 <template>
   <div class="body">
-    <button class="scroll-to-top" @click="scrollToTop">
-      <FontAwesomeIcon icon="fa-solid fa-caret-up" /> Topo
-    </button>
+    <BackToTopButton />
     <main class="center">
       <section class="catalog-filters"></section>
       <section class="container-cards">
@@ -25,9 +23,10 @@
 <script lang="ts">
 import productService from "@/services/productService";
 import CardItems from "@/components/base/CardItem.vue";
+import BackToTopButton from "@/components/BackToTopButton.vue"; // Adicionado o sinal de igual (=)
 import { Options, Vue } from "vue-class-component";
 
-@Options({ components: { CardItems } })
+@Options({ components: { CardItems, BackToTopButton } })
 export default class Favorites extends Vue {
   public dataFavorites = [];
 
@@ -40,13 +39,6 @@ export default class Favorites extends Vue {
     }
   }
 
-  scrollToTop() {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  }
-
   mounted() {
     this.getFavorites();
   }
@@ -55,26 +47,6 @@ export default class Favorites extends Vue {
 
 
 <style lang="less" scoped>
-.scroll-to-top {
-  position: fixed;
-  width: 76px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  bottom: 80px;
-  right: 20px;
-  padding: 8px 13px;
-  background-color: #e6e6e6;
-  border-radius: 3px;
-  border: none;
-  cursor: pointer;
-  font-size: 14px;
-
-  &:hover {
-    background-color: #d7d7d7;
-  }
-}
-
 h1 {
   width: 1200px;
   margin: 0 auto;

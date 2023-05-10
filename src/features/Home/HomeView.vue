@@ -15,12 +15,14 @@
       :dataItems="dataBlouses"
       @getItems="getBlouses"
     />
+    <BackToTopButton />
   </main>
 </template>
 
 <script lang="ts">
 import ImageSlider from "../../components/ImageSlider.vue";
 import ProductCarousel from "@/components/ProductCarousel.vue";
+import BackToTopButton from "@/components/BackToTopButton.vue"; // Adicionado o sinal de igual (=)
 import productService from "@/services/productService";
 import { IBlouse } from "@/types";
 import { Options, Vue } from "vue-class-component";
@@ -29,6 +31,7 @@ import { Options, Vue } from "vue-class-component";
   components: {
     ImageSlider,
     ProductCarousel,
+    BackToTopButton,
   },
 })
 export default class HomeView extends Vue {
