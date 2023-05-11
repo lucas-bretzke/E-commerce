@@ -1,10 +1,22 @@
 export interface IBlouse {
-    nome: String,
-    price: Number,
-    promotion: Number,
-    img: String,
-    favorite: Boolean;
-    cart: Boolean;
-    sizes: Array<String>,
-    id: Number
+    nome: string,
+    price: number,
+    promotion: number,
+    img: string,
+    favorite: boolean;
+    cart: boolean;
+    sizes: Array<string>,
+    id: number
+}
+export interface IShoe {
+    nome: string,
+    price: number,
+    promotion: number,
+    img: string,
+    favorite: boolean;
+    cart: boolean;
+    sizes: Array<string>,
+    sex: string,
+    style: string,
+    id: number
 }

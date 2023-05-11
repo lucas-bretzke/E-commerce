@@ -1,17 +1,14 @@
 import { http } from './config'
-import { IBlouse } from '@/types'
+import { IBlouse, IShoe } from '@/types'
 
 export default {
     getBlouses: async () => {
-        const response = await http.get<IBlouse[]>('/blouses')
+        const response = await http.get<IBlouse[] | IShoe[]>('/blouses')
         return response?.data
     },
-    getBlousesById: async (id: number) => {
-        const response = await http.get(`/blouses/${id}`)
-        return response
-    },
-    putBlouse: async (request: IBlouse) => {
-        const response = await http.put<IBlouse>(`/blouses/${request.id}`, request)
+    
+    putBlouse: async (req: IBlouse | IShoe) => {
+        const response = await http.put<IBlouse[] | IShoe[]>(`/blouses/${req.id}`, req)
         return response?.data
     },
 
@@ -19,11 +16,11 @@ export default {
         const response = await http.get('/favorites')
         return response?.data
     },
-    postItemInFavorites: async (item: IBlouse) => {
-        const response = await http.post('/favorites', item)
+    postItemInFavorites: async (req: IBlouse | IShoe) => {
+        const response = await http.post('/favorites', req)
         return response?.data
     },
-    deleteItemFromFavorites: async (id: any) => {
+    deleteItemFromFavorites: async (id: number) => {
         const response = await http.post(`/favorites${id}`)
         return response?.data
     },
