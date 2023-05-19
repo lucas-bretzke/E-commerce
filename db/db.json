@@ -32,7 +32,7 @@
       ],
       "discount": 5,
       "img": "/img/blusasFM/2.webp",
-      "favorite": true,
+      "favorite": false,
       "cart": false,
       "id": 2
     },
@@ -46,7 +46,7 @@
       ],
       "discount": 5,
       "img": "/img/blusasFM/6.jpg",
-      "favorite": true,
+      "favorite": false,
       "cart": false,
       "id": 3
     },
@@ -229,5 +229,21 @@
       "price": 79.99
     }
   ],
-  "favorites": []
+  "favorites": [
+    {
+      "name": "Blusa Floral",
+      "collection": "summe",
+      "price": 89.99,
+      "sizes": [
+        "pp",
+        "p",
+        "m"
+      ],
+      "discount": 22,
+      "img": "/img/blusasFM/1.png",
+      "favorite": true,
+      "cart": true,
+      "id": 1
+    }
+  ]
 }
