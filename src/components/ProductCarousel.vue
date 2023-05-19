@@ -5,10 +5,10 @@
       <FontAwesomeIcon icon="fa-solid fa-arrow-right" class="ic-arrow" />
     </button>
     <div class="view-more-buttons">
-      <button class="move-scroll" @click="moveScroll(-942)">
+      <button class="move-scroll" @click="moveScroll(-1600)">
         <FontAwesomeIcon icon="fa-solid fa-chevron-left" size="xl" />
       </button>
-      <button class="move-scroll" @click="moveScroll(+942)">
+      <button class="move-scroll" @click="moveScroll(+1600)">
         <FontAwesomeIcon icon="fa-solid fa-chevron-right" size="xl" />
       </button>
     </div>
