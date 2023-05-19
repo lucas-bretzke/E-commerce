@@ -16,6 +16,7 @@
       @getItems="getBlouses"
     />
     <BackToTopButton />
+    <Login />
   </main>
 </template>
 
@@ -25,6 +26,8 @@ import ProductCarousel from "@/components/ProductCarousel.vue";
 import BackToTopButton from "@/components/BackToTopButton.vue"; // Adicionado o sinal de igual (=)
 import productApi from "@/services/productApi";
 import { IBlouse } from "@/types";
+import Login from "@/features/Login/Login.vue";
+
 import { Options, Vue } from "vue-class-component";
 
 @Options({
@@ -32,6 +35,7 @@ import { Options, Vue } from "vue-class-component";
     ImageSlider,
     ProductCarousel,
     BackToTopButton,
+    Login,
   },
 })
 export default class HomeView extends Vue {
