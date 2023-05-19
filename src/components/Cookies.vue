@@ -15,14 +15,15 @@
 
 
 <script lang="ts">
+import { useCounterStore } from "@/store/counterStores";
 import { Options, Vue } from "vue-class-component";
 
 @Options({})
 export default class Cookies extends Vue {
-  $store: any;
+  public store = useCounterStore();
 
   public closeModal() {
-    this.$store.state.cookieAcceptanceModal = false;
+    this.store.cookieAcceptanceModal = false;
   }
 
   public toCcept() {

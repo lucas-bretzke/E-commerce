@@ -28,12 +28,14 @@
         </li>
       </template>
     </BaseNavBar>
-    <Cookies v-show="$store.state.cookieAcceptanceModal" />
+    <Cookies v-show="store.cookieAcceptanceModal" />
   </div>
 </template>
 
 
 <script lang="ts">
+import { useCounterStore } from "@/store/counterStores";
+
 import BaseNavBar from "@/components/base/BaseNavBar.vue";
 import ValueMarker from "@/components/MarkTheNumberOfFavorites.vue";
 import Cookies from "@/components/Cookies.vue";
@@ -50,6 +52,7 @@ import { Options, Vue } from "vue-class-component";
 })
 export default class NavBar extends Vue {
   public pageTitle = "";
+  public store = useCounterStore();
 
   private setPageTitle() {
     const url: any = window.location.href;

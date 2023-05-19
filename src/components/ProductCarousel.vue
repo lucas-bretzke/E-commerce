@@ -24,6 +24,8 @@
 
 
 <script lang="ts">
+import { useCounterStore } from "@/store/counterStores";
+
 import CardItem from "@/components/base/CardItem.vue";
 import { Vue, Options } from "vue-class-component";
 
@@ -37,13 +39,13 @@ import { Vue, Options } from "vue-class-component";
   },
   emits: ["getItems"],
   watch: {
-    "$store.state.getDone": function () {
+    "store.getDone": function () {
       this.getItems();
     },
   },
 })
 export default class ProductCarousel extends Vue {
-  $store: any;
+  public store = useCounterStore();
 
   public moveScroll(distance: number) {
     const container = this.$refs.myScrollX as HTMLElement;
@@ -54,7 +56,7 @@ export default class ProductCarousel extends Vue {
 
   public showDetails(id: number) {
     this.$router.push("/Details");
-    this.$store.state.itemIdInDetail = id;
+    this.store.itemIdInDetail = id;
   }
 
   private getItems() {

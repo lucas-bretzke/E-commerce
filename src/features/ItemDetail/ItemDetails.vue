@@ -24,20 +24,20 @@ export default class ItemDetails extends Vue {
   public item = {};
   public itemTeste = {};
 
-  private async getItemById(itemId: number) {
-    try {
-      const response = await productApi.getBlousesById(itemId);
-      // this.itemTeste = response;
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
-    console.log("itemId");
-    console.log(itemId);
-  }
+  // private async getItemById(itemId: number) {
+  //   try {
+  //     const response = await productApi.getBlousesById(itemId);
+  //     // this.itemTeste = response;
+  //     console.log(response);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  //   console.log("itemId");
+  //   console.log(itemId);
+  // }
 
   mounted() {
-    this.getItemById;
+    // this.getItemById;
   }
 }
 </script>

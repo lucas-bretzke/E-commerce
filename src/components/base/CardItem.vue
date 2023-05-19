@@ -42,6 +42,7 @@
 
 
 <script lang="ts">
+import { useCounterStore } from "@/store/counterStores";
 import { IBlouse, IShoe } from "@/types";
 import { Vue, Options } from "vue-class-component";
 import productApi from "@/services/productApi";
@@ -53,8 +54,8 @@ import axios from "axios";
   },
 })
 export default class CardItems extends Vue {
-  $store: any;
   item!: IBlouse | IShoe;
+  public store = useCounterStore();
 
   public async addOrRemoveFromFavorites(item: IBlouse | IShoe) {
     if (!item.favorite) {
@@ -72,19 +73,19 @@ export default class CardItems extends Vue {
     } catch (error) {
       console.log("POST ERROR", error);
     } finally {
-      this.$store.state.getDone = !this.$store.state.getDone;
+      this.store.getDone = !this.store.getDone;
     }
   }
 
   public async deleteToFavorite(item: IBlouse | IShoe) {
     try {
       item.favorite = !item.favorite;
-      this.editItem(item);
+      await this.editItem(item);
       await productApi.deleteItemFromFavorites(item.id);
     } catch (error) {
       console.log("DELETE ERROR", error);
     } finally {
-      this.$store.state.getDone = !this.$store.state.getDone;
+      this.store.getDone = !this.store.getDone;
     }
   }
 

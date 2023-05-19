@@ -1,16 +1,18 @@
 <template>
   <div class="counter">
-    {{ $store.state.favoritesCounter }}
+    {{ store.favoritesCounter }}
   </div>
 </template>
 
 <script lang="ts">
 import productApi from "@/services/productApi";
+import { useCounterStore } from "@/store/counterStores";
+
 import { Options, Vue } from "vue-class-component";
 
 @Options({
   watch: {
-    "$store.state.getDone": function () {
+    "store.getDone": function () {
       setTimeout(() => {
         this.addBlouseNumbers();
       }, 2000);
@@ -18,13 +20,13 @@ import { Options, Vue } from "vue-class-component";
   },
 })
 export default class MarkTheNumberOfFavorites extends Vue {
-  $store: any;
+  public store = useCounterStore();
 
   private async addBlouseNumbers() {
     try {
-      this.$store.state.favoritesCounter = 0;
+      this.store.favoritesCounter = 0;
       const response = await productApi.getFavorites();
-      this.$store.state.favoritesCounter = response.length;
+      this.store.favoritesCounter = response.length;
     } catch (error) {
       console.log(error);
     }
