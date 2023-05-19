@@ -21,7 +21,7 @@ export default {
         return response?.data
     },
     deleteItemFromFavorites: async (id: number) => {
-        const response = await http.post(`/favorites${id}`)
+        const response = await http.delete(`/favorites/${id}`)
         return response?.data
     },
 }
