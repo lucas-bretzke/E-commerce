@@ -4,7 +4,7 @@
     <main class="center">
       <section class="catalog-filters"></section>
       <section class="container-cards">
-        <p v-if="(store.favoritesCounter = 0)" class="msg-error">
+        <p v-if="store.favoritesCounter === 0" class="msg-error">
           <FontAwesomeIcon
             icon="fa-solid fa-cart-shopping"
             class="ic_cart-shopping"
