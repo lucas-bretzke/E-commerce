@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import productApi from "@/services/productApi";
-import { useCounterStore } from "@/store/counterStores";
+import { baseStore } from "@/stores/baseStore";
 
 import { Options, Vue } from "vue-class-component";
 
@@ -20,7 +20,7 @@ import { Options, Vue } from "vue-class-component";
   },
 })
 export default class MarkTheNumberOfFavorites extends Vue {
-  public store = useCounterStore();
+  public store = baseStore();
 
   private async addBlouseNumbers() {
     try {

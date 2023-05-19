@@ -23,7 +23,7 @@
 
 
 <script lang="ts">
-import { useCounterStore } from "@/store/counterStores";
+import { baseStore } from "@/stores/baseStore";
 
 import { IBlouse } from "@/types";
 import productApi from "@/services/productApi";
@@ -33,7 +33,7 @@ import { Options, Vue } from "vue-class-component";
 @Options({ components: { CardItems } })
 export default class Cart extends Vue {
   public dataItems: IBlouse[] = [];
-      public store = useCounterStore();
+      public store = baseStore();
 
 
   private async getItems() {

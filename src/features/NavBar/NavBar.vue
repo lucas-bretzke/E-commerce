@@ -34,7 +34,7 @@
 
 
 <script lang="ts">
-import { useCounterStore } from "@/store/counterStores";
+import { baseStore } from "@/stores/baseStore";
 
 import BaseNavBar from "@/components/base/BaseNavBar.vue";
 import ValueMarker from "@/components/MarkTheNumberOfFavorites.vue";
@@ -52,7 +52,7 @@ import { Options, Vue } from "vue-class-component";
 })
 export default class NavBar extends Vue {
   public pageTitle = "";
-  public store = useCounterStore();
+  public store = baseStore();
 
   private setPageTitle() {
     const url: any = window.location.href;

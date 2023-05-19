@@ -24,7 +24,7 @@
 
 
 <script lang="ts">
-import { useCounterStore } from "@/store/counterStores";
+import { baseStore } from "@/stores/baseStore";
 
 import CardItem from "@/components/base/CardItem.vue";
 import { Vue, Options } from "vue-class-component";
@@ -45,7 +45,7 @@ import { Vue, Options } from "vue-class-component";
   },
 })
 export default class ProductCarousel extends Vue {
-  public store = useCounterStore();
+  public store = baseStore();
 
   public moveScroll(distance: number) {
     const container = this.$refs.myScrollX as HTMLElement;

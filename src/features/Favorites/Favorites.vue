@@ -21,7 +21,7 @@
 
 
 <script lang="ts">
-import { useCounterStore } from "@/store/counterStores";
+import { baseStore } from "@/stores/baseStore";
 
 import productApi from "@/services/productApi";
 import CardItems from "@/components/base/CardItem.vue";
@@ -31,7 +31,7 @@ import { Options, Vue } from "vue-class-component";
 @Options({ components: { CardItems, BackToTopButton } })
 export default class Favorites extends Vue {
   public dataFavorites = [];
-  public store = useCounterStore();
+  public store = baseStore();
 
   private async getFavorites() {
     try {

@@ -42,7 +42,7 @@
 
 
 <script lang="ts">
-import { useCounterStore } from "@/store/counterStores";
+import { baseStore } from "@/stores/baseStore";
 import { IBlouse, IShoe } from "@/types";
 import { Vue, Options } from "vue-class-component";
 import productApi from "@/services/productApi";
@@ -55,7 +55,7 @@ import axios from "axios";
 })
 export default class CardItems extends Vue {
   item!: IBlouse | IShoe;
-  public store = useCounterStore();
+  public store = baseStore();
 
   public async addOrRemoveFromFavorites(item: IBlouse | IShoe) {
     if (!item.favorite) {
