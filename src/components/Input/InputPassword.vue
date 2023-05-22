@@ -1,0 +1,118 @@
+<template>
+  <div class="input-container">
+    <div style="width: 100%">
+      <input
+        v-model="value"
+        :type="inputType"
+        placeholder=" "
+        @keyup.enter="keyupEnter"
+      />
+      <label>{{ label }}</label>
+    </div>
+    <button @click="toggleVisibility">
+      <FontAwesomeIcon :icon="buttonText" />
+    </button>
+  </div>
+  <span class="error">{{ msgError }}</span>
+</template>
+
+<script lang="ts">
+import { Vue, Options } from "vue-class-component";
+
+@Options({
+  props: {
+    value: { type: String, required: true },
+    label: { type: String, required: true },
+    msgError: { type: String, required: true },
+    keyupEnter: { type: Event, required: false, default: null },
+  },
+})
+export default class InputPassword extends Vue {
+  value = "";
+  public visiblePassword = false;
+
+  get buttonText() {
+    return this.visiblePassword
+      ? "fa-regular fa-eye"
+      : "fa-regular fa-eye-slash";
+  }
+
+  get inputType() {
+    return this.visiblePassword ? "text" : "password";
+  }
+
+  public toggleVisibility() {
+    this.visiblePassword = !this.visiblePassword;
+  }
+}
+</script>
+
+
+<style lang="less" scoped>
+.input-container {
+  position: relative;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+
+  input {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid #ccc;
+    background-color: transparent;
+    color: #333;
+    font-size: 16px;
+    outline: none;
+
+    &:focus {
+      border-color: #000;
+    }
+
+    & ~ label {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      font-size: 16px;
+      color: #999;
+      transition: all 0.3s;
+
+      &.active {
+        top: -8px;
+        left: 8px;
+        font-size: 12px;
+        color: #000;
+        background-color: #fff;
+        padding: 0 4px;
+      }
+    }
+
+    &:focus ~ label,
+    &:not(:placeholder-shown) ~ label {
+      top: -8px;
+      left: 8px;
+      font-size: 12px;
+      color: #000;
+      background-color: #fff;
+      padding: 0 4px;
+    }
+  }
+
+  button {
+    position: absolute;
+    right: 11px;
+    width: 33px;
+    height: 33px;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 50%;
+    color: #444444;
+    background-color: transparent;
+  }
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+}
+</style>
