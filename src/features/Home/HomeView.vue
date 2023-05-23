@@ -16,14 +16,15 @@
       @getItems="getBlouses"
     />
     <BackToTopButton />
-    <Login />
+    <Login v-show="store.isLogin" />
   </main>
 </template>
 
 <script lang="ts">
+import { baseStore } from "@/stores/baseStore";
 import ImageSlider from "../../components/ImageSlider.vue";
 import ProductCarousel from "@/components/ProductCarousel.vue";
-import BackToTopButton from "@/components/BackToTopButton.vue"; // Adicionado o sinal de igual (=)
+import BackToTopButton from "@/components/BackToTopButton.vue";
 import productApi from "@/services/productApi";
 import { IBlouse } from "@/types";
 import Login from "@/features/Login/Login.vue";
@@ -39,6 +40,7 @@ import { Options, Vue } from "vue-class-component";
   },
 })
 export default class HomeView extends Vue {
+  public store = baseStore();
   public images = [
     {
       url: "/img/roupas03.jpg",
