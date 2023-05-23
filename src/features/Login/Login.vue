@@ -40,8 +40,10 @@
       <FontAwesomeIcon icon="fa-brands fa-google" />
     </button>
 
-    <h3 @click="logout">Delog</h3>
-    <h3 @click="store.checkUser">checkUser</h3>
+    <h3 style="position: absolute; top: 0px" @click="logout">Delog</h3>
+    <h3 style="position: absolute; top: 20px" @click="store.checkUser">
+      checkUser
+    </h3>
   </main>
 </template>
 
@@ -59,13 +61,12 @@ export default class Login extends Vue {
   public user = Auth.currentUser;
   public email = "";
   public password = "";
-  public passwordError = "";
   public emailError = "";
+  public passwordError = "";
 
   public async signIn() {
     try {
       await signInWithEmailAndPassword(Auth, this.email, this.password);
-      this.close();
     } catch (error) {
       if (error instanceof Error) {
         const msg = error.message;
@@ -89,9 +90,9 @@ export default class Login extends Vue {
   public async logout() {
     try {
       await signOut(Auth);
-      console.log("Deslog sucess");
+      console.log("User logout");
     } catch (error) {
-      console.log("Login error", error);
+      console.log("Logout error", error);
     }
   }
 
@@ -128,6 +129,7 @@ p {
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 45px 20px;
+  padding-bottom: 25px;
   display: flex;
   flex-direction: column;
   background-color: white;
