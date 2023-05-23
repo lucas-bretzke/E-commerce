@@ -13,19 +13,12 @@
     <section class="container-inputs">
       <h3>FAÇA O LOGIN</h3>
 
-      <div class="input-container">
-        <input placeholder=" " v-model="email" />
-        <label>E-mail</label>
-        <span class="error" v-show="msgErrorEmail">Ops! email inválido</span>
-      </div>
-
-      <div class="input-container">
-        <input placeholder=" " v-model="password" @keyup.enter="signIn" />
-        <label>Senha</label>
-        <span class="error" v-show="msgErrorPassword"
-          >Ops! Senha incorreta</span
-        >
-      </div>
+      <InputText v-model="email" :msgError="emailError" label="E-mail" />
+      <InputPassword
+        v-model="password"
+        :msgError="passwordError"
+        label="Senha"
+      />
     </section>
 
     <div class="manter-conection">
@@ -36,51 +29,66 @@
       </p>
     </div>
 
-    <button @click="signIn" class="btn-start">
-      <span> CONTINUAR </span>
-      <span>--></span>
+    <button @click="signIn" class="continue-btn">
+      <p>CONTINUAR</p>
+      <span
+        ><FontAwesomeIcon icon="fa-solid fa-arrow-right" class="icon"
+      /></span>
     </button>
 
-    <button @click="signIn" class="btn-login-with-google">Google</button>
+    <button class="btn-login-with-google">
+      <FontAwesomeIcon icon="fa-brands fa-google" />
+    </button>
 
-    <!-- <button @click="deslogar">Delog</button> -->
+    <h3 @click="logout">Delog</h3>
+    <h3 @click="store.checkUser">checkUser</h3>
   </main>
 </template>
 
 <script lang="ts">
+import InputText from "@/components/Input/InputText.vue";
+import InputPassword from "@/components/Input/InputPassword.vue";
 import { Auth } from "@/firebase";
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { baseStore } from "@/stores/baseStore";
 import { Vue, Options } from "vue-class-component";
 
-@Options({})
+@Options({ components: { InputPassword, InputText } })
 export default class Login extends Vue {
   public store = baseStore();
+  public user = Auth.currentUser;
   public email = "";
   public password = "";
-  public error = "";
-  //   public user = Auth.currentUser;
+  public passwordError = "";
+  public emailError = "";
 
-  get user() {
-    return Auth.currentUser;
-  }
-
-  public signIn() {
+  public async signIn() {
     try {
-      signInWithEmailAndPassword(Auth, this.email, this.password);
-      // this.close()
-      console.log("Login sucess");
-      console.log(Auth.currentUser?.displayName);
-      console.log(Auth.currentUser?.email);
-      console.log(Auth.currentUser?.photoURL);
+      await signInWithEmailAndPassword(Auth, this.email, this.password);
+      this.close();
     } catch (error) {
-      console.log("Login error", error);
+      if (error instanceof Error) {
+        const msg = error.message;
+        console.log("Login error", msg);
+
+        this.emailError = msg.includes("auth/user-not-found")
+          ? "E-mail inválido"
+          : "";
+
+        this.passwordError = msg.includes("auth/wrong-password")
+          ? "Senha inválida"
+          : "";
+      } else {
+        console.log("Erro desconhecido ao fazer login.");
+      }
+    } finally {
+      this.store.checkUser;
     }
   }
-  public async deslogar() {
+
+  public async logout() {
     try {
       await signOut(Auth);
-      // this.close()
       console.log("Deslog sucess");
     } catch (error) {
       console.log("Login error", error);
@@ -96,13 +104,15 @@ export default class Login extends Vue {
 <style lang="less" scoped>
 button {
   width: 100%;
-  height: 45px;
-  padding: 0 15px;
+  height: 50px;
+  padding: 0 17px;
   margin-top: 17px;
   font-size: 15px;
   font-weight: bold;
   border: none;
   cursor: pointer;
+  color: black;
+  background-color: var(--color-primary);
 }
 
 p {
@@ -112,7 +122,7 @@ p {
 .container-login {
   width: auto;
   max-width: 420px;
-  height: 672px;
+  height: auto;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -124,6 +134,7 @@ p {
   border: 1px solid black;
   border-radius: 3px;
   z-index: 10;
+  box-shadow: 10px 10px 10px 1200px rgba(0, 0, 0, 0.614);
 
   .close {
     width: 45px;
@@ -219,16 +230,14 @@ p {
     }
   }
 
-  .btn-start {
+  .continue-btn {
     display: flex;
     align-items: center;
     justify-content: space-between;
     letter-spacing: 2px;
-    color: white;
-    background-color: black;
-
     .icon {
-      color: red;
+      width: 20px;
+      height: auto;
     }
 
     &:hover {
@@ -238,12 +247,11 @@ p {
   }
 
   .btn-login-with-google {
-    color: white;
-    background-color: black;
+    font-size: 23px;
 
     &:hover {
       transition: 0.3s;
-      color: #6f6f6f;
+      transform: translateY(0) scale(102%);
     }
   }
 }
