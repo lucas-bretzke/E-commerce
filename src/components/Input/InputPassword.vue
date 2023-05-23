@@ -2,8 +2,9 @@
   <div class="input-container">
     <div style="width: 100%">
       <input
-        v-model="value"
         :type="inputType"
+        :value="modelValue"
+        @input="$emit('update:modelValue', $event.target.value)"
         placeholder=" "
         @keyup.enter="keyupEnter"
       />
@@ -21,14 +22,13 @@ import { Vue, Options } from "vue-class-component";
 
 @Options({
   props: {
-    value: { type: String, required: true },
+    modelValue: { type: String, required: true },
     label: { type: String, required: true },
-    msgError: { type: String, required: true },
+    msgError: { type: String, required: false, default: "" },
     keyupEnter: { type: Event, required: false, default: null },
   },
 })
 export default class InputPassword extends Vue {
-  value = "";
   public visiblePassword = false;
 
   get buttonText() {
@@ -112,6 +112,8 @@ export default class InputPassword extends Vue {
 }
 
 .error {
+  position: relative;
+  top: -18px;
   color: red;
   font-size: 14px;
 }
