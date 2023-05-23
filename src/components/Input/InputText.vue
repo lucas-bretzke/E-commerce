@@ -1,6 +1,11 @@
 <template>
   <div class="input-container">
-    <input v-model="value" @keyup.enter="keyupEnter" placeholder=" " />
+    <input
+      :value="modelValue"
+      @input="$emit('update:modelValue', $event.target.value)"
+      @keyup.enter="keyupEnter"
+      placeholder=" "
+    />
     <label>{{ label }}</label>
   </div>
   <span class="error"> {{ msgError }}</span>
@@ -12,14 +17,13 @@ import { Vue, Options } from "vue-class-component";
 
 @Options({
   props: {
-    value: { type: String, required: true },
+    modelValue: { type: String, required: true },
     label: { type: String, required: true },
     msgError: { type: String, required: false, default: "" },
     keyupEnter: { type: Event, required: false, default: null },
   },
 })
-export default class InputText extends Vue {
-}
+export default class InputText extends Vue {}
 </script>
 
 
