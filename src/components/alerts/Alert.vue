@@ -1,8 +1,12 @@
 <template>
-  <div class="my-alert" :style="`background-color: ${bgColor}`">
-    <FontAwesomeIcon :icon="icon" class="ic" id="icon" />
+  <div :class="`my-alert ${newClass}`">
+    <FontAwesomeIcon
+      :icon="`fa-solid ${icon}`"
+      class="ic"
+      :style="icStyles()"
+    />
 
-    <p class="msg-alert">{{ title }}</p>
+    <h2 class="msg-alert">{{ title }}</h2>
 
     <button class="close">
       <FontAwesomeIcon icon="fa-solid fa-xmark" />
@@ -22,20 +26,29 @@ import { Options, Vue } from "vue-class-component";
 export default class Alert extends Vue {
   public messageType!: string;
   public icon = "";
-  public bgColor = "";
+  public newClass = "";
 
   private setType() {
-    const el = document.getElementById("icon") as HTMLElement;
-
-    if (this.messageType == "succes") {
-      this.bgColor = "#b5eacc";
-      this.icon = "fa-regular fa-circle-check";
-
-      this.$nextTick(() => {
-        const iconElement = this.$refs.iconElement as any;
-        iconElement.class = "succes";
-      });
+    if (this.messageType == "success") {
+      this.newClass = "success";
+      this.icon = "fa-circle-check";
+    } else if (this.messageType === "error") {
+      this.newClass = "error";
+      this.icon = "fa-circle-xmark";
+    } else if (this.messageType === "info") {
+      this.newClass = "info";
+      this.icon = "fa-circle-info";
+    } else if (this.messageType === "warning") {
+      this.newClass = "warning";
+      this.icon = "fa-triangle-exclamation";
     }
+  }
+
+  icStyles() {
+    if (this.messageType === "success") return { color: "#00aa52" };
+    if (this.messageType === "error") return { color: "#ff342c" };
+    if (this.messageType === "info") return { color: "#0071ff" };
+    if (this.messageType === "warning") return { color: "#ffa301" };
   }
 
   mounted() {
@@ -46,29 +59,28 @@ export default class Alert extends Vue {
 </script>
 
 <style scoped lang="less">
-:root {
-  --primary: #0676ed;
-  --background: #222b45;
-  --warning: #f2a600;
-  --success: #12c99b;
-  --error: #e41749;
-}
-.warning {
-  background-color: #ffe4c8;
-}
-.info {
-  background-color: #c3ecff;
-}
-.succes {
-  background-color: #00aa52;
+.success {
+  background-color: #b5eacc;
+  border-bottom: 3px solid #00ab4e;
 }
 .error {
   background-color: #ffe3e0;
+  border-bottom: 3px solid #fb4a1f;
 }
+.info {
+  background-color: #c3ecff;
+  border-bottom: 3px solid #0072fc;
+}
+.warning {
+  background-color: #ffe3c7;
+  border-bottom: 3px solid #fea400;
+}
+
 .my-alert {
   width: 90%;
   position: fixed;
   top: 5px;
+  left: 10px;
   display: flex;
   margin: 0px auto;
   align-items: center;

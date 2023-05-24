@@ -17,17 +17,19 @@
     />
     <BackToTopButton />
     <Login v-show="store.isLogin" />
+    <AlertTeste title="Logado com sucesso" messageType="success" />
   </main>
 </template>
 
 <script lang="ts">
-import { baseStore } from "@/stores/baseStore";
+import AlertTeste from "@/components/alerts/Alert.vue";
 import ImageSlider from "../../components/ImageSlider.vue";
 import ProductCarousel from "@/components/ProductCarousel.vue";
 import BackToTopButton from "@/components/BackToTopButton.vue";
 import productApi from "@/services/productApi";
 import { IBlouse } from "@/types";
 import Login from "@/features/Login/Login.vue";
+import { baseStore } from "@/stores/baseStore";
 
 import { Options, Vue } from "vue-class-component";
 
@@ -37,7 +39,18 @@ import { Options, Vue } from "vue-class-component";
     ProductCarousel,
     BackToTopButton,
     Login,
+    AlertTeste,
   },
+  // watch: {
+  //   "this.store.user.email": function () {
+  //     if (this.store.user.email) {
+  //       this.isAlert = true;
+  //       setTimeout(() => {
+  //         this.isAlert = false;
+  //       }, 3000);
+  //     }
+  //   },
+  // },
 })
 export default class HomeView extends Vue {
   public store = baseStore();
@@ -56,6 +69,7 @@ export default class HomeView extends Vue {
     },
   ];
   public dataBlouses: IBlouse[] = [];
+  public isAlert = false;
 
   public async getBlouses() {
     try {
