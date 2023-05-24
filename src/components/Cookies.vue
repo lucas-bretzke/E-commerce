@@ -1,7 +1,9 @@
 <template>
   <section class="cookie-modal">
     <h1 class="title">Este site usa Cookies</h1>
-    <button class="btn-close" @click="closeModal">X</button>
+    <button class="btn-close" @click="closeModal">
+      <FontAwesomeIcon icon="fa-solid fa-xmark" />
+    </button>
     <p>
       Este site utiliza alguns cookies para controle de sessão, verificar seu
       uso em nosso site e para marketing. Você pode aceitar todos ou configurar
@@ -68,7 +70,7 @@ export default class Cookies extends Vue {
     margin-bottom: 15px;
   }
   .btn-close {
-    font-size: 20px;
+    font-size: 25px;
     border: none;
     background-color: transparent;
     position: absolute;
