@@ -12,7 +12,7 @@ export const baseStore = defineStore('my-baseStore', {
                 contactPreference: '',
                 address: '',
             },
-            isLogin: true,
+            isLogin: false,
             itemIdInDetail: 0,
             favoritesCounter: 0,
             cartCounter: 0,
