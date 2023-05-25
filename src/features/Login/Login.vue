@@ -49,8 +49,9 @@
 import InputText from "@/components/Input/InputText.vue";
 import InputPassword from "@/components/Input/InputPassword.vue";
 import { Auth } from "@/firebase";
-import { signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { baseStore } from "@/stores/baseStore";
+
 import { Vue, Options } from "vue-class-component";
 
 @Options({ components: { InputPassword, InputText } })
@@ -87,7 +88,7 @@ export default class Login extends Vue {
 
   public async logout() {
     try {
-      await signOut(Auth);
+      await Auth.signOut();
       console.log("User logout");
     } catch (error) {
       console.log("Logout error", error);
