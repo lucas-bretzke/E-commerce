@@ -17,7 +17,12 @@
     />
     <BackToTopButton />
     <Login v-show="store.isLogin" />
-    <AlertTeste title="Logado com sucesso" messageType="success" />
+    <AlertTeste
+      v-show="isAlert"
+      title="Logado com sucesso"
+      description="Usuário logado com sucesso"
+      messageType="warning"
+    />
   </main>
 </template>
 

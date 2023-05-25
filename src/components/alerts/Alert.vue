@@ -1,16 +1,23 @@
 <template>
-  <div :class="`my-alert ${newClass}`">
-    <FontAwesomeIcon
-      :icon="`fa-solid ${icon}`"
-      class="ic"
-      :style="icStyles()"
-    />
+  <div class="container">
+    <section :class="`alert ${newClass}`">
+      <div class="container-left">
+        <FontAwesomeIcon
+          :icon="`fa-solid ${icon}`"
+          class="ic"
+          :style="icStyles()"
+        />
 
-    <h2 class="msg-alert">{{ title }}</h2>
+        <div class="container-text">
+          <h2 class="msg-alert">{{ title }}</h2>
+          <p class="description">{{ description }}</p>
+        </div>
+      </div>
 
-    <button class="close">
-      <FontAwesomeIcon icon="fa-solid fa-xmark" />
-    </button>
+      <button class="close">
+        <FontAwesomeIcon icon="fa-solid fa-xmark" />
+      </button>
+    </section>
   </div>
 </template>
 
@@ -19,28 +26,29 @@ import { Options, Vue } from "vue-class-component";
 
 @Options({
   props: {
-    title: { type: String, required: true },
+    description: { type: String, required: true },
     messageType: { type: String, required: true },
   },
 })
 export default class Alert extends Vue {
-  public messageType!: string;
+  private messageType!: string;
+  public title = "";
   public icon = "";
   public newClass = "";
 
   private setType() {
-    if (this.messageType == "success") {
-      this.newClass = "success";
-      this.icon = "fa-circle-check";
-    } else if (this.messageType === "error") {
-      this.newClass = "error";
-      this.icon = "fa-circle-xmark";
-    } else if (this.messageType === "info") {
-      this.newClass = "info";
-      this.icon = "fa-circle-info";
-    } else if (this.messageType === "warning") {
-      this.newClass = "warning";
-      this.icon = "fa-triangle-exclamation";
+    const type = this.messageType;
+    if (type === "success") {
+      (this.title = "Sucesso"), (this.newClass = "success"), (this.icon = "fa-circle-check");
+    }
+    if (type === "error") {
+      (this.title = "Error"), (this.newClass = "error"), (this.icon = "fa-circle-xmark");
+    }
+    if (type === "info") {
+      (this.title = "Info"), (this.newClass = "info"), (this.icon = "fa-circle-info");
+    }
+    if (type === "warning") {
+     (this.title = "Aviso"), (this.newClass = "warning"), (this.icon = "fa-triangle-exclamation");
     }
   }
 
@@ -53,7 +61,6 @@ export default class Alert extends Vue {
 
   mounted() {
     this.setType();
-    console.log(this.messageType);
   }
 }
 </script>
@@ -76,46 +83,63 @@ export default class Alert extends Vue {
   border-bottom: 3px solid #fea400;
 }
 
-.my-alert {
-  width: 90%;
+.container {
+  width: 100%;
   position: fixed;
   top: 5px;
-  left: 10px;
   display: flex;
-  margin: 0px auto;
-  align-items: center;
-  text-align: center;
-  border-radius: 5px;
   z-index: 2;
-  animation: slide-bottom 0.6s;
 
-  .ic {
-    width: 26px;
-    height: 26px;
-    margin: 10px;
-    border-radius: 50%;
-  }
-  .msg-alert {
-    font-size: 18px;
-    font-weight: bold;
-    padding: 25px 0;
-    border: none;
-    margin-left: 10px;
-  }
+  .alert {
+    width: 90%;
+    max-width: 1300px;
+    display: flex;
+    padding: 15px 20px 10px 0px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    border-radius: 5px;
+    animation: slide-bottom 0.6s;
 
-  .close {
-    width: 35px;
-    height: 35px;
-    font-size: 23px;
-    position: absolute;
-    right: 30px;
-    border: none;
-    background-color: transparent;
+    .container-left {
+      display: flex;
+      align-items: center;
 
-    &:hover {
-      border-radius: 50%;
-      border: 1px solid rgba(0, 0, 0, 0.438);
-      cursor: pointer;
+      .ic {
+        width: 26px;
+        height: 26px;
+        margin: 10px;
+        margin-left: 15px;
+      }
+
+      .container-text {
+        text-align: left;
+        margin-left: 15px;
+
+        .msg-alert {
+          font-size: 18px;
+          font-weight: bold;
+          border: none;
+        }
+        .description {
+          width: auto;
+        }
+      }
+    }
+
+    .close {
+      width: 35px;
+      height: 35px;
+      font-size: 21px;
+      border: none;
+      background-color: transparent;
+
+      &:hover {
+        border-radius: 50%;
+        border: 1px solid rgba(0, 0, 0, 0.438);
+        cursor: pointer;
+      }
     }
   }
 }
