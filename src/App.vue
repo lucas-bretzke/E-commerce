@@ -5,6 +5,7 @@
 
 
 <script lang="ts">
+import { baseStore } from "@/stores/baseStore";
 import NavBar from "@/features/NavBar/NavBar.vue";
 import { Options, Vue } from "vue-class-component";
 
@@ -13,13 +14,20 @@ import { Options, Vue } from "vue-class-component";
     NavBar,
   },
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  public store = baseStore();
+
+  mounted() {
+    this.store.checkUser;
+  }
+}
 </script>
 
 <style lang="less">
 :root {
   --color-primary: #d2b48c; //Marrom Rosado
   --color-secundary: black;
+  --dark: #151a30;
   --color-terciary: #bc8f8f; //Marrom Coral
   --gray: #ededed;
   //   #F0E68C - Amarelo Areia
