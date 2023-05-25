@@ -21,7 +21,7 @@
       v-show="isAlert"
       title="Logado com sucesso"
       description="Usuário logado com sucesso"
-      messageType="warning"
+      messageType="success"
     />
   </main>
 </template>
@@ -48,7 +48,7 @@ import { Options, Vue } from "vue-class-component";
   },
   // watch: {
   //   "this.store.user.email": function () {
-  //     if (this.store.user.email) {
+  //     if (this.store.user.email != "") {
   //       this.isAlert = true;
   //       setTimeout(() => {
   //         this.isAlert = false;
