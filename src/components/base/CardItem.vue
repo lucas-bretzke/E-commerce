@@ -58,13 +58,12 @@ export default class CardItems extends Vue {
   public store = baseStore();
 
   public checkUser() {
-    Auth.onAuthStateChanged((user) => {
-      if (user) {
-        this.addOrRemoveFromFavorites;
-      } else {
-        this.store.isLogin = true;
-      }
-    });
+    const user = Auth.currentUser;
+    if (user?.uid) {
+      this.addOrRemoveFromFavorites(this.item);
+    } else {
+      this.store.isLogin = true;
+    }
   }
 
   public async addOrRemoveFromFavorites(item: IBlouse | IShoe) {
