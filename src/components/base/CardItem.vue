@@ -9,10 +9,8 @@
           <p class="price">R${{ item.price }}</p>
         </div>
       </div>
-      <button
-        class="btn-add-to-favorite"
-        @click.stop="addOrRemoveFromFavorites(item)"
-      >
+
+      <button class="btn-add-to-favorite" @click.stop="checkUser">
         <FontAwesomeIcon
           v-if="!item.favorite"
           icon="fa-regular fa-heart"
@@ -20,6 +18,7 @@
         />
         <FontAwesomeIcon v-else icon="fa-solid fa-heart" class="ic-heart" />
       </button>
+
       <button class="btn-add-to-cart" @click.stop="addCart(item)">
         <p v-if="!item.cart" class="is-heart">cart +</p>
         <p v-else class="is-heart">cart -</p>
@@ -47,6 +46,7 @@ import { IBlouse, IShoe } from "@/types";
 import { Vue, Options } from "vue-class-component";
 import productApi from "@/services/productApi";
 import axios from "axios";
+import { Auth } from "@/firebase";
 
 @Options({
   props: {
@@ -56,6 +56,16 @@ import axios from "axios";
 export default class CardItems extends Vue {
   item!: IBlouse | IShoe;
   public store = baseStore();
+
+  public checkUser() {
+    Auth.onAuthStateChanged((user) => {
+      if (user) {
+        this.addOrRemoveFromFavorites;
+      } else {
+        this.store.isLogin = true;
+      }
+    });
+  }
 
   public async addOrRemoveFromFavorites(item: IBlouse | IShoe) {
     if (!item.favorite) {
