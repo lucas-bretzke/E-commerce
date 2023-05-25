@@ -25,7 +25,6 @@
       <input type="checkbox" />
       <p>
         Mantenha-me conectado - válido para todos os métodos de log-in abaixo.
-        <a href=""> Mais informações. </a>
       </p>
     </div>
 
@@ -38,12 +37,11 @@
 
     <button class="btn-login-with-google">
       <FontAwesomeIcon icon="fa-brands fa-google" />
+      <p>Acessar com google</p>
     </button>
 
-    <h3 style="position: absolute; top: 0px" @click="logout">Delog</h3>
-    <h3 style="position: absolute; top: 20px" @click="store.checkUser">
-      checkUser
-    </h3>
+    <h4 style="position: absolute; top: 0px; opacity: .4; cursor: pointer" @click="logout">Logout</h4>
+    <h4 style="position: absolute; top: 20px; opacity: .4" @click="store.checkUser">checkUser</h4>
   </main>
 </template>
 
@@ -223,8 +221,8 @@ p {
     align-items: center;
 
     input {
-      width: 45px;
-      height: 45px;
+      width: 40px;
+      height: 40px;
       margin-right: 12px;
     }
     p {
@@ -250,7 +248,17 @@ p {
 
   .btn-login-with-google {
     font-size: 23px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+    p {
+      font-size: 15px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin-left: 20px;
+    }
+    
     &:hover {
       transition: 0.3s;
       transform: translateY(0) scale(102%);
