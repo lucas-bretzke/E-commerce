@@ -5,7 +5,6 @@
 
 
 <script lang="ts">
-import { baseStore } from "@/stores/baseStore";
 import NavBar from "@/features/NavBar/NavBar.vue";
 import { Options, Vue } from "vue-class-component";
 
@@ -15,11 +14,7 @@ import { Options, Vue } from "vue-class-component";
   },
 })
 export default class App extends Vue {
-  public store = baseStore();
 
-  mounted() {
-    this.store.checkUser;
-  }
 }
 </script>
 
