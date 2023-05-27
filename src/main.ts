@@ -3,7 +3,8 @@ import App from './App.vue'
 import './registerServiceWorker'
 import router from './router'
 import { createPinia } from 'pinia'
-// import firebase from 'firebase/app'
+import VueCookies from './vue-cookies';
+
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -16,4 +17,10 @@ library.add(
 )
 
 
-createApp(App).component("FontAwesomeIcon", FontAwesomeIcon).use(createPinia()).use(router).mount('#app')
+
+const app = createApp(App)
+app.use(router)
+app.use(VueCookies)
+app.use(createPinia())
+app.component('FontAwesomeIcon', FontAwesomeIcon)
+app.mount('#app')

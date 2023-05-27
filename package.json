@@ -24,10 +24,12 @@
     "register-service-worker": "^1.7.2",
     "vue": "^3.3.4",
     "vue-class-component": "^8.0.0-0",
+    "vue-cookies-ts": "^1.5.19",
     "vue-router": "^4.0.3"
   },
   "devDependencies": {
     "@types/jest": "^27.0.1",
+    "@types/vue": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
     "@vue/cli-plugin-babel": "~5.0.0",
