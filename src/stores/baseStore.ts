@@ -22,16 +22,12 @@ export const baseStore = defineStore('my-baseStore', {
     },
     actions: {
         checkUser() {
-            Auth.onAuthStateChanged((user) => {
-                if (user) {
-                    console.log("Usuário logado.");
-                    this.user.name === user.displayName
-                    this.user.email === user.email
-                    this.isLogin = false;
-                } else {
-                    console.log("Nenhum usuário logado.");
-                }
-            });
+            const user = Auth.currentUser;
+            if (user?.uid) {
+                console.log("Usuário logado.");
+            } else {
+                console.log("Nenhum usuário logado.");
+            }
         }
     },
     getters: {}
