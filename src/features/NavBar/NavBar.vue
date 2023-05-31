@@ -24,7 +24,9 @@
               class="ic_cart-shopping"
             />
           </button>
-          <button class="btn-login">LOGIN</button>
+          <button class="btn-login" @click="setBtnFunction">
+            {{ btnText }}
+          </button>
         </li>
       </template>
     </BaseNavBar>
@@ -34,11 +36,12 @@
 
 
 <script lang="ts">
-import { baseStore } from "@/stores/baseStore";
-
 import BaseNavBar from "@/components/base/BaseNavBar.vue";
 import ValueMarker from "@/components/MarkTheNumberOfFavorites.vue";
 import Cookies from "@/components/Cookies.vue";
+import { Auth } from "@/firebase";
+import { signOut } from "firebase/auth";
+import { baseStore } from "@/stores/baseStore";
 
 import { Options, Vue } from "vue-class-component";
 
@@ -51,16 +54,36 @@ import { Options, Vue } from "vue-class-component";
   },
 })
 export default class NavBar extends Vue {
-  public pageTitle = "";
   public store = baseStore();
+  private user = Auth.currentUser;
 
-  private setPageTitle() {
+  public pageTitle = "";
+
+  get btnText() {
+    return this.user?.uid != undefined ? "Sair" : "Logar";
+  }
+
+  public async setBtnFunction() {
+    if (!this.user?.uid) {
+      this.store.isLogin = true;
+    } else {
+      Auth.signOut();
+      console.log("Deslogado(a)");
+    }
+  }
+
+  public setPageTitle() {
     const url: any = window.location.href;
     const baseUrl = "http://localhost:8080";
 
     if (url === `${baseUrl}/`) this.pageTitle = "FASHION AVENUE";
     if (url === `${baseUrl}/Favorites`) this.pageTitle = "FAVORITOS";
   }
+
+  // mounted() {
+  //   console.log(Auth.currentUser?.uid != "");
+  //   console.log(Auth.currentUser?.uid != undefined);
+  // }
 }
 </script>
 
