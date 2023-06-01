@@ -25,7 +25,7 @@
             />
           </button>
           <button class="btn-login" @click="setBtnFunction">
-            {{ btnText }}
+            {{ buttonText }}
           </button>
         </li>
       </template>
@@ -51,24 +51,24 @@ import { Options, Vue } from "vue-class-component";
     $route: function () {
       this.setPageTitle();
     },
+    "store.user.uid": function (current, previous) {
+      this.buttonText = previous === "" && current ? "Sair" : "Logar";
+    },
   },
 })
 export default class NavBar extends Vue {
   public store = baseStore();
-  private user = Auth.currentUser;
-
   public pageTitle = "";
-
-  get btnText() {
-    return this.user?.uid != undefined ? "Sair" : "Logar";
-  }
+  public buttonText = "Logar";
 
   public async setBtnFunction() {
-    if (!this.user?.uid) {
+    if (!Auth.currentUser) {
       this.store.isLogin = true;
     } else {
       Auth.signOut();
-      console.log("Deslogado(a)");
+      localStorage.clear();
+      this.store.user.uid = "";
+      setTimeout(() => window.location.reload(), 2000);
     }
   }
 
@@ -79,11 +79,6 @@ export default class NavBar extends Vue {
     if (url === `${baseUrl}/`) this.pageTitle = "FASHION AVENUE";
     if (url === `${baseUrl}/Favorites`) this.pageTitle = "FAVORITOS";
   }
-
-  // mounted() {
-  //   console.log(Auth.currentUser?.uid != "");
-  //   console.log(Auth.currentUser?.uid != undefined);
-  // }
 }
 </script>
 
