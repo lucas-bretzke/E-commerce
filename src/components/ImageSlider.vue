@@ -28,19 +28,20 @@
 </template>
 
 <script lang="ts">
+import { PropType } from "vue";
 import { Options, Vue } from "vue-class-component";
 
 @Options({
   props: {
-    images: { type: Array, required: true },
+    images: { type: Array as PropType<object[]>, required: true },
     sliderControls: { type: Boolean, require: false, default: false },
     progressionBar: { type: Boolean, require: false, default: false },
     setInterval: { type: Number, require: false, default: false },
   },
 })
 export default class ImageSlider extends Vue {
+  public images!: object[];
   public currentIndex = 0;
-  public images!: [];
   public setInterval?: number;
   public sliderControls?: boolean;
   public progressionBar?: boolean;
@@ -116,7 +117,7 @@ export default class ImageSlider extends Vue {
     cursor: pointer;
     border: none;
     z-index: 1;
-    
+
     &:hover {
       opacity: 0.2;
     }
