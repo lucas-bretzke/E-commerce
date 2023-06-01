@@ -1,5 +1,10 @@
 <template>
   <main class="home">
+    <Alert
+      v-show="isAlert"
+      :description="alertDescription"
+      :messageType="alertMessageType"
+    />
     <div class="background-top">
       <header class="center header-block">
         <ImageSlider
@@ -17,23 +22,17 @@
     />
     <BackToTopButton />
     <Login v-show="store.isLogin" />
-    <AlertTeste
-      v-show="isAlert"
-      title="Logado com sucesso"
-      description="Usuário logado com sucesso"
-      messageType="success"
-    />
   </main>
 </template>
 
 <script lang="ts">
-import AlertTeste from "@/components/alerts/Alert.vue";
+import Alert from "@/components/alerts/Alert.vue";
 import ImageSlider from "../../components/ImageSlider.vue";
 import ProductCarousel from "@/components/ProductCarousel.vue";
 import BackToTopButton from "@/components/BackToTopButton.vue";
 import productApi from "@/services/productApi";
-import { IBlouse } from "@/types";
 import Login from "@/features/Login/Login.vue";
+import { IBlouse } from "@/types";
 import { baseStore } from "@/stores/baseStore";
 
 import { Options, Vue } from "vue-class-component";
@@ -44,37 +43,49 @@ import { Options, Vue } from "vue-class-component";
     ProductCarousel,
     BackToTopButton,
     Login,
-    AlertTeste,
+    Alert,
   },
-  // watch: {
-  //   "this.store.user.email": function () {
-  //     if (this.store.user.email != "") {
-  //       this.isAlert = true;
-  //       setTimeout(() => {
-  //         this.isAlert = false;
-  //       }, 3000);
-  //     }
-  //   },
-  // },
+  watch: {
+    "store.user.uid": function (current, previous) {
+      this.arrowLoggedUserMsg(current, previous);
+    },
+  },
 })
 export default class HomeView extends Vue {
   public store = baseStore();
   public images = [
     {
-      url: "/img/roupas03.jpg",
+      url: "/img/HomeBanner/roupas03.jpg",
       alt: "Imagem 1",
     },
     {
-      url: "/img/roupas01.webp",
+      url: "/img/HomeBanner/roupas01.webp",
       alt: "Imagem 2",
     },
     {
-      url: "/img/roupas02.jpg",
+      url: "/img/HomeBanner/roupas02.jpg",
       alt: "Imagem 3",
     },
   ];
   public dataBlouses: IBlouse[] = [];
   public isAlert = false;
+  public alertDescription = "";
+  public alertMessageType = "";
+
+  showAlert(description: string, msgType: string) {
+    this.alertDescription = description;
+    this.alertMessageType = msgType;
+    this.isAlert = true;
+  }
+
+ arrowLoggedUserMsg(current: any, previous: any) {
+  if (!previous && current) {
+    this.showAlert("Usuário logado com sucesso", "success");
+  } else if (previous && !current) {
+    this.showAlert("Você não está mais logado!", "warning");
+  }
+  setTimeout(() => (this.isAlert = false), 3500);
+}
 
   public async getBlouses() {
     try {
