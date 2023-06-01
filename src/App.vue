@@ -6,6 +6,8 @@
 
 <script lang="ts">
 import NavBar from "@/features/NavBar/NavBar.vue";
+import { baseStore } from "@/stores/baseStore";
+
 import { Options, Vue } from "vue-class-component";
 
 @Options({
@@ -14,7 +16,12 @@ import { Options, Vue } from "vue-class-component";
   },
 })
 export default class App extends Vue {
+  public store = baseStore();
 
+  mounted() {
+    const user = localStorage.getItem("user");
+    if (user) this.store.user = JSON.parse(user);
+  }
 }
 </script>
 
