@@ -7,6 +7,7 @@
         @input="$emit('update:modelValue', $event.target.value)"
         placeholder=" "
         @keyup.enter="keyupEnter"
+        autocomplete="on"
       />
       <label>{{ label }}</label>
     </div>
