@@ -10,38 +10,44 @@
       </p>
     </div>
 
-    <section class="container-inputs">
-      <h3>FAÇA O LOGIN</h3>
+    <form>
+      <section class="container-inputs">
+        <h3>FAÇA O LOGIN</h3>
 
-      <InputText v-model="email" :msgError="emailError" label="E-mail" />
-      <InputPassword
-        v-model="password"
-        :msgError="passwordError"
-        label="Senha"
-      />
-    </section>
+        <InputText v-model="email" :msgError="emailError" label="E-mail" />
+        <InputPassword
+          v-model="password"
+          :msgError="passwordError"
+          label="Senha"
+        />
+      </section>
 
-    <div class="manter-conection">
-      <input type="checkbox" />
-      <p>
-        Mantenha-me conectado - válido para todos os métodos de log-in abaixo.
-      </p>
-    </div>
+      <div class="manter-conection">
+        <input type="checkbox" />
+        <p>
+          Mantenha-me conectado - válido para todos os métodos de log-in abaixo.
+        </p>
+      </div>
 
-    <button @click="signIn" class="continue-btn">
-      <p>CONTINUAR</p>
-      <span
-        ><FontAwesomeIcon icon="fa-solid fa-arrow-right" class="icon"
-      /></span>
-    </button>
+      <button @click.prevent="signIn" class="continue-btn">
+        <p>CONTINUAR</p>
+        <span
+          ><FontAwesomeIcon icon="fa-solid fa-arrow-right" class="icon"
+        /></span>
+      </button>
 
-    <button class="btn-login-with-google">
-      <FontAwesomeIcon icon="fa-brands fa-google" />
-      <p>Acessar com google</p>
-    </button>
+      <button class="btn-login-with-google" @click="loginWithGoogle">
+        <FontAwesomeIcon icon="fa-brands fa-google" />
+        <p>Acessar com google</p>
+      </button>
+    </form>
 
-    <h4 style="position: absolute; top: 0px; opacity: .4; cursor: pointer" @click="logout">Logout</h4>
-    <h4 style="position: absolute; top: 20px; opacity: .4" @click="store.checkUser">checkUser</h4>
+    <h4
+      style="position: absolute; top: 0px; opacity: 0.4; cursor: pointer"
+      @click="store.checkUser"
+    >
+      checkUser
+    </h4>
   </main>
 </template>
 
@@ -49,7 +55,11 @@
 import InputText from "@/components/Input/InputText.vue";
 import InputPassword from "@/components/Input/InputPassword.vue";
 import { Auth } from "@/firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
 import { baseStore } from "@/stores/baseStore";
 
 import { Vue, Options } from "vue-class-component";
@@ -57,7 +67,6 @@ import { Vue, Options } from "vue-class-component";
 @Options({ components: { InputPassword, InputText } })
 export default class Login extends Vue {
   public store = baseStore();
-  public user = Auth.currentUser;
   public email = "";
   public password = "";
   public emailError = "";
@@ -69,7 +78,6 @@ export default class Login extends Vue {
     } catch (error) {
       if (error instanceof Error) {
         const msg = error.message;
-        console.log("Login error", msg);
 
         this.emailError = msg.includes("auth/user-not-found")
           ? "E-mail inválido"
@@ -82,16 +90,20 @@ export default class Login extends Vue {
         console.log("Erro desconhecido ao fazer login.");
       }
     } finally {
-      this.store.checkUser;
+      if (Auth.currentUser) {
+        this.store.user.uid = Auth.currentUser?.uid;
+        this.store.isLogin = false;
+        localStorage.setItem("user", JSON.stringify(this.store.user));
+      }
     }
   }
 
-  public async logout() {
+  async loginWithGoogle() {
     try {
-      await Auth.signOut();
-      console.log("User logout");
+      const provider = new GoogleAuthProvider();
+      await signInWithPopup(Auth, provider);
     } catch (error) {
-      console.log("Logout error", error);
+      console.log(error);
     }
   }
 
@@ -259,7 +271,7 @@ p {
       letter-spacing: 1px;
       margin-left: 20px;
     }
-    
+
     &:hover {
       transition: 0.3s;
       transform: translateY(0) scale(102%);
