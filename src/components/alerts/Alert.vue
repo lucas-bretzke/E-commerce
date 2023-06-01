@@ -3,7 +3,7 @@
     <section class="alert" :class="alertClass()">
       <div class="container-left">
         <FontAwesomeIcon
-          :icon="`fa-solid ${setIcon}`"
+          :icon="`fa-solid ${icon}`"
           class="ic"
           :style="icStyles()"
         />
@@ -22,6 +22,15 @@
 </template>
 
 <script lang="ts">
+type MessageTypeMap = {
+  [key: string]: {
+    icon: string;
+    title: string;
+    icStyle: { color: string };
+    alertClass: string;
+  };
+};
+
 import { Options, Vue } from "vue-class-component";
 
 @Options({
@@ -32,47 +41,51 @@ import { Options, Vue } from "vue-class-component";
 })
 export default class Alert extends Vue {
   private messageType!: string;
+  private messageTypeMap: MessageTypeMap = {
+    success: {
+      icon: "fa-circle-check",
+      title: "Sucesso",
+      icStyle: { color: "#00aa52" },
+      alertClass: "success-alert",
+    },
+    error: {
+      icon: "fa-circle-xmark",
+      title: "Error",
+      icStyle: { color: "#ff342c" },
+      alertClass: "error-alert",
+    },
+    info: {
+      icon: "fa-circle-info",
+      title: "Info",
+      icStyle: { color: "#0071ff" },
+      alertClass: "info-alert",
+    },
+    warning: {
+      icon: "fa-triangle-exclamation",
+      title: "Aviso",
+      icStyle: { color: "#ffa301" },
+      alertClass: "warning-alert",
+    },
+  };
 
-  get setIcon() {
-    const type = this.messageType;
-    let icon = "";
-    if (type === "success") icon = "fa-circle-check";
-    if (type === "error") icon = "fa-circle-xmark";
-    if (type === "info") icon = "fa-circle-info";
-    if (type === "warning") icon = "fa-triangle-exclamation";
 
-    return icon;
+  get icon() {
+    return this.messageTypeMap[this.messageType]?.icon || "";
   }
 
   get title() {
-    let title = "";
-    let type = this.messageType;
-    if (type === "success") title = "Sucesso";
-    if (type === "error") title = "Error";
-    if (type === "info") title = "Info";
-    if (type === "warning") title = "Aviso";
-    return title;
+    return this.messageTypeMap[this.messageType]?.title || "";
   }
 
   icStyles() {
-    if (this.messageType === "success") return { color: "#00aa52" };
-    if (this.messageType === "error") return { color: "#ff342c" };
-    if (this.messageType === "info") return { color: "#0071ff" };
-    if (this.messageType === "warning") return { color: "#ffa301" };
-    return "";
+    return this.messageTypeMap[this.messageType]?.icStyle || "";
   }
 
   alertClass() {
-    if (this.messageType === "success") return "success-alert";
-    if (this.messageType === "error") return "error-alert";
-    if (this.messageType === "info") return "info-alert";
-    if (this.messageType === "warning") return "warning-alert";
-    return "";
+    return this.messageTypeMap[this.messageType]?.alertClass || "";
   }
 
-  // mounted() {
-  //   this.setType();
-  // }
+
 }
 </script>
 
