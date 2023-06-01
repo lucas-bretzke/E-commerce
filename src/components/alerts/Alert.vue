@@ -1,9 +1,9 @@
 <template>
   <div class="container">
-    <section :class="`alert ${newClass}`">
+    <section class="alert" :class="alertClass()">
       <div class="container-left">
         <FontAwesomeIcon
-          :icon="`fa-solid ${icon}`"
+          :icon="`fa-solid ${setIcon}`"
           class="ic"
           :style="icStyles()"
         />
@@ -32,24 +32,26 @@ import { Options, Vue } from "vue-class-component";
 })
 export default class Alert extends Vue {
   private messageType!: string;
-  public title = "";
-  public icon = "";
-  public newClass = "";
 
-  private setType() {
+  get setIcon() {
     const type = this.messageType;
-    if (type === "success") {
-      (this.title = "Sucesso"), (this.newClass = "success"), (this.icon = "fa-circle-check");
-    }
-    if (type === "error") {
-      (this.title = "Error"), (this.newClass = "error"), (this.icon = "fa-circle-xmark");
-    }
-    if (type === "info") {
-      (this.title = "Info"), (this.newClass = "info"), (this.icon = "fa-circle-info");
-    }
-    if (type === "warning") {
-     (this.title = "Aviso"), (this.newClass = "warning"), (this.icon = "fa-triangle-exclamation");
-    }
+    let icon = "";
+    if (type === "success") icon = "fa-circle-check";
+    if (type === "error") icon = "fa-circle-xmark";
+    if (type === "info") icon = "fa-circle-info";
+    if (type === "warning") icon = "fa-triangle-exclamation";
+
+    return icon;
+  }
+
+  get title() {
+    let title = "";
+    let type = this.messageType;
+    if (type === "success") title = "Sucesso";
+    if (type === "error") title = "Error";
+    if (type === "info") title = "Info";
+    if (type === "warning") title = "Aviso";
+    return title;
   }
 
   icStyles() {
@@ -57,28 +59,37 @@ export default class Alert extends Vue {
     if (this.messageType === "error") return { color: "#ff342c" };
     if (this.messageType === "info") return { color: "#0071ff" };
     if (this.messageType === "warning") return { color: "#ffa301" };
+    return "";
   }
 
-  mounted() {
-    this.setType();
+  alertClass() {
+    if (this.messageType === "success") return "success-alert";
+    if (this.messageType === "error") return "error-alert";
+    if (this.messageType === "info") return "info-alert";
+    if (this.messageType === "warning") return "warning-alert";
+    return "";
   }
+
+  // mounted() {
+  //   this.setType();
+  // }
 }
 </script>
 
 <style scoped lang="less">
-.success {
+.success-alert {
   background-color: #b5eacc;
   border-bottom: 3px solid #00ab4e;
 }
-.error {
+.error-alert {
   background-color: #ffe3e0;
   border-bottom: 3px solid #fb4a1f;
 }
-.info {
+.info-alert {
   background-color: #c3ecff;
   border-bottom: 3px solid #0072fc;
 }
-.warning {
+.warning-alert {
   background-color: #ffe3c7;
   border-bottom: 3px solid #fea400;
 }
