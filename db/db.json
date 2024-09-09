@@ -1,206 +1,136 @@
 {
-  "user": {
-    "uid": "",
-    "name": "",
-    "phone": 0,
-    "email": "",
-    "password": "",
-    "address": "",
-    "contactPreference": ""
-  },
-  "blouses": [
+  "baseProducts": [
     {
-      "name": "Blusa Floral",
-      "collection": "summe",
-      "price": 89.99,
-      "sizes": ["pp", "p", "m"],
-      "discount": 22,
-      "img": "/img/blusasFM/1.png",
-      "favorite": true,
-      "cart": true,
-      "id": 1
-    },
-    {
-      "name": "Blusa Listrada",
-      "collection": "summe",
-      "price": 69.99,
-      "sizes": ["p", "gg"],
-      "discount": 5,
-      "img": "/img/blusasFM/2.webp",
-      "favorite": false,
+      "id": 1,
+      "name": "Caneca de cerâmica rústica",
+      "description": "Descrição gerada automaticamente.",
+      "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/caneca-06.jpg",
+      "favorites": false,
+      "price": 100.99,
+      "discount": 10,
       "cart": false,
-      "id": 2
+      "category": "mugs"
     },
     {
-      "name": "Blusa Estampada",
-      "collection": "summe",
-      "price": 129.99,
-      "sizes": ["m", "g"],
+      "id": 2,
+      "name": "Camiseta not today.",
+      "description": "Descrição gerada automaticamente.",
+      "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/camiseta-05.jpg",
+      "favorites": false,
+      "price": 45.99,
       "discount": 5,
-      "img": "/img/blusasFM/6.jpg",
-      "favorite": false,
       "cart": false,
-      "id": 3
+      "category": "t-shirts"
     },
     {
-      "name": "Blusa Branca",
-      "collection": "summe",
-      "price": 59.99,
-      "sizes": ["p", "m", "gg"],
+      "id": 3,
+      "name": "Caneca Black Ring",
+      "description": "Descrição gerada automaticamente.",
+      "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/caneca-04.jpg",
+      "favorites": false,
+      "price": 66.99,
+      "discount": 12,
+      "cart": false,
+      "category": "mugs"
+    },
+    {
+      "id": 4,
+      "name": "Camiseta Broken Saints",
+      "description": "Descrição gerada automaticamente.",
+      "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/camiseta-03.jpg",
+      "favorites": false,
+      "price": 24.99,
+      "discount": 33,
+      "cart": false,
+      "category": "t-shirts"
+    },
+    {
+      "id": 5,
+      "name": "Camiseta Outcast",
+      "description": "Descrição gerada automaticamente.",
+      "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/camiseta-06.jpg",
+      "favorites": false,
+      "price": 39.99,
+      "discount": 0,
+      "cart": false,
+      "category": "t-shirts"
+    },
+    {
+      "id": 6,
+      "name": "Caneca The Grounds",
+      "description": "Descrição gerada automaticamente.",
+      "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/caneca-05.jpg",
+      "favorites": false,
+      "price": 97.99,
+      "discount": 17,
+      "cart": false,
+      "category": "mugs"
+    },
+    {
+      "id": 7,
+      "name": "Camiseta evening",
+      "description": "Descrição gerada automaticamente.",
+      "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/camiseta-02.jpg",
+      "favorites": false,
+      "price": 52.99,
+      "discount": 0,
+      "cart": false,
+      "category": "t-shirts"
+    },
+    {
+      "id": 8,
+      "name": "Caneca preto fosco",
+      "description": "Descrição gerada automaticamente.",
+      "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/caneca-01.jpg",
+      "favorites": false,
+      "price": 71.99,
+      "discount": 0,
+      "cart": false,
+      "category": "mugs"
+    },
+    {
+      "id": 9,
+      "name": "Caneca Never settle",
+      "description": "Descrição gerada automaticamente.",
+      "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/caneca-03.jpg",
+      "favorites": false,
+      "price": 26.99,
       "discount": 15,
-      "img": "/img/blusasFM/7.webp",
-      "favorite": false,
       "cart": false,
-      "id": 4
+      "category": "mugs"
     },
     {
-      "name": "Blusa Preta",
-      "collection": "summe",
-      "price": 79.99,
-      "sizes": ["pp", "g"],
-      "discount": 22,
-      "img": "/img/blusasFM/8.png",
-      "favorite": false,
+      "id": 10,
+      "name": "Camiseta DREAMER",
+      "description": "Descrição gerada automaticamente.",
+      "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/camiseta-01.jpg",
+      "favorites": false,
+      "price": 73.99,
+      "discount": 0,
       "cart": false,
-      "id": 5
+      "category": "t-shirts"
     },
     {
-      "name": "Blusa Floral",
-      "collection": "summe",
-      "price": 89.99,
-      "sizes": ["pp", "p", "m"],
-      "discount": 22,
-      "img": "/img/blusasFM/1.png",
-      "favorite": false,
+      "id": 11,
+      "name": "Caneca Decaf! P&Co",
+      "description": "Descrição gerada automaticamente.",
+      "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/caneca-02.jpg",
+      "favorites": false,
+      "price": 100.99,
+      "discount": 10,
       "cart": false,
-      "id": 6
+      "category": "mugs"
     },
     {
-      "name": "Blusa Listrada",
-      "collections": "summer",
-      "price": 69.99,
-      "sizes": ["p", "gg"],
-      "discount": 5,
-      "img": "/img/blusasFM/2.webp",
-      "favorite": false,
+      "id": 12,
+      "name": "Camiseta Ramones",
+      "description": "Descrição gerada automaticamente.",
+      "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/camiseta-04.jpg",
+      "favorites": false,
+      "price": 46.99,
+      "discount": 0,
       "cart": false,
-      "id": 7
-    },
-    {
-      "name": "Blusa Estampada",
-      "collections": "summer",
-      "price": 129.99,
-      "sizes": ["m", "g"],
-      "discount": 5,
-      "img": "/img/blusasFM/6.jpg",
-      "favorite": false,
-      "cart": false,
-      "id": 8
-    },
-    {
-      "name": "Blusa Branca",
-      "collections": "summer",
-      "price": 59.99,
-      "sizes": ["p", "m", "gg"],
-      "discount": 15,
-      "img": "/img/blusasFM/7.webp",
-      "favorite": false,
-      "cart": false,
-      "id": 9
-    },
-    {
-      "name": "Blusa Preta",
-      "collections": "summer",
-      "price": 79.99,
-      "sizes": ["pp", "g"],
-      "discount": 22,
-      "img": "/img/blusasFM/8.png",
-      "favorite": false,
-      "cart": false,
-      "id": 10
-    },
-    {
-      "name": "Blusa Branca",
-      "collections": "summe",
-      "price": 59.99,
-      "sizes": ["p", "m", "gg"],
-      "discount": 15,
-      "img": "/img/blusasFM/7.webp",
-      "favorite": false,
-      "cart": false,
-      "id": 11
-    },
-    {
-      "name": "Blusa Preta",
-      "collections": "summe",
-      "price": 79.99,
-      "sizes": ["pp", "g"],
-      "discount": 22,
-      "img": "/img/blusasFM/8.png",
-      "favorite": false,
-      "cart": false,
-      "id": 12
-    }
-  ],
-  "shorts": [
-    {
-      "name": "Shorts Jeans",
-      "marca": "Levi's",
-      "price": 129.99
-    },
-    {
-      "name": "Shorts Estampado",
-      "marca": "Farm",
-      "price": 89.99
-    }
-  ],
-  "tenis": [
-    {
-      "name": "Tênis Branco",
-      "marca": "Adidas",
-      "price": 249.99
-    },
-    {
-      "name": "Tênis Rosa",
-      "marca": "Nike",
-      "price": 199.99
-    }
-  ],
-  "vestidos": [
-    {
-      "name": "Vestido de Flores",
-      "marca": "C&A",
-      "price": 129.99
-    },
-    {
-      "name": "Vestido Longo",
-      "marca": "Renner",
-      "price": 189.99
-    }
-  ],
-  "bolsas": [
-    {
-      "name": "Bolsa de Couro",
-      "marca": "Schutz",
-      "price": 399.99
-    },
-    {
-      "name": "Bolsa de Praia",
-      "marca": "Farm",
-      "price": 79.99
-    }
-  ],
-  "favorites": [
-    {
-      "name": "Blusa Floral",
-      "collection": "summe",
-      "price": 89.99,
-      "sizes": ["pp", "p", "m"],
-      "discount": 22,
-      "img": "/img/blusasFM/1.png",
-      "favorite": true,
-      "cart": true,
-      "id": 1
+      "category": "t-shirts"
     }
   ]
 }

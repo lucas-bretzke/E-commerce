@@ -1,16 +1,8 @@
 <template>
   <div class="card">
-    <section class="container">
-      <div class="img-item" :style="`background-image: url(${item.img})`">
-        <div class="container-text">
-          <p v-if="item.discount >= 1" class="promotion">
-            -{{ item.discount }} %
-          </p>
-          <p class="price">R${{ item.price }}</p>
-        </div>
-      </div>
+    <div class="img" :style="`background-image: url(${item.image_url})`"></div>
 
-      <button class="btn-add-to-favorite" @click.stop="checkUser">
+    <!-- <button class="btn-add-to-favorite" @click.stop="checkUser">
         <FontAwesomeIcon
           v-if="!item.favorite"
           icon="fa-regular fa-heart"
@@ -20,21 +12,31 @@
       </button>
 
       <button class="btn-add-to-cart" @click.stop="addCart(item)">
-        <p v-if="!item.cart" class="is-heart">cart +</p>
-        <p v-else class="is-heart">cart -</p>
-      </button>
-    </section>
+        <FontAwesomeIcon
+          v-if="!item.cart"
+          :icon="['fas', 'cart-shopping']"
+          class="ic-cart"
+          @click="addToCart"
+        />
+        <FontAwesomeIcon
+          v-else
+          :icon="['fas', 'cart-plus']"
+          class="ic-cart"
+          @click="removeFromCart"
+        />
+      </button> -->
+
     <section class="description">
-      <h5>{{ item.name }}</h5>
-      <h5>{{ item.colection }}</h5>
-      <p>{{ item.brand }}</p>
-      <div class="sizes">
-        <span :class="item.sizes[0] ? 'size' : ''">{{ item.sizes[0] }}</span>
-        <span :class="item.sizes[1] ? 'size' : ''">{{ item.sizes[1] }}</span>
-        <span :class="item.sizes[2] ? 'size' : ''">{{ item.sizes[2] }}</span>
-        <span :class="item.sizes[3] ? 'size' : ''">{{ item.sizes[3] }}</span>
-        <span :class="item.sizes[4] ? 'size' : ''">{{ item.sizes[4] }}</span>
-      </div>
+      <p>{{ item.name }}</p>
+
+      <div class="line"></div>
+
+      <p class="price">R${{ item.price }}</p>
+      <!-- <p v-if="item.discount >= 1" class="promotion">
+          -{{ item.discount }} %
+        </p> -->
+
+      <!-- <p>{{ item.brand }}</p> -->
     </section>
   </div>
 </template>
@@ -64,24 +66,19 @@ export default class CardItems extends Vue {
       cartItems: [], // Lista de itens no carrinho
       isAuthenticated: true // Defina se o usuário está autenticado
     }
-    if (user?.uid) {
-      this.addOrRemoveFromFavorites(this.item)
-    } else {
-      this.store.isLogin = true
-    }
+
+    user?.uid
+      ? this.addOrRemoveFromFavorites(this.item)
+      : (this.store.isLogin = true)
   }
 
   public async addOrRemoveFromFavorites(item: IBlouse | IShoe) {
-    if (!item.favorite) {
-      this.addToFavorite(item)
-    } else {
-      this.deleteToFavorite(item)
-    }
+    !item.favorite ? this.addToFavorite(item) : this.deleteToFavorite(item)
   }
 
-  public async addToFavorite(item: IBlouse | IShoe) {
+  public async addToFavorite(item: any) {
     try {
-      item.favorite = !item.favorite
+      item.favorite = true
       this.editItem(item)
       await productApi.postItemInFavorites(item)
     } catch (error) {
@@ -91,9 +88,9 @@ export default class CardItems extends Vue {
     }
   }
 
-  public async deleteToFavorite(item: IBlouse | IShoe) {
+  public async deleteToFavorite(item: any) {
     try {
-      item.favorite = !item.favorite
+      item.favorite = false
       await this.editItem(item)
       await productApi.deleteItemFromFavorites(item.id)
     } catch (error) {
@@ -101,6 +98,15 @@ export default class CardItems extends Vue {
     } finally {
       this.store.getDone = !this.store.getDone
     }
+  }
+
+  public addToCart() {
+    // Adicione lógica para adicionar o item ao carrinho
+    this.$emit('add-to-cart', this.item)
+  }
+  public removeFromCart() {
+    // Adicione lógica para remover o item do carrinho
+    this.$emit('remove-from-cart', this.item)
   }
 
   public async editItem(item: IBlouse | IShoe) {
@@ -115,116 +121,76 @@ export default class CardItems extends Vue {
 
 <style scoped lang="less">
 .card {
-  width: 300px;
-  height: 368px;
-  margin: 0 10px;
-  text-align: left;
-  border: 1px solid transparent;
+  width: 256px;
+  height: 300px;
 
-  .container {
+  cursor: pointer;
+
+  top: 224px;
+  left: 160px;
+  gap: 0px;
+  border-radius: 8px 8px 0px 0px;
+  opacity: 0px;
+
+  .img {
     width: 100%;
-    height: 270px;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
     display: flex;
-    background-color: rgb(220, 220, 220);
-    padding: 10px;
-
-    .img-item {
-      width: 100%;
-      height: 100%;
-      background-position: center;
-      background-size: cover;
-      display: flex;
-      align-items: flex-end;
-
-      .container-text {
-        font-size: 14px;
-        margin-bottom: -10px;
-        margin-left: -4px;
-
-        .promotion {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: auto;
-          max-width: 41px;
-          padding: 2px 2px 2px 2px;
-          margin-bottom: 4px;
-          font-weight: bold;
-          color: rgba(0, 0, 0, 0.569);
-          background-color: white;
-        }
-        .price {
-          width: auto;
-          padding: 4px 4px 0 4px;
-          background-color: white;
-        }
-      }
-    }
-
-    .btn-add-to-favorite {
-      height: 30px;
-      margin-left: -30px;
-      margin-top: 5px;
-      border: none;
-      cursor: pointer;
-      background-color: transparent;
-
-      .ic-heart {
-        height: 16px;
-        width: 16px;
-
-        &:hover {
-          transform: translateZ(0px) scale(105%);
-        }
-      }
-    }
-    .btn-add-to-cart {
-      height: 30px;
-      margin-left: -30px;
-      margin-top: 30px;
-      border: none;
-      cursor: pointer;
-      background-color: transparent;
-    }
-  }
-
-  .description {
-    width: 100%;
-    height: auto;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    p {
-      font-size: 14px;
-    }
-
-    .sizes {
-      position: relative;
-      display: flex;
-      justify-content: flex-start;
-      bottom: -15px;
-      .size {
-        padding: 5px;
-        margin-right: 7px;
-        font-size: 13px;
-        margin-bottom: 5px;
-        border: 1px solid black;
-      }
-    }
+    align-items: flex-end;
+    border-radius: 8px 8px 0 0;
   }
 }
 
-.card:hover {
+.btn-add-to-favorite {
+  height: 30px;
+  margin-left: -30px;
+  margin-top: 5px;
+  border: none;
   cursor: pointer;
-  border: 1px solid black;
+  background-color: transparent;
 
-  .container .img-item .container-text {
-    transform: translateY(-10px);
-    -webkit-transform: translateY(-10px);
-    -moz-transform: translateY(-10px);
-    transition: 0.3s ease-out;
+  .ic-heart {
+    height: 16px;
+    width: 16px;
+
+    &:hover {
+      transform: translateZ(0px) scale(105%);
+    }
+  }
+}
+.btn-add-to-cart {
+  height: 30px;
+  margin-left: -30px;
+  margin-top: 30px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.description {
+  width: 256px;
+  height: 78px;
+  padding: 5px 12px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  border-radius: 0px 0px 4px 4px;
+  background-color: white;
+
+  p {
+  }
+
+  .price {
+    font-weight: bold;
+  }
+
+  .line {
+    width: 100%;
+    border: 1px solid #9595951a;
   }
 }
 </style>
