@@ -34,50 +34,58 @@
   </div>
 </template>
 
-
 <script lang="ts">
-import BaseNavBar from "@/components/base/BaseNavBar.vue";
-import ValueMarker from "@/components/MarkTheNumberOfFavorites.vue";
-import Cookies from "@/components/Cookies.vue";
-import { Auth } from "@/firebase";
-import { signOut } from "firebase/auth";
-import { baseStore } from "@/stores/baseStore";
+import BaseNavBar from '@/components/base/BaseNavBar.vue'
+import ValueMarker from '@/components/MarkTheNumberOfFavorites.vue'
+import Cookies from '@/components/Cookies.vue'
+import { baseStore } from '@/stores/baseStore'
 
-import { Options, Vue } from "vue-class-component";
+import { Options, Vue } from 'vue-class-component'
+import productApi from '@/services/productApi'
 
 @Options({
   components: { BaseNavBar, ValueMarker, Cookies },
   watch: {
     $route: function () {
-      this.setPageTitle();
+      this.setPageTitle()
     },
-    "store.user.uid": function (current, previous) {
-      this.buttonText = previous === "" && current ? "Sair" : "Logar";
-    },
-  },
+    'store.user.uid': function (current, previous) {
+      this.buttonText = previous === '' && current ? 'Sair' : 'Logar'
+    }
+  }
 })
 export default class NavBar extends Vue {
-  public store = baseStore();
-  public pageTitle = "";
-  public buttonText = "Logar";
+  public store = baseStore()
+  public pageTitle = ''
+  public buttonText = 'Logar'
+
+  public async GetUser() {
+    try {
+      const response = await productApi.getUser()
+      console.log(response)
+      // this.store.setUserData(response)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   public async setBtnFunction() {
-    if (!Auth.currentUser) {
-      this.store.isLogin = true;
+    if (!this.store.user.uid) {
+      this.store.isLogin = true
     } else {
-      Auth.signOut();
-      localStorage.clear();
-      this.store.user.uid = "";
-      setTimeout(() => window.location.reload(), 2000);
+      // Auth.signOut()
+      localStorage.clear()
+      this.store.user.uid = ''
+      setTimeout(() => window.location.reload(), 2000)
     }
   }
 
   public setPageTitle() {
-    const url: any = window.location.href;
-    const baseUrl = "http://localhost:8080";
+    const url: any = window.location.href
+    const baseUrl = 'http://localhost:8080'
 
-    if (url === `${baseUrl}/`) this.pageTitle = "FASHION AVENUE";
-    if (url === `${baseUrl}/Favorites`) this.pageTitle = "FAVORITOS";
+    if (url === `${baseUrl}/`) this.pageTitle = 'FASHION AVENUE'
+    if (url === `${baseUrl}/Favorites`) this.pageTitle = 'FAVORITOS'
   }
 }
 </script>

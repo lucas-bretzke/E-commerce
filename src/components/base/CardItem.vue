@@ -39,77 +39,79 @@
   </div>
 </template>
 
-
 <script lang="ts">
-import { baseStore } from "@/stores/baseStore";
-import { IBlouse, IShoe } from "@/types";
-import { Vue, Options } from "vue-class-component";
-import productApi from "@/services/productApi";
-import axios from "axios";
-import { Auth } from "@/firebase";
+import { baseStore } from '@/stores/baseStore'
+import { IBlouse, IShoe } from '@/types'
+import { Vue, Options } from 'vue-class-component'
+import productApi from '@/services/productApi'
+import axios from 'axios'
 
 @Options({
   props: {
-    item: { type: Object, required: true },
-  },
+    item: { type: Object, required: true }
+  }
 })
 export default class CardItems extends Vue {
-  item!: IBlouse | IShoe;
-  public store = baseStore();
+  item!: IBlouse | IShoe
+  public store = baseStore()
 
   public checkUser() {
-    const user = Auth.currentUser;
+    const user = {
+      uid: 1, // Id do usuário (um número único)
+      name: 'Lucas Bretzke', // Nome do usuário
+      email: 'lucasbretzke@example.com', // Email do usuário
+      favoriteItems: [], // Lista de itens favoritos (pode ser preenchida com ids de itens, por exemplo)
+      cartItems: [], // Lista de itens no carrinho
+      isAuthenticated: true // Defina se o usuário está autenticado
+    }
     if (user?.uid) {
-      this.addOrRemoveFromFavorites(this.item);
+      this.addOrRemoveFromFavorites(this.item)
     } else {
-      this.store.isLogin = true;
+      this.store.isLogin = true
     }
   }
 
   public async addOrRemoveFromFavorites(item: IBlouse | IShoe) {
     if (!item.favorite) {
-      this.addToFavorite(item);
+      this.addToFavorite(item)
     } else {
-      this.deleteToFavorite(item);
+      this.deleteToFavorite(item)
     }
   }
 
   public async addToFavorite(item: IBlouse | IShoe) {
     try {
-      item.favorite = !item.favorite;
-      this.editItem(item);
-      await productApi.postItemInFavorites(item);
+      item.favorite = !item.favorite
+      this.editItem(item)
+      await productApi.postItemInFavorites(item)
     } catch (error) {
-      console.log("POST ERROR", error);
+      console.log('POST ERROR', error)
     } finally {
-      this.store.getDone = !this.store.getDone;
+      this.store.getDone = !this.store.getDone
     }
   }
 
   public async deleteToFavorite(item: IBlouse | IShoe) {
     try {
-      item.favorite = !item.favorite;
-      await this.editItem(item);
-      await productApi.deleteItemFromFavorites(item.id);
+      item.favorite = !item.favorite
+      await this.editItem(item)
+      await productApi.deleteItemFromFavorites(item.id)
     } catch (error) {
-      console.log("DELETE ERROR", error);
+      console.log('DELETE ERROR', error)
     } finally {
-      this.store.getDone = !this.store.getDone;
+      this.store.getDone = !this.store.getDone
     }
   }
 
   public async editItem(item: IBlouse | IShoe) {
     try {
-      await productApi.putBlouse(item);
+      await productApi.putBlouse(item)
     } catch (error) {
-      console.log("PUT ERROR", error);
+      console.log('PUT ERROR', error)
     }
   }
 }
 </script>
-
-
-
 
 <style scoped lang="less">
 .card {

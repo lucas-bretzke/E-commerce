@@ -2,6 +2,10 @@ import { http } from './config'
 import { IBlouse, IShoe } from '@/types'
 
 export default {
+    getUser: async () => {
+        const response = await http.get<any>('/user')
+        return response?.data
+    },
     getBlouses: async () => {
         const response = await http.get<IBlouse[] | IShoe[]>('/blouses')
         return response?.data

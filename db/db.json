@@ -1,21 +1,19 @@
 {
   "user": {
+    "uid": "",
     "name": "",
     "phone": 0,
     "email": "",
+    "password": "",
     "address": "",
-    "credit-card-number": ""
+    "contactPreference": ""
   },
   "blouses": [
     {
       "name": "Blusa Floral",
       "collection": "summe",
       "price": 89.99,
-      "sizes": [
-        "pp",
-        "p",
-        "m"
-      ],
+      "sizes": ["pp", "p", "m"],
       "discount": 22,
       "img": "/img/blusasFM/1.png",
       "favorite": true,
@@ -26,10 +24,7 @@
       "name": "Blusa Listrada",
       "collection": "summe",
       "price": 69.99,
-      "sizes": [
-        "p",
-        "gg"
-      ],
+      "sizes": ["p", "gg"],
       "discount": 5,
       "img": "/img/blusasFM/2.webp",
       "favorite": false,
@@ -40,10 +35,7 @@
       "name": "Blusa Estampada",
       "collection": "summe",
       "price": 129.99,
-      "sizes": [
-        "m",
-        "g"
-      ],
+      "sizes": ["m", "g"],
       "discount": 5,
       "img": "/img/blusasFM/6.jpg",
       "favorite": false,
@@ -54,11 +46,7 @@
       "name": "Blusa Branca",
       "collection": "summe",
       "price": 59.99,
-      "sizes": [
-        "p",
-        "m",
-        "gg"
-      ],
+      "sizes": ["p", "m", "gg"],
       "discount": 15,
       "img": "/img/blusasFM/7.webp",
       "favorite": false,
@@ -69,10 +57,7 @@
       "name": "Blusa Preta",
       "collection": "summe",
       "price": 79.99,
-      "sizes": [
-        "pp",
-        "g"
-      ],
+      "sizes": ["pp", "g"],
       "discount": 22,
       "img": "/img/blusasFM/8.png",
       "favorite": false,
@@ -83,11 +68,7 @@
       "name": "Blusa Floral",
       "collection": "summe",
       "price": 89.99,
-      "sizes": [
-        "pp",
-        "p",
-        "m"
-      ],
+      "sizes": ["pp", "p", "m"],
       "discount": 22,
       "img": "/img/blusasFM/1.png",
       "favorite": false,
@@ -98,10 +79,7 @@
       "name": "Blusa Listrada",
       "collections": "summer",
       "price": 69.99,
-      "sizes": [
-        "p",
-        "gg"
-      ],
+      "sizes": ["p", "gg"],
       "discount": 5,
       "img": "/img/blusasFM/2.webp",
       "favorite": false,
@@ -112,10 +90,7 @@
       "name": "Blusa Estampada",
       "collections": "summer",
       "price": 129.99,
-      "sizes": [
-        "m",
-        "g"
-      ],
+      "sizes": ["m", "g"],
       "discount": 5,
       "img": "/img/blusasFM/6.jpg",
       "favorite": false,
@@ -126,11 +101,7 @@
       "name": "Blusa Branca",
       "collections": "summer",
       "price": 59.99,
-      "sizes": [
-        "p",
-        "m",
-        "gg"
-      ],
+      "sizes": ["p", "m", "gg"],
       "discount": 15,
       "img": "/img/blusasFM/7.webp",
       "favorite": false,
@@ -141,10 +112,7 @@
       "name": "Blusa Preta",
       "collections": "summer",
       "price": 79.99,
-      "sizes": [
-        "pp",
-        "g"
-      ],
+      "sizes": ["pp", "g"],
       "discount": 22,
       "img": "/img/blusasFM/8.png",
       "favorite": false,
@@ -155,11 +123,7 @@
       "name": "Blusa Branca",
       "collections": "summe",
       "price": 59.99,
-      "sizes": [
-        "p",
-        "m",
-        "gg"
-      ],
+      "sizes": ["p", "m", "gg"],
       "discount": 15,
       "img": "/img/blusasFM/7.webp",
       "favorite": false,
@@ -170,10 +134,7 @@
       "name": "Blusa Preta",
       "collections": "summe",
       "price": 79.99,
-      "sizes": [
-        "pp",
-        "g"
-      ],
+      "sizes": ["pp", "g"],
       "discount": 22,
       "img": "/img/blusasFM/8.png",
       "favorite": false,
@@ -234,11 +195,7 @@
       "name": "Blusa Floral",
       "collection": "summe",
       "price": 89.99,
-      "sizes": [
-        "pp",
-        "p",
-        "m"
-      ],
+      "sizes": ["pp", "p", "m"],
       "discount": 22,
       "img": "/img/blusasFM/1.png",
       "favorite": true,

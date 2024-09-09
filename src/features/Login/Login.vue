@@ -52,63 +52,58 @@
 </template>
 
 <script lang="ts">
-import InputText from "@/components/Input/InputText.vue";
-import InputPassword from "@/components/Input/InputPassword.vue";
-import { Auth } from "@/firebase";
-import {
-  signInWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from "firebase/auth";
-import { baseStore } from "@/stores/baseStore";
+import InputText from '@/components/Input/InputText.vue'
+import InputPassword from '@/components/Input/InputPassword.vue'
 
-import { Vue, Options } from "vue-class-component";
+import { baseStore } from '@/stores/baseStore'
+
+import { Vue, Options } from 'vue-class-component'
 
 @Options({ components: { InputPassword, InputText } })
 export default class Login extends Vue {
-  public store = baseStore();
-  public email = "";
-  public password = "";
-  public emailError = "";
-  public passwordError = "";
+  public store = baseStore()
+  public email = ''
+  public password = ''
+  public emailError = ''
+  public passwordError = ''
 
-  public async signIn() {
-    try {
-      await signInWithEmailAndPassword(Auth, this.email, this.password);
-    } catch (error) {
-      if (error instanceof Error) {
-        const msg = error.message;
+  // public async signIn() {
+  //   try {
+  //     await signInWithEmailAndPassword(Auth, this.email, this.password);
+  //   } catch (error) {
+  //     if (error instanceof Error) {
+  //       const msg = error.message;
 
-        this.emailError = msg.includes("auth/user-not-found")
-          ? "E-mail inválido"
-          : "";
+  //       this.emailError = msg.includes("auth/user-not-found")
+  //         ? "E-mail inválido"
+  //         : "";
 
-        this.passwordError = msg.includes("auth/wrong-password")
-          ? "Senha inválida"
-          : "";
-      } else {
-        console.log("Erro desconhecido ao fazer login.");
-      }
-    } finally {
-      if (Auth.currentUser) {
-        this.store.user.uid = Auth.currentUser?.uid;
-        this.store.isLogin = false;
-        localStorage.setItem("user", JSON.stringify(this.store.user));
-      }
-    }
-  }
+  //       this.passwordError = msg.includes("auth/wrong-password")
+  //         ? "Senha inválida"
+  //         : "";
+  //     } else {
+  //       console.log("Erro desconhecido ao fazer login.");
+  //     }
+  //   } finally {
+  //     if (Auth.currentUser) {
+  //       this.store.user.uid = Auth.currentUser?.uid;
+  //       this.store.isLogin = false;
+  //       localStorage.setItem("user", JSON.stringify(this.store.user));
+  //     }
+  //   }
+  // }
 
-  async loginWithGoogle() {
-    try {
-      const provider = new GoogleAuthProvider();
-      await signInWithPopup(Auth, provider);
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  // async loginWithGoogle() {
+  //   try {
+  //     const provider = new GoogleAuthProvider();
+  //     await signInWithPopup(Auth, provider);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
 
   public close() {
-    this.store.isLogin = false;
+    this.store.isLogin = false
   }
 }
 </script>
