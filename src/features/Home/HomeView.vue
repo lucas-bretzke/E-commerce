@@ -15,85 +15,105 @@
         />
       </header>
     </div>
-    <ProductCarousel
+    <!-- <ProductCarousel
       title="NOVIDADES"
       :dataItems="dataBlouses"
       @getItems="getBlouses"
-    />
+    /> -->
+
+    <ProductGrid :products="baseProducts" />
+
     <BackToTopButton />
     <Login v-show="store.isLogin" />
   </main>
 </template>
 
 <script lang="ts">
-import Alert from "@/components/alerts/Alert.vue";
-import ImageSlider from "../../components/ImageSlider.vue";
-import ProductCarousel from "@/components/ProductCarousel.vue";
-import BackToTopButton from "@/components/BackToTopButton.vue";
-import productApi from "@/services/productApi";
-import Login from "@/features/Login/Login.vue";
-import { IBlouse } from "@/types";
-import { baseStore } from "@/stores/baseStore";
+import Alert from '@/components/alerts/Alert.vue'
+import ImageSlider from '../../components/ImageSlider.vue'
+import ProductCarousel from '@/components/ProductCarousel.vue'
+import BackToTopButton from '@/components/BackToTopButton.vue'
+import Login from '@/features/Login/Login.vue'
+import productApi from '@/services/productApi'
+import { IBlouse } from '@/types'
+import { baseStore } from '@/stores/baseStore'
 
-import { Options, Vue } from "vue-class-component";
+import { Options, Vue } from 'vue-class-component'
+import ProductGrid from '@/components/base/ProductGrid.vue'
 
 @Options({
   components: {
     ImageSlider,
+    ProductGrid,
     ProductCarousel,
     BackToTopButton,
     Login,
-    Alert,
+    Alert
   },
   watch: {
-    "store.user.uid": function (current, previous) {
-      this.arrowLoggedUserMsg(current, previous);
-    },
-  },
+    'store.user.uid': function (current, previous) {
+      this.arrowLoggedUserMsg(current, previous)
+    }
+  }
 })
 export default class HomeView extends Vue {
-  public store = baseStore();
+  public store = baseStore()
   public images = [
     {
-      url: "/img/HomeBanner/roupas03.jpg",
-      alt: "Imagem 1",
+      url: '/img/HomeBanner/roupas03.jpg',
+      alt: 'Imagem 1'
     },
     {
-      url: "/img/HomeBanner/roupas01.webp",
-      alt: "Imagem 2",
+      url: '/img/HomeBanner/roupas01.webp',
+      alt: 'Imagem 2'
     },
     {
-      url: "/img/HomeBanner/roupas02.jpg",
-      alt: "Imagem 3",
-    },
-  ];
-  public dataBlouses: IBlouse[] = [];
-  public isAlert = false;
-  public alertDescription = "";
-  public alertMessageType = "";
+      url: '/img/HomeBanner/roupas02.jpg',
+      alt: 'Imagem 3'
+    }
+  ]
+  public dataBlouses: IBlouse[] = []
+  public isAlert = false
+  public alertDescription = ''
+  public alertMessageType = ''
+  public baseProducts = []
 
   showAlert(description: string, msgType: string) {
-    this.alertDescription = description;
-    this.alertMessageType = msgType;
-    this.isAlert = true;
+    this.alertDescription = description
+    this.alertMessageType = msgType
+    this.isAlert = true
   }
 
- arrowLoggedUserMsg(current: any, previous: any) {
-  if (!previous && current) {
-    this.showAlert("Usuário logado com sucesso", "success");
-  } else if (previous && !current) {
-    this.showAlert("Você não está mais logado!", "warning");
+  async getAllProducts() {
+    try {
+      const res = await productApi.getBaseProducts()
+      this.baseProducts = res
+      console.log(res)
+    } catch (error) {
+      console.log('ERROR')
+    }
   }
-  setTimeout(() => (this.isAlert = false), 3500);
-}
+
+  arrowLoggedUserMsg(current: any, previous: any) {
+    if (!previous && current) {
+      this.showAlert('Usuário logado com sucesso', 'success')
+    } else if (previous && !current) {
+      this.showAlert('Você não está mais logado!', 'warning')
+    }
+    setTimeout(() => (this.isAlert = false), 3500)
+  }
 
   public async getBlouses() {
     try {
-      const response = await productApi.getBlouses();
-      this.dataBlouses = response;
+      const response = await productApi.getBlouses()
+      this.dataBlouses = response
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
+  }
+
+  mounted() {
+    this.getAllProducts()
   }
 }
 </script>
