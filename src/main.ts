@@ -1,52 +1,53 @@
-import { createApp } from 'vue'
-import App from './App.vue'
 import './registerServiceWorker'
+import App from './App.vue'
 import router from './router'
-import { createPinia } from 'pinia'
+import { createApp } from 'vue'
+
 import VueCookies from './vue-cookies'
+import { createPinia } from 'pinia'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import {
-  faHeart as regularHeart,
   faEye,
-  faEyeSlash
+  faEyeSlash,
+  faHeart as regularHeart
 } from '@fortawesome/free-regular-svg-icons'
 import {
-  faCartShopping,
-  faArrowRight,
-  faHeart as solidHeart,
-  faChevronRight,
-  faChevronLeft,
+  faXmark,
   faCaretUp,
   faSpinner,
-  faXmark,
-  faCircleCheck,
-  faCircleXmark,
   faCartPlus,
   faCircleInfo,
+  faArrowRight,
+  faChevronLeft,
+  faCircleCheck,
+  faCircleXmark,
+  faCartShopping,
+  faChevronRight,
+  faHeart as solidHeart,
   faTriangleExclamation
 } from '@fortawesome/free-solid-svg-icons'
 import { faGoogle } from '@fortawesome/free-brands-svg-icons'
 
 library.add(
-  faCartShopping,
-  faCartPlus,
-  faCartShopping,
-  faArrowRight,
-  solidHeart,
-  regularHeart,
-  faChevronRight,
-  faChevronLeft,
-  faCaretUp,
-  faSpinner,
   faEye,
-  faEyeSlash,
-  faGoogle,
   faXmark,
+  faGoogle,
+  faSpinner,
+  faCaretUp,
+  faCartPlus,
+  solidHeart,
+  faEyeSlash,
+  faArrowRight,
+  faCircleInfo,
+  regularHeart,
   faCircleCheck,
   faCircleXmark,
-  faCircleInfo,
+  faChevronLeft,
+  faChevronRight,
+  faCartShopping,
+  faCartShopping,
   faTriangleExclamation
 )
 
