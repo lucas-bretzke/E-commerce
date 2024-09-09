@@ -6,6 +6,11 @@ export default {
         const response = await http.get<any>('/user')
         return response?.data
     },
+
+    getBaseProducts: async () => {
+        const response = await http.get<any>('/baseProducts')
+        return response?.data
+    },
     getBlouses: async () => {
         const response = await http.get<IBlouse[] | IShoe[]>('/blouses')
         return response?.data
