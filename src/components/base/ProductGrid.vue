@@ -1,7 +1,7 @@
 <template>
   <main>
     <nav>
-      <div class="categories">
+      <container class="categories">
         <button
           :class="{ active: selectedCategory === 'all' }"
           @click="selectCategory('all')"
@@ -20,8 +20,16 @@
         >
           CANECAS
         </button>
-      </div>
-      <div>Organizar por ></div>
+      </container>
+
+      <container style="display: flex">
+        <input
+          v-model="search"
+          placeholder="Procurando por algo específico?"
+          class="search-tab"
+        />
+        <p>Organizar por-></p>
+      </container>
     </nav>
 
     <section>
@@ -35,7 +43,6 @@
 </template>
 
 <script lang="ts">
-import { ref } from 'vue'
 import { Options, Vue } from 'vue-class-component'
 import CardItem from './CardItem.vue'
 
@@ -56,16 +63,20 @@ interface Product {
 })
 export default class ProductGrid extends Vue {
   public selectedCategory = 'all'
-  products!: Product[]
+  public products!: Product[]
+  public search = ''
 
   get filteredProducts() {
-    console.log(this.selectedCategory)
     const category = this.selectedCategory
 
-    if (category === 'all') {
-      return this.products
-    }
-    return this.products.filter(product => product.category === category)
+    const filteredByCategory =
+      category === 'all'
+        ? this.products
+        : this.products.filter(product => product.category === category)
+
+    return filteredByCategory.filter(item => {
+      return item.name.toUpperCase().includes(this.search.toUpperCase())
+    })
   }
 
   selectCategory(category: string) {

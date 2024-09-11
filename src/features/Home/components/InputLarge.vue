@@ -17,8 +17,7 @@ export default class InputLarge extends Vue {}
 
 <style scoped lang="less">
 .background {
-  max-width: 1000px;
-  width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0;
   border-radius: 5px;
