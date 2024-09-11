@@ -128,7 +128,7 @@ export default class HomeView extends Vue {
 .background-top {
   width: 100%;
   height: 370px;
-  margin: 0 0 170px 0;
+  margin: 0 0 130px 0;
   align-items: center;
   background-color: var(--color-primary);
 }

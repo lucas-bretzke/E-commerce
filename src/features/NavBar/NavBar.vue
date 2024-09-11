@@ -61,9 +61,8 @@ export default class NavBar extends Vue {
 
   public async GetUser() {
     try {
-      const response = await productApi.getUser()
-      console.log(response)
-      // this.store.setUserData(response)
+      const res = await productApi.getUser()
+      // this.store.setUserData(res)
     } catch (error) {
       console.log(error)
     }
