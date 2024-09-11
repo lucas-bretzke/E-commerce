@@ -1,42 +1,37 @@
 <template>
   <div class="card">
-    <div class="img" :style="`background-image: url(${item.image_url})`"></div>
+    <div
+      class="img"
+      :style="{ backgroundImage: `url(${item.image_url})` }"
+    ></div>
 
-    <!-- <button class="btn-add-to-favorite" @click.stop="checkUser">
+    <span class="container-buttons">
+      <button @click.stop="toggleFavoriteItem(item)">
         <FontAwesomeIcon
           v-if="!item.favorite"
           icon="fa-regular fa-heart"
-          class="ic-heart"
+          class="ic"
         />
-        <FontAwesomeIcon v-else icon="fa-solid fa-heart" class="ic-heart" />
+        <FontAwesomeIcon v-else icon="fa-solid fa-heart" class="ic" />
       </button>
 
-      <button class="btn-add-to-cart" @click.stop="addCart(item)">
+      <button @click.stop="toggleCartItem(item)">
         <FontAwesomeIcon
           v-if="!item.cart"
           :icon="['fas', 'cart-shopping']"
-          class="ic-cart"
-          @click="addToCart"
+          class="ic"
         />
-        <FontAwesomeIcon
-          v-else
-          :icon="['fas', 'cart-plus']"
-          class="ic-cart"
-          @click="removeFromCart"
-        />
-      </button> -->
+        <FontAwesomeIcon v-else :icon="['fas', 'cart-plus']" class="ic" />
+      </button>
+    </span>
 
     <section class="description">
       <p>{{ item.name }}</p>
-
       <div class="line"></div>
-
-      <p class="price">R${{ item.price }}</p>
-      <!-- <p v-if="item.discount >= 1" class="promotion">
-          -{{ item.discount }} %
-        </p> -->
-
-      <!-- <p>{{ item.brand }}</p> -->
+      <div style="display: flex; justify-content: space-between">
+        <p class="price">R${{ item.price }}</p>
+        <p v-if="item.discount >= 1" class="promotion">-{{ item.discount }}%</p>
+      </div>
     </section>
   </div>
 </template>
@@ -46,7 +41,6 @@ import { baseStore } from '@/stores/baseStore'
 import { IBlouse, IShoe } from '@/types'
 import { Vue, Options } from 'vue-class-component'
 import productApi from '@/services/productApi'
-import axios from 'axios'
 
 @Options({
   props: {
@@ -56,64 +50,75 @@ import axios from 'axios'
 export default class CardItems extends Vue {
   item!: IBlouse | IShoe
   public store = baseStore()
+  private user = {
+    uid: 1,
+    name: 'Lucas Bretzke',
+    email: 'lucasbretzke@example.com',
+    favoriteItems: [],
+    cartItems: [],
+    isAuthenticated: true
+  }
 
-  public checkUser() {
-    const user = {
-      uid: 1, // Id do usuário (um número único)
-      name: 'Lucas Bretzke', // Nome do usuário
-      email: 'lucasbretzke@example.com', // Email do usuário
-      favoriteItems: [], // Lista de itens favoritos (pode ser preenchida com ids de itens, por exemplo)
-      cartItems: [], // Lista de itens no carrinho
-      isAuthenticated: true // Defina se o usuário está autenticado
+  public toggleFavoriteItem(item: any) {
+    if (this.user.isAuthenticated) {
+      !item.favorite
+        ? this.addToFavorites(item)
+        : this.removeFromFavorites(item)
+    } else {
+      this.store.isLogin = true // Exibe modal de login
     }
-
-    user?.uid
-      ? this.addOrRemoveFromFavorites(this.item)
-      : (this.store.isLogin = true)
   }
 
-  public async addOrRemoveFromFavorites(item: IBlouse | IShoe) {
-    !item.favorite ? this.addToFavorite(item) : this.deleteToFavorite(item)
+  public toggleCartItem(item: any) {
+    if (this.user.isAuthenticated) {
+      !item.cart ? this.addToCart(item) : this.removeFromCart(item)
+    } else {
+      this.store.isLogin = true // Exibe modal de login
+    }
   }
 
-  public async addToFavorite(item: any) {
+  // Adiciona o item aos favoritos
+  public async addToFavorites(item: IBlouse | IShoe) {
     try {
       item.favorite = true
-      this.editItem(item)
+      await this.editItem(item)
       await productApi.postItemInFavorites(item)
     } catch (error) {
-      console.log('POST ERROR', error)
+      console.error('Error adding to favorites:', error)
     } finally {
       this.store.getDone = !this.store.getDone
     }
   }
 
-  public async deleteToFavorite(item: any) {
+  // Remove o item dos favoritos
+  public async removeFromFavorites(item: any) {
     try {
       item.favorite = false
       await this.editItem(item)
       await productApi.deleteItemFromFavorites(item.id)
     } catch (error) {
-      console.log('DELETE ERROR', error)
+      console.error('Error removing from favorites:', error)
     } finally {
       this.store.getDone = !this.store.getDone
     }
   }
 
-  public addToCart() {
-    // Adicione lógica para adicionar o item ao carrinho
-    this.$emit('add-to-cart', this.item)
-  }
-  public removeFromCart() {
-    // Adicione lógica para remover o item do carrinho
-    this.$emit('remove-from-cart', this.item)
+  // Emite o evento para adicionar ao carrinho
+  public addToCart(item: any) {
+    console.log('adicionando do carrinho')
   }
 
+  // Emite o evento para remover do carrinho
+  public removeFromCart(item: any) {
+    console.log('removendo do carrinho')
+  }
+
+  // Edita o item no sistema
   public async editItem(item: IBlouse | IShoe) {
     try {
       await productApi.putBlouse(item)
     } catch (error) {
-      console.log('PUT ERROR', error)
+      console.error('Error updating item:', error)
     }
   }
 }
@@ -124,13 +129,11 @@ export default class CardItems extends Vue {
   width: 256px;
   height: 300px;
 
-  cursor: pointer;
+  position: relative;
 
-  top: 224px;
-  left: 160px;
-  gap: 0px;
-  border-radius: 8px 8px 0px 0px;
   opacity: 0px;
+  cursor: pointer;
+  border-radius: 8px 8px 0px 0px;
 
   .img {
     width: 100%;
@@ -139,34 +142,46 @@ export default class CardItems extends Vue {
     background-size: cover;
     display: flex;
     align-items: flex-end;
+    border: 3px solid white;
     border-radius: 8px 8px 0 0;
-  }
-}
-
-.btn-add-to-favorite {
-  height: 30px;
-  margin-left: -30px;
-  margin-top: 5px;
-  border: none;
-  cursor: pointer;
-  background-color: transparent;
-
-  .ic-heart {
-    height: 16px;
-    width: 16px;
 
     &:hover {
-      transform: translateZ(0px) scale(105%);
+      border: 3px solid var(--color-primary);
     }
   }
 }
-.btn-add-to-cart {
-  height: 30px;
-  margin-left: -30px;
-  margin-top: 30px;
-  border: none;
-  cursor: pointer;
-  background-color: transparent;
+
+.container-buttons {
+  width: auto;
+  height: 53px;
+  padding: 5px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.663);
+
+  button {
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+
+    &:hover {
+      scale: 1.2;
+    }
+
+    .ic {
+      height: 16px;
+      width: 16px;
+    }
+  }
 }
 
 .description {
@@ -186,6 +201,12 @@ export default class CardItems extends Vue {
 
   .price {
     font-weight: bold;
+  }
+
+  .promotion {
+    color: rgb(18, 167, 18);
+    font-weight: 600;
+    margin-left: 10px;
   }
 
   .line {

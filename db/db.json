@@ -131,6 +131,138 @@
       "discount": 0,
       "cart": false,
       "category": "t-shirts"
+    },
+    {
+      "id": 13,
+      "name": "Caneca de cerâmica rústica",
+      "description": "Descrição gerada automaticamente.",
+      "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/caneca-06.jpg",
+      "favorites": false,
+      "price": 100.99,
+      "discount": 10,
+      "cart": false,
+      "category": "mugs"
+    },
+    {
+      "id": 14,
+      "name": "Camiseta not today.",
+      "description": "Descrição gerada automaticamente.",
+      "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/camiseta-05.jpg",
+      "favorites": false,
+      "price": 45.99,
+      "discount": 5,
+      "cart": false,
+      "category": "t-shirts"
+    },
+    {
+      "id": 15,
+      "name": "Caneca Black Ring",
+      "description": "Descrição gerada automaticamente.",
+      "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/caneca-04.jpg",
+      "favorites": false,
+      "price": 66.99,
+      "discount": 12,
+      "cart": false,
+      "category": "mugs"
+    },
+    {
+      "id": 16,
+      "name": "Camiseta Broken Saints",
+      "description": "Descrição gerada automaticamente.",
+      "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/camiseta-03.jpg",
+      "favorites": false,
+      "price": 24.99,
+      "discount": 33,
+      "cart": false,
+      "category": "t-shirts"
+    },
+    {
+      "id": 17,
+      "name": "Camiseta Outcast",
+      "description": "Descrição gerada automaticamente.",
+      "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/camiseta-06.jpg",
+      "favorites": false,
+      "price": 39.99,
+      "discount": 0,
+      "cart": false,
+      "category": "t-shirts"
+    },
+    {
+      "id": 18,
+      "name": "Caneca The Grounds",
+      "description": "Descrição gerada automaticamente.",
+      "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/caneca-05.jpg",
+      "favorites": false,
+      "price": 97.99,
+      "discount": 17,
+      "cart": false,
+      "category": "mugs"
+    },
+    {
+      "id": 19,
+      "name": "Camiseta evening",
+      "description": "Descrição gerada automaticamente.",
+      "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/camiseta-02.jpg",
+      "favorites": false,
+      "price": 52.99,
+      "discount": 0,
+      "cart": false,
+      "category": "t-shirts"
+    },
+    {
+      "id": 20,
+      "name": "Caneca preto fosco",
+      "description": "Descrição gerada automaticamente.",
+      "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/caneca-01.jpg",
+      "favorites": false,
+      "price": 71.99,
+      "discount": 0,
+      "cart": false,
+      "category": "mugs"
+    },
+    {
+      "id": 21,
+      "name": "Caneca Never settle",
+      "description": "Descrição gerada automaticamente.",
+      "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/caneca-03.jpg",
+      "favorites": false,
+      "price": 26.99,
+      "discount": 15,
+      "cart": false,
+      "category": "mugs"
+    },
+    {
+      "id": 22,
+      "name": "Camiseta DREAMER",
+      "description": "Descrição gerada automaticamente.",
+      "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/camiseta-01.jpg",
+      "favorites": false,
+      "price": 73.99,
+      "discount": 0,
+      "cart": false,
+      "category": "t-shirts"
+    },
+    {
+      "id": 23,
+      "name": "Caneca Decaf! P&Co",
+      "description": "Descrição gerada automaticamente.",
+      "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/caneca-02.jpg",
+      "favorites": false,
+      "price": 100.99,
+      "discount": 10,
+      "cart": false,
+      "category": "mugs"
+    },
+    {
+      "id": 24,
+      "name": "Camiseta Ramones",
+      "description": "Descrição gerada automaticamente.",
+      "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/camiseta-04.jpg",
+      "favorites": false,
+      "price": 46.99,
+      "discount": 0,
+      "cart": false,
+      "category": "t-shirts"
     }
   ]
 }
