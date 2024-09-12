@@ -23,16 +23,31 @@
       </container>
 
       <container style="display: flex">
-        <input
-          v-model="search"
-          placeholder="Procurando por algo específico?"
-          class="search-tab"
-        />
-        <p>Organizar por-></p>
+        <span class="input">
+          <input
+            v-model="search"
+            placeholder="Procurando por algo específico?"
+            class="search-tab"
+          />
+          <FontAwesomeIcon icon="search" class="fa-search" />
+        </span>
+
+        <div class="dropdown">
+          <button class="dropdown-button">
+            Organizar por
+            <FontAwesomeIcon icon="chevron-down" style="padding-left: 4px" />
+          </button>
+          <div class="dropdown-content">
+            <button>Novidades</button>
+            <button>Preço: Maior - menor</button>
+            <button>Preço: Menor - maior</button>
+            <button>Mais vendidos</button>
+          </div>
+        </div>
       </container>
     </nav>
 
-    <section>
+    <section class="container-grid">
       <CardItem
         v-for="product in filteredProducts"
         :key="product.id"
@@ -104,7 +119,6 @@ main {
     .categories {
       width: 500px;
       display: flex;
-      border: 1px solid green;
 
       button {
         width: auto;
@@ -125,7 +139,7 @@ main {
     }
   }
 
-  section {
+  .container-grid {
     max-width: 1100px;
     width: 100%;
     height: auto;
@@ -136,6 +150,86 @@ main {
     display: grid;
     grid-template-columns: repeat(4, minmax(150px, 3fr));
     gap: 100px 2vw;
+  }
+
+  .input {
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 20px;
+    padding: 8px;
+    background-color: #f9f9f9;
+
+    width: 300px;
+    height: 42px;
+    padding: 9px 16px 9px 16px;
+    border-radius: 8px;
+
+    &:hover {
+      border-color: #888;
+    }
+  }
+
+  .search-tab {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    width: 100%;
+    background-color: transparent;
+  }
+
+  .input .fa-search {
+    color: #999;
+    font-size: 17px;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    z-index: 3;
+
+    .dropdown-button {
+      background-color: transparent;
+      color: #8a8a8a;
+      padding: 10px 16px;
+      border: none;
+      cursor: pointer;
+      align-items: center;
+
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 22px;
+    }
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+
+  .dropdown-content button {
+    width: 100%;
+    color: black;
+    padding: 12px 16px;
+    text-align: left;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+    border: none;
+
+    background-color: #f9f9f9;
+  }
+
+  .dropdown-content button:hover {
+    background-color: #f1f1f1;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
   }
 }
 </style>
