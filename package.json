@@ -25,7 +25,8 @@
     "vue": "^3.5.3",
     "vue-class-component": "^8.0.0-0",
     "vue-cookies-ts": "^1.5.19",
-    "vue-router": "^4.0.3"
+    "vue-router": "^4.0.3",
+    "vuejs-paginate-next": "^1.0.2"
   },
   "devDependencies": {
     "@types/jest": "^27.0.1",
