@@ -32,24 +32,39 @@
           <FontAwesomeIcon icon="search" class="fa-search" />
         </span>
 
-        <div class="dropdown">
-          <button class="dropdown-button">
-            Organizar por
-            <FontAwesomeIcon icon="chevron-down" style="padding-left: 4px" />
-          </button>
-          <div class="dropdown-content">
-            <button>Novidades</button>
-            <button>Preço: Maior - menor</button>
-            <button>Preço: Menor - maior</button>
-            <button>Mais vendidos</button>
+        <span style="display: flex">
+          <div class="dropdown">
+            <button class="dropdown-button">
+              Organizar por
+              <FontAwesomeIcon icon="chevron-down" style="padding-left: 4px" />
+            </button>
+            <div class="dropdown-content">
+              <button>Novidades</button>
+              <button>Preço: Maior - menor</button>
+              <button>Preço: Menor - maior</button>
+              <button>Mais vendidos</button>
+            </div>
           </div>
-        </div>
+          <!-- Componente de paginação -->
+          <paginate
+            :page-count="totalPages"
+            :click-handler="changePage"
+            :prev-text="'<<'"
+            :next-text="'>>'"
+            :container-class="'pagination'"
+            :page-class="'page-item'"
+            :page-link-class="'page-link'"
+            :prev-class="'page-item'"
+            :next-class="'page-item'"
+            :active-class="'active'"
+          />
+        </span>
       </container>
     </nav>
 
     <section class="container-grid">
       <CardItem
-        v-for="product in filteredProducts"
+        v-for="product in paginatedProducts"
         :key="product.id"
         :item="product"
       />
@@ -60,15 +75,20 @@
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component'
 import CardItem from './CardItem.vue'
+import Paginate from 'vuejs-paginate-next'
 
 interface Product {
+  id: number
   name: string
   category: string
-  // Add other properties as needed
+  // Adicionar outras propriedades conforme necessário
 }
 
 @Options({
-  components: { CardItem },
+  components: {
+    CardItem,
+    Paginate // Registre o componente de paginação
+  },
   props: {
     products: {
       type: Array as () => Product[],
@@ -80,6 +100,8 @@ export default class ProductGrid extends Vue {
   public selectedCategory = 'all'
   public products!: Product[]
   public search = ''
+  public currentPage = 1
+  public itemsPerPage = 5
 
   get filteredProducts() {
     const category = this.selectedCategory
@@ -89,13 +111,28 @@ export default class ProductGrid extends Vue {
         ? this.products
         : this.products.filter(product => product.category === category)
 
-    return filteredByCategory.filter(item => {
-      return item.name.toUpperCase().includes(this.search.toUpperCase())
-    })
+    return filteredByCategory.filter(item =>
+      item.name.toUpperCase().includes(this.search.toUpperCase())
+    )
+  }
+
+  get totalPages() {
+    return Math.ceil(this.filteredProducts.length / this.itemsPerPage)
+  }
+
+  get paginatedProducts() {
+    const start = (this.currentPage - 1) * this.itemsPerPage
+    const end = start + this.itemsPerPage
+    return this.filteredProducts.slice(start, end)
   }
 
   selectCategory(category: string) {
     this.selectedCategory = category
+    this.currentPage = 1 // Reset to page 1 when category changes
+  }
+
+  changePage(page: number) {
+    this.currentPage = page
   }
 }
 </script>
@@ -230,6 +267,62 @@ main {
 
   .dropdown:hover .dropdown-content {
     display: block;
+  }
+
+  ::v-deep .pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .page-item {
+    margin: 0 8px;
+  }
+
+  ::v-deep .page-link {
+    padding: 10px 16px;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    color: #007bff;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .page-link:hover {
+    background-color: #f1f1f1;
+    border-color: #ccc;
+    transform: translateY(-2px); /* Efeito de levantar ao passar o mouse */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Aumenta a sombra ao passar o mouse */
+  }
+
+  .page-item.active .page-link {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3); /* Sombra mais forte para o item ativo */
+  }
+
+  .page-link:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.2); /* Efeito ao focar */
+    transform: translateY(-1px); /* Leve elevação ao focar */
+  }
+
+  .pagination .disabled .page-link {
+    background-color: #e9ecef;
+    color: #6c757d;
+    cursor: not-allowed;
+    border-color: #dee2e6;
+  }
+
+  .pagination .disabled .page-link:hover {
+    transform: none; /* Desativa o efeito hover no item desativado */
+    box-shadow: none; /* Remove a sombra do item desativado */
   }
 }
 </style>
