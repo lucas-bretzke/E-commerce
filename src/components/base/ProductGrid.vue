@@ -241,7 +241,11 @@ main {
     border: 1px solid rgb(216, 216, 216);
 
     &:hover {
-      border-color: #888;
+      border-color: #d2b48c;
+    }
+
+    input {
+      caret-color: #d2b48c;
     }
   }
 
