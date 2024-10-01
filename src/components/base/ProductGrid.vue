@@ -179,7 +179,7 @@ main {
   background-color: #9595951a;
   width: 100%;
   height: auto;
-  padding-bottom: 200px;
+  padding-bottom: 100px;
   padding-top: 35px;
 
   nav {
@@ -218,7 +218,7 @@ main {
     width: 100%;
     height: auto;
     margin: 0 auto;
-    border: 1px solid rgb(107, 107, 107);
+    padding-bottom: 80px;
     align-items: center;
     justify-content: center;
     display: grid;
