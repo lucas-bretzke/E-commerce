@@ -2,27 +2,43 @@
   <main>
     <nav>
       <container class="categories">
-        <button
-          :class="{ active: selectedCategory === 'all' }"
-          @click="selectCategory('all')"
-        >
-          TODOS OS PRODUTOS
-        </button>
-        <button
-          :class="{ active: selectedCategory === 't-shirts' }"
-          @click="selectCategory('t-shirts')"
-        >
-          CAMISETAS
-        </button>
-        <button
-          :class="{ active: selectedCategory === 'mugs' }"
-          @click="selectCategory('mugs')"
-        >
-          CANECAS
-        </button>
+        <span>
+          <button
+            :class="{ active: selectedCategory === 'all' }"
+            @click="selectCategory('all')"
+          >
+            TODOS OS PRODUTOS
+          </button>
+          <button
+            :class="{ active: selectedCategory === 't-shirts' }"
+            @click="selectCategory('t-shirts')"
+          >
+            CAMISETAS
+          </button>
+          <button
+            :class="{ active: selectedCategory === 'mugs' }"
+            @click="selectCategory('mugs')"
+          >
+            CANECAS
+          </button>
+        </span>
+        <div class="dropdown">
+          <button class="dropdown-button">
+            Organizar por
+            <FontAwesomeIcon icon="chevron-down" style="padding-left: 4px" />
+          </button>
+          <div class="dropdown-content">
+            <button class="btn">Novidades</button>
+            <button class="btn">Preço: Maior - menor</button>
+            <button class="btn">Preço: Menor - maior</button>
+            <button class="btn">Mais vendidos</button>
+          </div>
+        </div>
       </container>
 
-      <container style="display: flex">
+      <container
+        style="display: flex; flex-direction: column; align-items: flex-end"
+      >
         <span class="input">
           <input
             v-model="search"
@@ -32,33 +48,18 @@
           <FontAwesomeIcon icon="search" class="fa-search" />
         </span>
 
-        <span style="display: flex">
-          <div class="dropdown">
-            <button class="dropdown-button">
-              Organizar por
-              <FontAwesomeIcon icon="chevron-down" style="padding-left: 4px" />
-            </button>
-            <div class="dropdown-content">
-              <button>Novidades</button>
-              <button>Preço: Maior - menor</button>
-              <button>Preço: Menor - maior</button>
-              <button>Mais vendidos</button>
-            </div>
-          </div>
-          <!-- Componente de paginação -->
-          <paginate
-            :page-count="totalPages"
-            :click-handler="changePage"
-            :prev-text="'<<'"
-            :next-text="'>>'"
-            :container-class="'pagination'"
-            :page-class="'page-item'"
-            :page-link-class="'page-link'"
-            :prev-class="'page-item'"
-            :next-class="'page-item'"
-            :active-class="'active'"
-          />
-        </span>
+        <paginate
+          :page-count="totalPages"
+          :click-handler="changePage"
+          :prev-text="'<'"
+          :next-text="'>'"
+          :container-class="'pagination'"
+          :page-class="'page-item'"
+          :page-link-class="'page-link'"
+          :prev-class="'page-item'"
+          :next-class="'page-item'"
+          :active-class="'active'"
+        />
       </container>
     </nav>
 
@@ -81,13 +82,12 @@ interface Product {
   id: number
   name: string
   category: string
-  // Adicionar outras propriedades conforme necessário
 }
 
 @Options({
   components: {
     CardItem,
-    Paginate // Registre o componente de paginação
+    Paginate
   },
   props: {
     products: {
@@ -128,7 +128,7 @@ export default class ProductGrid extends Vue {
 
   selectCategory(category: string) {
     this.selectedCategory = category
-    this.currentPage = 1 // Reset to page 1 when category changes
+    this.currentPage = 1
   }
 
   changePage(page: number) {
@@ -143,19 +143,17 @@ main {
   width: 100%;
   height: auto;
   padding-bottom: 200px;
-  padding-top: 50px;
+  padding-top: 35px;
 
   nav {
     height: 100px;
     max-width: 1100px;
     display: flex;
     justify-content: space-between;
-    margin: 0px auto;
-    border: 1px solid red;
+    margin: 0 auto;
 
     .categories {
       width: 500px;
-      display: flex;
 
       button {
         width: auto;
@@ -197,10 +195,11 @@ main {
     padding: 8px;
     background-color: #f9f9f9;
 
-    width: 300px;
+    width: 350px;
     height: 42px;
     padding: 9px 16px 9px 16px;
     border-radius: 8px;
+    border: 1px solid rgb(216, 216, 216);
 
     &:hover {
       border-color: #888;
@@ -224,6 +223,7 @@ main {
     position: relative;
     display: inline-block;
     z-index: 3;
+    margin-top: 20px;
 
     .dropdown-button {
       background-color: transparent;
@@ -232,7 +232,6 @@ main {
       border: none;
       cursor: pointer;
       align-items: center;
-
       font-size: 14px;
       font-weight: 400;
       line-height: 22px;
@@ -240,29 +239,30 @@ main {
   }
 
   .dropdown-content {
+    width: 170px;
+    height: auto;
+    padding: 5px;
+    border-radius: 4px;
     display: none;
     position: absolute;
     background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.201);
     z-index: 1;
-  }
 
-  .dropdown-content button {
-    width: 100%;
-    color: black;
-    padding: 12px 16px;
-    text-align: left;
-    text-decoration: none;
-    display: block;
-    cursor: pointer;
-    border: none;
+    .btn {
+      width: 100%;
+      color: black;
+      text-align: left;
+      text-decoration: none;
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      color: rgb(104, 104, 104);
 
-    background-color: #f9f9f9;
-  }
-
-  .dropdown-content button:hover {
-    background-color: #f1f1f1;
+      &:hover {
+        background-color: #f1f1f1;
+      }
+    }
   }
 
   .dropdown:hover .dropdown-content {
@@ -274,6 +274,7 @@ main {
     list-style: none;
     padding: 0;
     justify-content: center;
+    max-width: 250px;
     margin-top: 20px;
   }
 
@@ -282,47 +283,31 @@ main {
   }
 
   ::v-deep .page-link {
-    padding: 10px 16px;
-    background-color: #f9f9f9;
-    border-radius: 6px;
+    padding: 6px 10px;
+    margin: 0 2px;
+    background: #e9e9f0;
+    border-radius: 8px;
     border: 1px solid #ddd;
-    color: #007bff;
-    font-weight: 500;
+    color: #737380;
+    font-weight: 400;
     text-decoration: none;
     cursor: pointer;
     transition: all 0.3s ease;
+    font-size: 16px;
+
+    &:hover {
+      background-color: #f1f1f1;
+      border-color: #ffa585;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
   }
 
-  .page-link:hover {
-    background-color: #f1f1f1;
-    border-color: #ccc;
-    transform: translateY(-2px); /* Efeito de levantar ao passar o mouse */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Aumenta a sombra ao passar o mouse */
-  }
-
-  .page-item.active .page-link {
-    background-color: #007bff;
-    color: white;
-    border-color: #007bff;
-    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3); /* Sombra mais forte para o item ativo */
-  }
-
-  .page-link:focus {
-    outline: none;
-    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.2); /* Efeito ao focar */
-    transform: translateY(-1px); /* Leve elevação ao focar */
-  }
-
-  .pagination .disabled .page-link {
-    background-color: #e9ecef;
-    color: #6c757d;
-    cursor: not-allowed;
-    border-color: #dee2e6;
-  }
-
-  .pagination .disabled .page-link:hover {
-    transform: none; /* Desativa o efeito hover no item desativado */
-    box-shadow: none; /* Remove a sombra do item desativado */
+  ::v-deep .page-item.active .page-link {
+    font-weight: 600;
+    color: #ffa585;
+    border-color: #ffa585;
+    background-color: white;
   }
 }
 </style>
