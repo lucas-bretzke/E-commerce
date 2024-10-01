@@ -24,14 +24,31 @@
         </span>
         <div class="dropdown">
           <button class="dropdown-button">
-            Organizar por
+            {{ buttonDropdownLabel }}
             <FontAwesomeIcon icon="chevron-down" style="padding-left: 4px" />
           </button>
           <div class="dropdown-content">
-            <button class="btn">Novidades</button>
-            <button class="btn">Preço: Maior - menor</button>
-            <button class="btn">Preço: Menor - maior</button>
-            <button class="btn">Mais vendidos</button>
+            <button class="btn" @click="updateSort('Novidades', 'newest')">
+              Novidades
+            </button>
+            <button
+              class="btn"
+              @click="updateSort('Preço: Maior - menor', 'price-desc')"
+            >
+              Preço: Maior - menor
+            </button>
+            <button
+              class="btn"
+              @click="updateSort('Preço: Menor - maior', 'price-asc')"
+            >
+              Preço: Menor - maior
+            </button>
+            <button
+              class="btn"
+              @click="updateSort('Mais vendidos', 'best-sellers')"
+            >
+              Mais vendidos
+            </button>
           </div>
         </div>
       </container>
@@ -79,6 +96,7 @@ import CardItem from './CardItem.vue'
 import Paginate from 'vuejs-paginate-next'
 
 interface Product {
+  price: any
   id: number
   name: string
   category: string
@@ -101,19 +119,34 @@ export default class ProductGrid extends Vue {
   public products!: Product[]
   public search = ''
   public currentPage = 1
-  public itemsPerPage = 5
+  public itemsPerPage = 10
+  public selectedSortOrder = 'price-asc'
+  public buttonDropdownLabel = 'Organizar por'
 
   get filteredProducts() {
     const category = this.selectedCategory
+    const sortOrder = this.selectedSortOrder
 
+    // Filtrar por categoria
     const filteredByCategory =
       category === 'all'
         ? this.products
         : this.products.filter(product => product.category === category)
 
-    return filteredByCategory.filter(item =>
+    // Filtrar por busca no nome
+    const filteredByName = filteredByCategory.filter(item =>
       item.name.toUpperCase().includes(this.search.toUpperCase())
     )
+
+    // Ordenar por preço, se necessário
+    if (sortOrder === 'price-asc') {
+      return filteredByName.sort((a, b) => a.price - b.price) // Preço: Menor - maior
+    } else if (sortOrder === 'price-desc') {
+      return filteredByName.sort((a, b) => b.price - a.price) // Preço: Maior - menor
+    }
+
+    // Retornar o array filtrado sem ordenação de preço
+    return filteredByName
   }
 
   get totalPages() {
@@ -126,6 +159,10 @@ export default class ProductGrid extends Vue {
     return this.filteredProducts.slice(start, end)
   }
 
+  updateSort(label: string, order: string) {
+    this.buttonDropdownLabel = label
+    this.selectedSortOrder = order
+  }
   selectCategory(category: string) {
     this.selectedCategory = category
     this.currentPage = 1
@@ -146,7 +183,7 @@ main {
   padding-top: 35px;
 
   nav {
-    height: 100px;
+    height: 110px;
     max-width: 1100px;
     display: flex;
     justify-content: space-between;
@@ -154,6 +191,8 @@ main {
 
     .categories {
       width: 500px;
+      display: flex;
+      flex-direction: column;
 
       button {
         width: auto;
@@ -223,7 +262,7 @@ main {
     position: relative;
     display: inline-block;
     z-index: 3;
-    margin-top: 20px;
+    margin-top: 30px;
 
     .dropdown-button {
       background-color: transparent;
@@ -275,7 +314,7 @@ main {
     padding: 0;
     justify-content: center;
     max-width: 250px;
-    margin-top: 20px;
+    margin-top: 30px;
   }
 
   .page-item {
