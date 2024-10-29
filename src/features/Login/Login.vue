@@ -52,12 +52,12 @@
 </template>
 
 <script lang="ts">
+import { baseStore } from '@/stores/baseStore'
+import { Vue, Options } from 'vue-class-component'
+
+// Components.
 import InputText from '@/components/Input/InputText.vue'
 import InputPassword from '@/components/Input/InputPassword.vue'
-
-import { baseStore } from '@/stores/baseStore'
-
-import { Vue, Options } from 'vue-class-component'
 
 @Options({ components: { InputPassword, InputText } })
 export default class Login extends Vue {
@@ -87,7 +87,7 @@ export default class Login extends Vue {
   //   } finally {
   //     if (Auth.currentUser) {
   //       this.store.user.uid = Auth.currentUser?.uid;
-  //       this.store.isLogin = false;
+  //       this.store.showLoginScreen = false;
   //       localStorage.setItem("user", JSON.stringify(this.store.user));
   //     }
   //   }
@@ -103,7 +103,7 @@ export default class Login extends Vue {
   // }
 
   public close() {
-    this.store.isLogin = false
+    this.store.showLoginScreen = false
   }
 }
 </script>

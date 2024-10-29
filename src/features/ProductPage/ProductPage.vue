@@ -36,7 +36,7 @@ import { Options, Vue } from 'vue-class-component'
   }
 })
 export default class ProductPage extends Vue {
-  public product: Record<string, any> = {}
+  public product: any = {}
 
   mounted() {
     try {

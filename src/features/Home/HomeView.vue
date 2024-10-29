@@ -17,38 +17,43 @@
     </div>
     <!-- <ProductCarousel
       title="NOVIDADES"
-      :dataItems="dataBlouses"
-      @getItems="getBlouses"
+      :dataItems=""
+      @getItems=""
     /> -->
 
     <ProductGrid :products="baseProducts" />
 
     <BackToTopButton />
-    <Login v-show="store.isLogin" />
+    <Login v-show="store.showLoginScreen" />
   </main>
 </template>
 
 <script lang="ts">
+import { baseStore } from '@/stores/baseStore'
+import { Options, Vue } from 'vue-class-component'
+
+// Services.
+import productApi from '@/services/productApi'
+
+// Components.
+import Login from '@/features/Login/Login.vue'
 import Alert from '@/components/alerts/Alert.vue'
+import ProductGrid from '@/components/base/ProductGrid.vue'
 import ImageSlider from '../../components/ImageSlider.vue'
 import ProductCarousel from '@/components/ProductCarousel.vue'
 import BackToTopButton from '@/components/BackToTopButton.vue'
-import Login from '@/features/Login/Login.vue'
-import productApi from '@/services/productApi'
-import { IBlouse } from '@/types'
-import { baseStore } from '@/stores/baseStore'
 
-import { Options, Vue } from 'vue-class-component'
-import ProductGrid from '@/components/base/ProductGrid.vue'
+// Types.
+import { Product } from '@/types'
 
 @Options({
   components: {
+    Login,
+    Alert,
     ImageSlider,
     ProductGrid,
     ProductCarousel,
-    BackToTopButton,
-    Login,
-    Alert
+    BackToTopButton
   },
   watch: {
     'store.user.uid': function (current, previous) {
@@ -72,11 +77,10 @@ export default class HomeView extends Vue {
       alt: 'Imagem 3'
     }
   ]
-  public dataBlouses: IBlouse[] = []
+  public baseProducts = []
   public isAlert = false
   public alertDescription = ''
   public alertMessageType = ''
-  public baseProducts = []
 
   showAlert(description: string, msgType: string) {
     this.alertDescription = description
@@ -88,7 +92,6 @@ export default class HomeView extends Vue {
     try {
       const res = await productApi.getBaseProducts()
       this.baseProducts = res
-      console.log(res)
     } catch (error) {
       console.log('ERROR')
     }
@@ -101,15 +104,6 @@ export default class HomeView extends Vue {
       this.showAlert('Você não está mais logado!', 'warning')
     }
     setTimeout(() => (this.isAlert = false), 3500)
-  }
-
-  public async getBlouses() {
-    try {
-      const response = await productApi.getBlouses()
-      this.dataBlouses = response
-    } catch (error) {
-      console.log(error)
-    }
   }
 
   mounted() {

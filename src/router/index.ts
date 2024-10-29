@@ -1,7 +1,9 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+
+// Pages.
+import Cart from '../features/Cart/Cart.vue'
 import HomeView from '../features/Home/HomeView.vue'
 import Favorites from '../features/Favorites/Favorites.vue'
-import Cart from '../features/Cart/Cart.vue'
 import ProductPage from '../features/ProductPage/ProductPage.vue'
 
 // function isAuthenticated() {
@@ -21,13 +23,13 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/Favorites',
     name: 'Favorites',
-    component: Favorites,
+    component: Favorites
     // beforeEnter: requireAuth
   },
   {
     path: '/Cart',
     name: 'Cart',
-    component: Cart,
+    component: Cart
     // beforeEnter: requireAuth
   },
   {

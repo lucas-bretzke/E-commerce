@@ -38,8 +38,9 @@
 
 <script lang="ts">
 import { baseStore } from '@/stores/baseStore'
-import { IBlouse, IShoe } from '@/types'
 import { Vue, Options } from 'vue-class-component'
+
+// Services.
 import productApi from '@/services/productApi'
 
 @Options({
@@ -48,78 +49,15 @@ import productApi from '@/services/productApi'
   }
 })
 export default class CardItems extends Vue {
-  item!: IBlouse | IShoe
+  item!: any
   public store = baseStore()
   private user = {
     uid: 1,
     name: 'Lucas Bretzke',
-    email: 'lucasbretzke@example.com',
+    email: 'contact@example.com',
     favoriteItems: [],
     cartItems: [],
     isAuthenticated: true
-  }
-
-  public toggleFavoriteItem(item: any) {
-    if (this.user.isAuthenticated) {
-      !item.favorite
-        ? this.addToFavorites(item)
-        : this.removeFromFavorites(item)
-    } else {
-      this.store.isLogin = true // Exibe modal de login
-    }
-  }
-
-  public toggleCartItem(item: any) {
-    if (this.user.isAuthenticated) {
-      !item.cart ? this.addToCart(item) : this.removeFromCart(item)
-    } else {
-      this.store.isLogin = true // Exibe modal de login
-    }
-  }
-
-  // Adiciona o item aos favoritos
-  public async addToFavorites(item: IBlouse | IShoe) {
-    try {
-      item.favorite = true
-      await this.editItem(item)
-      await productApi.postItemInFavorites(item)
-    } catch (error) {
-      console.error('Error adding to favorites:', error)
-    } finally {
-      this.store.getDone = !this.store.getDone
-    }
-  }
-
-  // Remove o item dos favoritos
-  public async removeFromFavorites(item: any) {
-    try {
-      item.favorite = false
-      await this.editItem(item)
-      await productApi.deleteItemFromFavorites(item.id)
-    } catch (error) {
-      console.error('Error removing from favorites:', error)
-    } finally {
-      this.store.getDone = !this.store.getDone
-    }
-  }
-
-  // Emite o evento para adicionar ao carrinho
-  public addToCart(item: any) {
-    console.log('adicionando do carrinho')
-  }
-
-  // Emite o evento para remover do carrinho
-  public removeFromCart(item: any) {
-    console.log('removendo do carrinho')
-  }
-
-  // Edita o item no sistema
-  public async editItem(item: IBlouse | IShoe) {
-    try {
-      await productApi.putBlouse(item)
-    } catch (error) {
-      console.error('Error updating item:', error)
-    }
   }
 }
 </script>
@@ -128,9 +66,7 @@ export default class CardItems extends Vue {
 .card {
   width: 256px;
   height: 300px;
-
   position: relative;
-
   opacity: 0px;
   cursor: pointer;
   border-radius: 8px 8px 0px 0px;

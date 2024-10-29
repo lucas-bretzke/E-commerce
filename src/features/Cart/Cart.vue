@@ -21,46 +21,31 @@
   </div>
 </template>
 
-
 <script lang="ts">
-import { baseStore } from "@/stores/baseStore";
+import { baseStore } from '@/stores/baseStore'
+import { Options, Vue } from 'vue-class-component'
 
-import { IBlouse } from "@/types";
-import productApi from "@/services/productApi";
-import CardItems from "@/components/base/CardItem.vue";
-import { Options, Vue } from "vue-class-component";
+// Services.
+import productApi from '@/services/productApi'
+
+// Components.
+import CardItems from '@/components/base/CardItem.vue'
 
 @Options({ components: { CardItems } })
 export default class Cart extends Vue {
-  public dataItems: IBlouse[] = [];
-      public store = baseStore();
-
-
-  private async getItems() {
-    try {
-      const response = await productApi.getBlouses();
-      this.dataItems = response;
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  public store = baseStore()
+  public dataItems: any[] = []
 
   scrollToTop() {
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
-    });
-  }
-
-  mounted() {
-    this.getItems();
+      behavior: 'smooth'
+    })
   }
 }
 </script>
 
-
 <style lang="less" scoped>
-
 .scroll-to-top {
   position: fixed;
   width: 76px;

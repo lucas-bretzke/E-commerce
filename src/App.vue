@@ -4,10 +4,11 @@
 </template>
 
 <script lang="ts">
-import NavBar from '@/features/NavBar/NavBar.vue'
 import { baseStore } from '@/stores/baseStore'
-
 import { Options, Vue } from 'vue-class-component'
+
+// Components.
+import NavBar from '@/features/NavBar/NavBar.vue'
 
 @Options({
   components: {
