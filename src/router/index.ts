@@ -2,7 +2,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import HomeView from '../features/Home/HomeView.vue'
 import Favorites from '../features/Favorites/Favorites.vue'
 import Cart from '../features/Cart/Cart.vue'
-import ItemDetail from '../features/ItemDetail/ItemDetails.vue'
+import ProductPage from '../features/ProductPage/ProductPage.vue'
 
 // function isAuthenticated() {
 //   return !!Auth.currentUser
@@ -31,9 +31,9 @@ const routes: Array<RouteRecordRaw> = [
     // beforeEnter: requireAuth
   },
   {
-    path: '/Details',
-    name: 'Details',
-    component: ItemDetail
+    path: '/ProductPage',
+    name: 'ProductPage',
+    component: ProductPage
   }
 ]
 
