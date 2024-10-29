@@ -83,6 +83,7 @@
     <section class="container-grid">
       <CardItem
         v-for="product in paginatedProducts"
+        @click="viewProductDetails(product)"
         :key="product.id"
         :item="product"
       />
@@ -157,6 +158,11 @@ export default class ProductGrid extends Vue {
     const start = (this.currentPage - 1) * this.itemsPerPage
     const end = start + this.itemsPerPage
     return this.filteredProducts.slice(start, end)
+  }
+
+  viewProductDetails(product: any) {
+    localStorage.setItem('selectedProduct', JSON.stringify(product))
+    this.$router.push('ProductPage')
   }
 
   updateSort(label: string, order: string) {
