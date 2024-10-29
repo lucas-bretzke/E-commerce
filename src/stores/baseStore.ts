@@ -11,7 +11,7 @@ export const baseStore = defineStore('my-baseStore', {
       address: '',
       uid: ''
     },
-    isLogin: false,
+    showLoginScreen: false,
     itemIdInDetail: 0,
     favoritesCounter: 0,
     cartCounter: 0,

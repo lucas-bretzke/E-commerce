@@ -24,7 +24,7 @@
     <ProductGrid :products="baseProducts" />
 
     <BackToTopButton />
-    <Login v-show="store.isLogin" />
+    <Login v-show="store.showLoginScreen" />
   </main>
 </template>
 

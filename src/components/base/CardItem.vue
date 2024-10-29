@@ -65,7 +65,7 @@ export default class CardItems extends Vue {
         ? this.addToFavorites(item)
         : this.removeFromFavorites(item)
     } else {
-      this.store.isLogin = true // Exibe modal de login
+      this.store.showLoginScreen = true
     }
   }
 
@@ -73,11 +73,10 @@ export default class CardItems extends Vue {
     if (this.user.isAuthenticated) {
       !item.cart ? this.addToCart(item) : this.removeFromCart(item)
     } else {
-      this.store.isLogin = true // Exibe modal de login
+      this.store.showLoginScreen = true
     }
   }
 
-  // Adiciona o item aos favoritos
   public async addToFavorites(item: IBlouse | IShoe) {
     try {
       item.favorite = true
@@ -90,7 +89,6 @@ export default class CardItems extends Vue {
     }
   }
 
-  // Remove o item dos favoritos
   public async removeFromFavorites(item: any) {
     try {
       item.favorite = false
@@ -103,17 +101,14 @@ export default class CardItems extends Vue {
     }
   }
 
-  // Emite o evento para adicionar ao carrinho
   public addToCart(item: any) {
     console.log('adicionando do carrinho')
   }
 
-  // Emite o evento para remover do carrinho
   public removeFromCart(item: any) {
     console.log('removendo do carrinho')
   }
 
-  // Edita o item no sistema
   public async editItem(item: IBlouse | IShoe) {
     try {
       await productApi.putBlouse(item)

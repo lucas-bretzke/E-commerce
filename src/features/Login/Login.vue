@@ -87,7 +87,7 @@ export default class Login extends Vue {
   //   } finally {
   //     if (Auth.currentUser) {
   //       this.store.user.uid = Auth.currentUser?.uid;
-  //       this.store.isLogin = false;
+  //       this.store.showLoginScreen = false;
   //       localStorage.setItem("user", JSON.stringify(this.store.user));
   //     }
   //   }
@@ -103,7 +103,7 @@ export default class Login extends Vue {
   // }
 
   public close() {
-    this.store.isLogin = false
+    this.store.showLoginScreen = false
   }
 }
 </script>
