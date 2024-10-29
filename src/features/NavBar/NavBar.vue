@@ -40,7 +40,6 @@ import ValueMarker from '@/components/MarkTheNumberOfFavorites.vue'
 import Cookies from '@/components/Cookies.vue'
 import { baseStore } from '@/stores/baseStore'
 import { Options, Vue } from 'vue-class-component'
-import productApi from '@/services/productApi'
 
 @Options({
   components: { BaseNavBar, ValueMarker, Cookies },

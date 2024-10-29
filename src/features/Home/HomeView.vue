@@ -88,7 +88,6 @@ export default class HomeView extends Vue {
     try {
       const res = await productApi.getBaseProducts()
       this.baseProducts = res
-      console.log(res)
     } catch (error) {
       console.log('ERROR')
     }
@@ -101,15 +100,6 @@ export default class HomeView extends Vue {
       this.showAlert('Você não está mais logado!', 'warning')
     }
     setTimeout(() => (this.isAlert = false), 3500)
-  }
-
-  public async getBlouses() {
-    try {
-      const response = await productApi.getBlouses()
-      this.dataBlouses = response
-    } catch (error) {
-      console.log(error)
-    }
   }
 
   mounted() {
