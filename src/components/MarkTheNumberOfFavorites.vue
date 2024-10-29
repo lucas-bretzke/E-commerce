@@ -14,7 +14,7 @@ import { Options, Vue } from "vue-class-component";
   watch: {
     "store.getDone": function () {
       setTimeout(() => {
-        this.addBlouseNumbers();
+        this.addNumberOfItemsToCart();
       }, 2000);
     },
   },
@@ -22,7 +22,7 @@ import { Options, Vue } from "vue-class-component";
 export default class MarkTheNumberOfFavorites extends Vue {
   public store = baseStore();
 
-  private async addBlouseNumbers() {
+  private async addNumberOfItemsToCart() {
     try {
       this.store.favoritesCounter = 0;
       const response = await productApi.getFavorites();
@@ -33,7 +33,7 @@ export default class MarkTheNumberOfFavorites extends Vue {
   }
 
   mounted() {
-    this.addBlouseNumbers();
+    this.addNumberOfItemsToCart();
   }
 }
 </script>

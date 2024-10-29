@@ -22,52 +22,51 @@
   </main>
 </template>
 
-
 <script lang="ts">
-import { baseStore } from "@/stores/baseStore";
+import { baseStore } from '@/stores/baseStore'
+import { Vue, Options } from 'vue-class-component'
 
-import CardItem from "@/components/base/CardItem.vue";
-import { Vue, Options } from "vue-class-component";
+// Components.
+import CardItem from '@/components/base/CardItem.vue'
 
 @Options({
   components: {
-    CardItem,
+    CardItem
   },
   props: {
     title: { type: String, required: true },
-    dataItems: { type: Array, required: true },
+    dataItems: { type: Array, required: true }
   },
-  emits: ["getItems"],
+  emits: ['getItems'],
   watch: {
-    "store.getDone": function () {
-      this.getItems();
-    },
-  },
+    'store.getDone': function () {
+      this.getItems()
+    }
+  }
 })
 export default class ProductCarousel extends Vue {
-  public store = baseStore();
+  public store = baseStore()
 
   public moveScroll(distance: number) {
-    const container = this.$refs.myScrollX as HTMLElement;
-    container.style.scrollBehavior = "smooth";
-    container.style.scrollSnapType = "x mandatory";
-    container.scrollLeft += distance;
+    const container = this.$refs.myScrollX as HTMLElement
+    container.style.scrollBehavior = 'smooth'
+    container.style.scrollSnapType = 'x mandatory'
+    container.scrollLeft += distance
   }
 
   public showDetails(id: number) {
-    this.$router.push("/Details");
-    this.store.itemIdInDetail = id;
+    this.$router.push('/Details')
+    this.store.itemIdInDetail = id
   }
 
   private getItems() {
-    this.$emit("getItems");
+    this.$emit('getItems')
   }
   mounted() {
-    this.getItems();
+    this.getItems()
   }
 }
 </script>
-
 
 <style scoped lang="less">
 .see-more-buttons {

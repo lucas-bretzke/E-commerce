@@ -17,8 +17,8 @@
     </div>
     <!-- <ProductCarousel
       title="NOVIDADES"
-      :dataItems="dataBlouses"
-      @getItems="getBlouses"
+      :dataItems=""
+      @getItems=""
     /> -->
 
     <ProductGrid :products="baseProducts" />
@@ -29,26 +29,31 @@
 </template>
 
 <script lang="ts">
+import { baseStore } from '@/stores/baseStore'
+import { Options, Vue } from 'vue-class-component'
+
+// Services.
+import productApi from '@/services/productApi'
+
+// Components.
+import Login from '@/features/Login/Login.vue'
 import Alert from '@/components/alerts/Alert.vue'
+import ProductGrid from '@/components/base/ProductGrid.vue'
 import ImageSlider from '../../components/ImageSlider.vue'
 import ProductCarousel from '@/components/ProductCarousel.vue'
 import BackToTopButton from '@/components/BackToTopButton.vue'
-import Login from '@/features/Login/Login.vue'
-import productApi from '@/services/productApi'
-import { IBlouse } from '@/types'
-import { baseStore } from '@/stores/baseStore'
 
-import { Options, Vue } from 'vue-class-component'
-import ProductGrid from '@/components/base/ProductGrid.vue'
+// Types.
+import { Product } from '@/types'
 
 @Options({
   components: {
+    Login,
+    Alert,
     ImageSlider,
     ProductGrid,
     ProductCarousel,
-    BackToTopButton,
-    Login,
-    Alert
+    BackToTopButton
   },
   watch: {
     'store.user.uid': function (current, previous) {
@@ -72,11 +77,10 @@ export default class HomeView extends Vue {
       alt: 'Imagem 3'
     }
   ]
-  public dataBlouses: IBlouse[] = []
+  public baseProducts = []
   public isAlert = false
   public alertDescription = ''
   public alertMessageType = ''
-  public baseProducts = []
 
   showAlert(description: string, msgType: string) {
     this.alertDescription = description

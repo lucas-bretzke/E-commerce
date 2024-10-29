@@ -35,11 +35,13 @@
 </template>
 
 <script lang="ts">
-import BaseNavBar from '@/components/base/BaseNavBar.vue'
-import ValueMarker from '@/components/MarkTheNumberOfFavorites.vue'
-import Cookies from '@/components/Cookies.vue'
 import { baseStore } from '@/stores/baseStore'
 import { Options, Vue } from 'vue-class-component'
+
+// Components.
+import Cookies from '@/components/Cookies.vue'
+import BaseNavBar from '@/components/base/BaseNavBar.vue'
+import ValueMarker from '@/components/MarkTheNumberOfFavorites.vue'
 
 @Options({
   components: { BaseNavBar, ValueMarker, Cookies },
