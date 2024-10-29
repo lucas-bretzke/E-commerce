@@ -93,9 +93,12 @@
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component'
-import CardItem from './CardItem.vue'
 import Paginate from 'vuejs-paginate-next'
 
+// Components.
+import CardItem from './CardItem.vue'
+
+// Types.
 interface Product {
   price: any
   id: number
@@ -103,6 +106,7 @@ interface Product {
   category: string
 }
 
+// Componment.
 @Options({
   components: {
     CardItem,

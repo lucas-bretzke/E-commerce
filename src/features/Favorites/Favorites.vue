@@ -19,35 +19,36 @@
   </div>
 </template>
 
-
 <script lang="ts">
-import { baseStore } from "@/stores/baseStore";
+import { baseStore } from '@/stores/baseStore'
+import { Options, Vue } from 'vue-class-component'
 
-import productApi from "@/services/productApi";
-import CardItems from "@/components/base/CardItem.vue";
-import BackToTopButton from "@/components/BackToTopButton.vue"; // Adicionado o sinal de igual (=)
-import { Options, Vue } from "vue-class-component";
+// Services.
+import productApi from '@/services/productApi'
+
+// Components.
+import CardItems from '@/components/base/CardItem.vue'
+import BackToTopButton from '@/components/BackToTopButton.vue'
 
 @Options({ components: { CardItems, BackToTopButton } })
 export default class Favorites extends Vue {
-  public dataFavorites = [];
-  public store = baseStore();
+  public store = baseStore()
+  public dataFavorites = []
 
   private async getFavorites() {
     try {
-      const response = await productApi.getFavorites();
-      this.dataFavorites = response;
+      const response = await productApi.getFavorites()
+      this.dataFavorites = response
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
   }
 
   mounted() {
-    this.getFavorites();
+    this.getFavorites()
   }
 }
 </script>
-
 
 <style lang="less" scoped>
 h1 {
