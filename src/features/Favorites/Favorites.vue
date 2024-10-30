@@ -54,6 +54,7 @@ export default class Favorites extends Vue {
 <style lang="less" scoped>
 .favorites-page {
   width: 100%;
+  height: calc(100vh - 120px);
   padding: 30px 0;
   background-color: #f5f5f5;
 }
@@ -83,13 +84,13 @@ export default class Favorites extends Vue {
   }
 
   .msg-error {
-    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-size: 26px;
-    text-align: center;
-    padding: 10px;
-    color: #737373;
-    border: 1px solid #000;
-    border-radius: 4px;
+    padding: 4px 7px;
+    border-bottom: 1px solid black;
   }
 }
 </style>

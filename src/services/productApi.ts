@@ -1,5 +1,6 @@
 import { http } from './config'
 import { Product } from '@/types'
+import { baseStore } from '@/stores/baseStore'
 
 export default {
   // LogarComUsuario: async () => {
@@ -17,9 +18,12 @@ export default {
     }
   },
 
-  setProduct: async (id: any, updatedData: any) => {
+  setProduct: async (id: number, updatedData: Product) => {
+    const store = baseStore()
+
     try {
       const response = await http.put(`/baseProducts/${id}`, updatedData)
+      await store.getAllProducts()
       return response?.data
     } catch (error) {
       console.error('Erro ao atualizar o produto:', error)
