@@ -11,13 +11,15 @@
             <a href="">INFANTIL</a>
             <a href="">PROMOÇÕES</a>
             <button class="cart-btn" @click="$router.push('/Favorites')">
-              <ValueMarker class="ValueMarker" />
+              <Counter class="Counter" :children="store.favoritesCounter" />
               <FontAwesomeIcon
                 icon="fa-solid fa-heart"
                 class="ic_cart-shopping"
               />
             </button>
+
             <button class="cart-btn" @click="$router.push('/Cart')">
+              <Counter class="Counter" :children="store.cartCounter" />
               <FontAwesomeIcon
                 icon="fa-solid fa-cart-shopping"
                 class="ic_cart-shopping"
@@ -41,10 +43,10 @@ import { Options, Vue } from 'vue-class-component'
 // Components.
 import Cookies from '@/components/Cookies.vue'
 import BaseNavBar from '@/components/base/BaseNavBar.vue'
-import ValueMarker from '@/components/MarkTheNumberOfFavorites.vue'
+import Counter from '@/components/Counter.vue'
 
 @Options({
-  components: { BaseNavBar, ValueMarker, Cookies },
+  components: { BaseNavBar, Counter, Cookies },
   watch: {
     'store.user.uid': function (current, previous) {
       this.buttonText = previous === '' && current ? 'Sair' : 'Logar'
@@ -117,7 +119,7 @@ export default class NavBar extends Vue {
       }
     }
 
-    .ValueMarker {
+    .Counter {
       position: absolute;
       margin-left: 15px;
       margin-top: 14px;

@@ -35,16 +35,22 @@ export const baseStore = defineStore('my-baseStore', {
       try {
         const data = await productApi.getBaseProducts()
         this.baseProducts = data
-        this.updateFavoritesCounter()
+
+        // Atualizar contadores de favoritos e carrinho
+        this.updateCounters()
       } catch (error) {
-        console.log({ error })
+        console.error('Erro ao obter produtos:', error)
       }
     },
 
-    updateFavoritesCounter() {
-      this.favoritesCounter = this.baseProducts.filter(
-        product => product.favorites === true
+    updateCounters() {
+      const favorites = this.baseProducts.filter(
+        product => product.favorites
       ).length
+      const cart = this.baseProducts.filter(product => product.cart).length
+
+      this.favoritesCounter = favorites
+      this.cartCounter = cart
     }
   }
 })
