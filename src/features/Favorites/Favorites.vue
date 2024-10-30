@@ -1,19 +1,24 @@
 <template>
-  <div class="body">
+  <div class="favorites-page">
     <BackToTopButton />
-    <main class="center">
+    <main class="content-wrapper">
       <section class="catalog-filters"></section>
-      <section class="container-cards">
-        <p v-if="store.favoritesCounter === 0" class="msg-error">
+      <section class="favorites-list">
+        <p v-if="favoritesCount === 0" class="msg-error">
           <FontAwesomeIcon
             icon="fa-solid fa-cart-shopping"
             class="ic_cart-shopping"
           />
           NENHUM ITEM SALVO!
         </p>
-        <div v-else v-for="item in dataFavorites" :key="item">
-          <CardItems :item="item" class="card" />
-        </div>
+
+        <CardItems
+          v-else
+          v-for="item in dataFavorites"
+          :key="item.id"
+          :item="item"
+          class="card"
+        />
       </section>
     </main>
   </div>
@@ -23,77 +28,68 @@
 import { baseStore } from '@/stores/baseStore'
 import { Options, Vue } from 'vue-class-component'
 
-// Services.
-import productApi from '@/services/productApi'
-
-// Components.
+// Components
 import CardItems from '@/components/base/CardItem.vue'
 import BackToTopButton from '@/components/BackToTopButton.vue'
+
+// Types
+import { Product } from '@/types'
 
 @Options({ components: { CardItems, BackToTopButton } })
 export default class Favorites extends Vue {
   public store = baseStore()
-  public dataFavorites = []
 
-  private async getFavorites() {
-    try {
-      const response = await productApi.getFavorites()
-      this.dataFavorites = response
-    } catch (error) {
-      console.log(error)
-    }
+  get dataFavorites(): Product[] {
+    return this.store.baseProducts.filter(
+      (product: Product) => product.favorites === true
+    )
   }
 
-  mounted() {
-    this.getFavorites()
+  get favoritesCount(): number {
+    return this.dataFavorites.length
   }
 }
 </script>
 
 <style lang="less" scoped>
-h1 {
-  width: 1200px;
-  margin: 0 auto;
-  padding: 40px 0;
-  display: flex;
-  font-size: 32px;
-  font-weight: 600;
-  -webkit-text-stroke: 1px #737373;
+.favorites-page {
+  width: 100%;
+  padding: 30px 0;
+  background-color: #f5f5f5;
 }
-.center {
+
+.content-wrapper {
   max-width: 1200px;
+  margin: 0 auto;
   display: flex;
-  margin: 30px auto;
   justify-content: space-between;
 
   .catalog-filters {
     width: 228px;
-    height: auto;
+    background-color: #444;
     max-height: 1000px;
-    background-color: #4444;
+    padding: 20px;
   }
-  .container-cards {
-    max-width: 970px;
-    height: auto;
+
+  .favorites-list {
+    flex: 1;
     display: flex;
-    justify-content: space-around;
     flex-wrap: wrap;
+    justify-content: space-around;
 
     .card {
-      margin-bottom: 20px;
-      border-bottom: 1px solid black;
-      border-radius: 2px;
+      width: auto;
     }
   }
 
   .msg-error {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin: auto;
     font-size: 26px;
-    padding: 4px 7px;
-    border-bottom: 1px solid black;
+    text-align: center;
+    padding: 10px;
+    color: #737373;
+    border: 1px solid #000;
+    border-radius: 4px;
   }
 }
 </style>

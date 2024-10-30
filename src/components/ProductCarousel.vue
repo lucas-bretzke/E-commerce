@@ -37,12 +37,7 @@ import CardItem from '@/components/base/CardItem.vue'
     title: { type: String, required: true },
     dataItems: { type: Array, required: true }
   },
-  emits: ['getItems'],
-  watch: {
-    'store.getDone': function () {
-      this.getItems()
-    }
-  }
+  emits: ['getItems']
 })
 export default class ProductCarousel extends Vue {
   public store = baseStore()
@@ -56,14 +51,6 @@ export default class ProductCarousel extends Vue {
 
   public showDetails(id: number) {
     this.$router.push('/Details')
-    this.store.itemIdInDetail = id
-  }
-
-  private getItems() {
-    this.$emit('getItems')
-  }
-  mounted() {
-    this.getItems()
   }
 }
 </script>

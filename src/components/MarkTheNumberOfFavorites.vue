@@ -11,13 +11,13 @@ import { baseStore } from "@/stores/baseStore";
 import { Options, Vue } from "vue-class-component";
 
 @Options({
-  watch: {
-    "store.getDone": function () {
-      setTimeout(() => {
-        this.addNumberOfItemsToCart();
-      }, 2000);
-    },
-  },
+  // watch: {
+  //   "store.getDone": function () {
+  //     setTimeout(() => {
+  //       this.addNumberOfItemsToCart();
+  //     }, 2000);
+  //   },
+  // },
 })
 export default class MarkTheNumberOfFavorites extends Vue {
   public store = baseStore();

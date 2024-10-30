@@ -228,12 +228,11 @@ main {
     width: 100%;
     height: auto;
     margin: 0 auto;
-    padding-bottom: 80px;
     align-items: center;
     justify-content: center;
     display: grid;
     grid-template-columns: repeat(4, minmax(150px, 3fr));
-    gap: 100px 2vw;
+    gap: 10px 2vw;
   }
 
   .input {

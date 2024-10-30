@@ -21,7 +21,7 @@
       @getItems=""
     /> -->
 
-    <ProductGrid :products="baseProducts" />
+    <ProductGrid :products="store.baseProducts" />
 
     <BackToTopButton />
     <Login v-show="store.showLoginScreen" />
@@ -32,9 +32,6 @@
 import { baseStore } from '@/stores/baseStore'
 import { Options, Vue } from 'vue-class-component'
 
-// Services.
-import productApi from '@/services/productApi'
-
 // Components.
 import Login from '@/features/Login/Login.vue'
 import Alert from '@/components/alerts/Alert.vue'
@@ -42,9 +39,6 @@ import ProductGrid from '@/components/base/ProductGrid.vue'
 import ImageSlider from '../../components/ImageSlider.vue'
 import ProductCarousel from '@/components/ProductCarousel.vue'
 import BackToTopButton from '@/components/BackToTopButton.vue'
-
-// Types.
-import { Product } from '@/types'
 
 @Options({
   components: {
@@ -77,7 +71,6 @@ export default class HomeView extends Vue {
       alt: 'Imagem 3'
     }
   ]
-  public baseProducts = []
   public isAlert = false
   public alertDescription = ''
   public alertMessageType = ''
@@ -88,15 +81,6 @@ export default class HomeView extends Vue {
     this.isAlert = true
   }
 
-  async getAllProducts() {
-    try {
-      const res = await productApi.getBaseProducts()
-      this.baseProducts = res
-    } catch (error) {
-      console.log('ERROR')
-    }
-  }
-
   arrowLoggedUserMsg(current: any, previous: any) {
     if (!previous && current) {
       this.showAlert('Usuário logado com sucesso', 'success')
@@ -104,10 +88,6 @@ export default class HomeView extends Vue {
       this.showAlert('Você não está mais logado!', 'warning')
     }
     setTimeout(() => (this.isAlert = false), 3500)
-  }
-
-  mounted() {
-    this.getAllProducts()
   }
 }
 </script>

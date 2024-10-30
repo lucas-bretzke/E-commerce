@@ -21,6 +21,8 @@ export default class App extends Vue {
   mounted() {
     const user = localStorage.getItem('user')
     if (user) this.store.user = JSON.parse(user)
+
+    this.store.getAllProducts()
   }
 }
 </script>
