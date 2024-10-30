@@ -8,7 +8,7 @@
     <span class="container-buttons">
       <button @click.stop="toggleFavoriteItem(item)">
         <FontAwesomeIcon
-          v-if="!item.favorite"
+          v-if="!item.favorites"
           icon="fa-regular fa-heart"
           class="ic"
         />
@@ -17,7 +17,7 @@
 
       <button @click.stop="toggleCartItem(item)">
         <FontAwesomeIcon
-          v-if="!item.cart"
+          v-if="item.cart"
           :icon="['fas', 'cart-shopping']"
           class="ic"
         />
@@ -70,6 +70,7 @@ export default class CardItems extends Vue {
   opacity: 0px;
   cursor: pointer;
   border-radius: 8px 8px 0px 0px;
+  margin-bottom: 100px;
 
   .img {
     width: 100%;
