@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" @click="viewProductDetails(item)">
     <div
       class="img"
       :style="{ backgroundImage: `url(${item.image_url})` }"
@@ -40,8 +40,8 @@
 import { baseStore } from '@/stores/baseStore'
 import { Vue, Options } from 'vue-class-component'
 
-// Services.
-import productApi from '@/services/productApi'
+// Types
+import { Product } from '@/types'
 
 @Options({
   props: {
@@ -49,15 +49,11 @@ import productApi from '@/services/productApi'
   }
 })
 export default class CardItems extends Vue {
-  item!: any
   public store = baseStore()
-  private user = {
-    uid: 1,
-    name: 'Lucas Bretzke',
-    email: 'contact@example.com',
-    favoriteItems: [],
-    cartItems: [],
-    isAuthenticated: true
+
+  viewProductDetails(item: Product) {
+    localStorage.setItem('selectedProduct', JSON.stringify(item))
+    this.$router.push('ProductPage')
   }
 }
 </script>
