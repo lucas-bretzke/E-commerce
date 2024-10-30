@@ -1,3 +1,4 @@
+import productApi from '@/services/productApi'
 import { defineStore } from 'pinia'
 
 export const baseStore = defineStore('my-baseStore', {
@@ -11,6 +12,7 @@ export const baseStore = defineStore('my-baseStore', {
       address: '',
       uid: ''
     },
+    baseProducts: [],
     showLoginScreen: false,
     itemIdInDetail: 0,
     favoritesCounter: 0,
@@ -28,6 +30,15 @@ export const baseStore = defineStore('my-baseStore', {
 
     setUserData(user: any) {
       this.user = user
+    },
+
+    async getAllProducts() {
+      try {
+        const data = await productApi.getBaseProducts()
+        this.baseProducts = data
+      } catch (error) {
+        console.log({ error })
+      }
     }
   }
 })

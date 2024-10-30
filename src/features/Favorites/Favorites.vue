@@ -36,12 +36,7 @@ export default class Favorites extends Vue {
   public dataFavorites = []
 
   private async getFavorites() {
-    try {
-      const response = await productApi.getFavorites()
-      this.dataFavorites = response
-    } catch (error) {
-      console.log(error)
-    }
+    console.log('favoritos')
   }
 
   mounted() {
