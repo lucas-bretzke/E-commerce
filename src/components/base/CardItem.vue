@@ -6,7 +6,7 @@
     ></div>
 
     <span class="container-buttons">
-      <button @click.stop="toggleFavoriteItem(item)">
+      <button @click.stop="toggleItem(item, 'favorites')">
         <FontAwesomeIcon
           v-if="!item.favorites"
           icon="fa-regular fa-heart"
@@ -15,7 +15,7 @@
         <FontAwesomeIcon v-else icon="fa-solid fa-heart" class="ic" />
       </button>
 
-      <button @click.stop="toggleCartItem(item)">
+      <button @click.stop="toggleItem(item, 'cart')">
         <FontAwesomeIcon
           v-if="item.cart"
           :icon="['fas', 'cart-shopping']"
@@ -42,10 +42,11 @@ import { Vue, Options } from 'vue-class-component'
 
 // Types
 import { Product } from '@/types'
+import productApi from '@/services/productApi'
 
 @Options({
   props: {
-    item: { type: Object, required: true }
+    item: { type: Object as () => Product, required: true }
   }
 })
 export default class CardItems extends Vue {
@@ -54,6 +55,20 @@ export default class CardItems extends Vue {
   viewProductDetails(item: Product) {
     localStorage.setItem('selectedProduct', JSON.stringify(item))
     this.$router.push('ProductPage')
+  }
+
+  async toggleItem(item: Product, type: 'favorites' | 'cart') {
+    const updatedData = {
+      ...item,
+      [type]: !item[type]
+    }
+
+    try {
+      const updatedProduct = await productApi.setProduct(item.id, updatedData)
+      console.log('Produto atualizado:', updatedProduct)
+    } catch (error) {
+      console.error('Erro ao atualizar o produto:', error)
+    }
   }
 }
 </script>
