@@ -30,18 +30,15 @@ import productApi from '@/services/productApi'
 import CardItems from '@/components/base/CardItem.vue'
 import BackToTopButton from '@/components/BackToTopButton.vue'
 
+// Types.
+import { Product } from '@/types'
+
 @Options({ components: { CardItems, BackToTopButton } })
 export default class Favorites extends Vue {
   public store = baseStore()
-  public dataFavorites = []
-
-  private async getFavorites() {
-    console.log('favoritos')
-  }
-
-  mounted() {
-    this.getFavorites()
-  }
+  public dataFavorites = this.store.baseProducts.filter(
+    (product: Product) => product.favorites === true
+  )
 }
 </script>
 

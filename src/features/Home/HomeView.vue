@@ -89,10 +89,6 @@ export default class HomeView extends Vue {
     }
     setTimeout(() => (this.isAlert = false), 3500)
   }
-
-  mounted() {
-    this.store.getAllProducts()
-  }
 }
 </script>
 

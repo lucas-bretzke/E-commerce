@@ -5,7 +5,7 @@
       "name": "Caneca de cerâmica rústica",
       "description": "Aqui vem um texto descritivo do produto, esta caixa de texto servirá apenas de exemplo para que simule algum texto que venha a ser inserido nesse campo, descrevendo tal produto.",
       "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/caneca-06.jpg",
-      "favorites": false,
+      "favorites": true,
       "price": 100.99,
       "discount": 10,
       "cart": false,
@@ -60,7 +60,7 @@
       "name": "Caneca The Grounds",
       "description": "Aqui vem um texto descritivo do produto, esta caixa de texto servirá apenas de exemplo para que simule algum texto que venha a ser inserido nesse campo, descrevendo tal produto.",
       "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/caneca-05.jpg",
-      "favorites": false,
+      "favorites": true,
       "price": 97.99,
       "discount": 17,
       "cart": false,
@@ -126,7 +126,7 @@
       "name": "Camiseta Ramones",
       "description": "Aqui vem um texto descritivo do produto, esta caixa de texto servirá apenas de exemplo para que simule algum texto que venha a ser inserido nesse campo, descrevendo tal produto.",
       "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/camiseta-04.jpg",
-      "favorites": false,
+      "favorites": true,
       "price": 46.99,
       "discount": 0,
       "cart": false,
@@ -192,7 +192,7 @@
       "name": "Caneca The Grounds",
       "description": "Aqui vem um texto descritivo do produto, esta caixa de texto servirá apenas de exemplo para que simule algum texto que venha a ser inserido nesse campo, descrevendo tal produto.",
       "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/caneca-05.jpg",
-      "favorites": false,
+      "favorites": true,
       "price": 97.99,
       "discount": 17,
       "cart": false,
@@ -263,6 +263,26 @@
       "discount": 0,
       "cart": false,
       "category": "t-shirts"
+    }
+  ],
+  "users": [
+    {
+      "name": "Lucas Bretzke",
+      "email": "lucas@example.com",
+      "password": "Teste@333",
+      "phone": "+55 47 99999-1234",
+      "contactPreference": "email",
+      "address": "Rua das Flores, 123, Blumenau, SC",
+      "uid": "abc123"
+    },
+    {
+      "name": "Maria Silva",
+      "email": "maria@example.com",
+      "password": "securepassword",
+      "phone": "+55 11 98888-5678",
+      "contactPreference": "phone",
+      "address": "Av. Paulista, 1000, São Paulo, SP",
+      "uid": "def456"
     }
   ]
 }
