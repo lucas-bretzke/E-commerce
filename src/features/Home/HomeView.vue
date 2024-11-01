@@ -24,7 +24,6 @@
     <ProductGrid :products="store.baseProducts" />
 
     <BackToTopButton />
-    <Login v-show="store.showLoginScreen" />
   </main>
 </template>
 
@@ -33,7 +32,6 @@ import { baseStore } from '@/stores/baseStore'
 import { Options, Vue } from 'vue-class-component'
 
 // Components.
-import Login from '@/features/Login/Login.vue'
 import Alert from '@/components/alerts/Alert.vue'
 import ProductGrid from '@/components/base/ProductGrid.vue'
 import ImageSlider from '../../components/ImageSlider.vue'
@@ -42,7 +40,6 @@ import BackToTopButton from '@/components/BackToTopButton.vue'
 
 @Options({
   components: {
-    Login,
     Alert,
     ImageSlider,
     ProductGrid,

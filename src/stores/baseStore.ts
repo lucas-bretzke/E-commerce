@@ -36,7 +36,6 @@ export const baseStore = defineStore('my-baseStore', {
         const data = await productApi.getBaseProducts()
         this.baseProducts = data
 
-        // Atualizar contadores de favoritos e carrinho
         this.updateCounters()
       } catch (error) {
         console.error('Erro ao obter produtos:', error)
