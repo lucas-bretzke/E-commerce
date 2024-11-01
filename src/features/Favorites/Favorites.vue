@@ -2,7 +2,7 @@
   <div class="favorites-page">
     <BackToTopButton />
     <main class="content-wrapper">
-      <section class="catalog-filters"></section>
+      <!-- <section class="catalog-filters"></section> -->
       <section class="favorites-list">
         <p v-if="favoritesCount === 0" class="msg-error">
           <FontAwesomeIcon

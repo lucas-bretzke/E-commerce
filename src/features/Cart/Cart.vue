@@ -1,10 +1,9 @@
 <template>
-  <div class="body">
+  <main>
     <button class="scroll-to-top" @click="scrollToTop">
       <FontAwesomeIcon icon="fa-solid fa-caret-up" /> Topo
     </button>
-    <main class="center">
-      <section class="catalog-filters"></section>
+    <section class="center">
       <section class="container-cards">
         <p v-if="store.favoritesCounter === 0" class="msg-error">
           <FontAwesomeIcon
@@ -13,28 +12,37 @@
           />
           SEU CARRINHO ESTÁ VAZIO!
         </p>
-        <div v-else v-for="item in dataItems" :key="item">
-          <CardItems v-if="item.favorite" :item="item" class="card" />
-        </div>
+        <CartItems
+          v-else
+          v-for="item in dataItems"
+          :key="item.id"
+          :item="item"
+        />
       </section>
-    </main>
-  </div>
+      <section class="order-summary"></section>
+    </section>
+  </main>
 </template>
 
 <script lang="ts">
 import { baseStore } from '@/stores/baseStore'
 import { Options, Vue } from 'vue-class-component'
 
-// Services.
-import productApi from '@/services/productApi'
-
 // Components.
-import CardItems from '@/components/base/CardItem.vue'
+import CartItems from './components/CartProduct.vue'
 
-@Options({ components: { CardItems } })
+// Types
+import { Product } from '@/types'
+
+@Options({ components: { CartItems } })
 export default class Cart extends Vue {
   public store = baseStore()
-  public dataItems: any[] = []
+
+  get dataItems(): Product[] {
+    return this.store.baseProducts.filter(
+      (product: Product) => product.cart === true
+    )
+  }
 
   scrollToTop() {
     window.scrollTo({
@@ -46,6 +54,10 @@ export default class Cart extends Vue {
 </script>
 
 <style lang="less" scoped>
+main {
+  background-color: #f5f5f5;
+}
+
 .scroll-to-top {
   position: fixed;
   width: 76px;
@@ -81,7 +93,7 @@ h1 {
   margin: 30px auto;
   justify-content: space-between;
 
-  .catalog-filters {
+  .order-summary {
     width: 228px;
     height: auto;
     max-height: 1000px;
@@ -91,14 +103,10 @@ h1 {
     max-width: 970px;
     height: auto;
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     flex-wrap: wrap;
 
-    .card {
-      margin-bottom: 20px;
-      border-bottom: 1px solid black;
-      border-radius: 2px;
-    }
   }
 
   .msg-error {
