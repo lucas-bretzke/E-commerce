@@ -41,7 +41,7 @@ import { Options, Vue } from 'vue-class-component'
 
 // Components.
 import CartItems from './components/CartProduct.vue'
-import OrderSummary from './components/OrderSummary.vue'
+import OrderSummary from './components/CartSummary.vue'
 
 @Options({ components: { CartItems, OrderSummary } })
 export default class Cart extends Vue {
