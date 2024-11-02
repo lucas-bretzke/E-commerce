@@ -6,7 +6,7 @@
         <h1>SEU CARRINHO</h1>
         <h2>
           Total ({{ store.productsInCart.length }} produtos)
-          <span class="totalCartValue">R${{ totalCartValue }}</span>
+          <span class="totalCartValue">R${{ store.totalCartValue() }}</span>
         </h2>
 
         <div class="container-cards">
@@ -26,7 +26,7 @@
         </div>
       </span>
 
-      <div class="order-summary"></div>
+      <OrderSummary />
     </section>
 
     <button class="scroll-to-top" @click="scrollToTop">
@@ -41,16 +41,11 @@ import { Options, Vue } from 'vue-class-component'
 
 // Components.
 import CartItems from './components/CartProduct.vue'
+import OrderSummary from './components/OrderSummary.vue'
 
-@Options({ components: { CartItems } })
+@Options({ components: { CartItems, OrderSummary } })
 export default class Cart extends Vue {
   public store = baseStore()
-
-  get totalCartValue() {
-    return this.store.productsInCart
-      .reduce((total, product) => total + product.price, 0)
-      .toFixed(2)
-  }
 
   scrollToTop() {
     window.scrollTo({

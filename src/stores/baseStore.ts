@@ -50,6 +50,12 @@ export const baseStore = defineStore('my-baseStore', {
       )
     },
 
+    totalCartValue() {
+     return this.productsInCart
+        .reduce((total, product) => total + product.price, 0)
+        .toFixed(2)
+    },
+
     updateCounters() {
       const favorites = this.baseProducts.filter(
         product => product.favorites
