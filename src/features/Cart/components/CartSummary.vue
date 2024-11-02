@@ -4,22 +4,22 @@
       <h1>RESUMO DO PEDIDO</h1>
       <p class="productSubtotal">
         <span>Subtotal de produtos</span>
-        <span>R$ {{ store.totalCartValue() }}</span>
+        <span>R$ {{ store.order.totalCartValue }}</span>
       </p>
 
       <p class="delivery">
         <span>Entrega</span>
-        <span>R$ {{ store.totalCartValue() }}</span>
+        <span>R$ {{ store.order.deliveryValue.toFixed(2) }}</span>
       </p>
 
       <span class="line"></span>
 
       <h2 class="totalCartValue">
         <span>Total</span>
-        <span>R$ {{ store.totalCartValue() }}</span>
+        <span>R$ {{ store.order.total }}</span>
       </h2>
 
-      <button>Finalizar compra</button>
+      <button class="finishButton">Finalizar compra</button>
     </span>
 
     <li>
@@ -107,10 +107,10 @@ main {
     }
   }
 
-  button {
+  .finishButton {
     width: 304px;
     height: 44px;
-    font-size: 12px;
+    font-size: 16px;
     background: #51b853;
     color: #fff;
     border: none;

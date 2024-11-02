@@ -8,7 +8,7 @@
     <section class="container-description">
       <span class="top">
         <h1 class="name">{{ item.name }}</h1>
-        <button @click.stop="toggleItem(item)">
+        <button @click.stop="store.toggleProduct(item, 'cart')">
           <FontAwesomeIcon
             v-if="item.cart"
             :icon="['fas', 'trash-can']"
@@ -25,7 +25,7 @@
 
       <span class="bottom">
         <span style="display: flex">
-          <select v-model="quanty" @click.stop>
+          <select @click.stop>
             <option v-for="n in 3" :key="n" :value="n">{{ n }}</option>
           </select>
         </span>
@@ -42,7 +42,6 @@ import { Vue, Options } from 'vue-class-component'
 
 // Types
 import { Product } from '@/types'
-import productApi from '@/services/productApi'
 
 @Options({
   props: {
@@ -51,25 +50,10 @@ import productApi from '@/services/productApi'
 })
 export default class CartItems extends Vue {
   public store = baseStore()
-  public quanty = 1
 
   viewProductDetails(item: Product) {
     localStorage.setItem('selectedProduct', JSON.stringify(item))
     this.$router.push('ProductPage')
-  }
-
-  async toggleItem(item: Product) {
-    const updatedData = {
-      ...item,
-      cart: !item.cart
-    }
-
-    try {
-      const updatedProduct = await productApi.setProduct(item.id, updatedData)
-      console.log('Produto atualizado:', updatedProduct)
-    } catch (error) {
-      console.error('Erro ao atualizar o produto:', error)
-    }
   }
 }
 </script>

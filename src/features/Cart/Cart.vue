@@ -6,7 +6,7 @@
         <h1>SEU CARRINHO</h1>
         <h2>
           Total ({{ store.productsInCart.length }} produtos)
-          <span class="totalCartValue">R${{ store.totalCartValue() }}</span>
+          <span class="totalCartValue">R${{ store.order.totalCartValue }}</span>
         </h2>
 
         <div class="container-cards">
@@ -52,6 +52,15 @@ export default class Cart extends Vue {
       top: 0,
       behavior: 'smooth'
     })
+  }
+
+  mounted() {
+    this.store.loadCartData() // Carregar os dados salvos
+    this.store.calculateTotalOrder() // Recalcular o total com base nos dados carregados
+
+    console.log('Total:', this.store.order.total)
+    console.log('Frete:', this.store.order.deliveryValue)
+    console.log('Valor do carrinho:', this.store.order.totalCartValue)
   }
 }
 </script>
