@@ -7,11 +7,11 @@
 
     <section class="container-description">
       <span class="top">
-        <p class="name">{{ item.name }}</p>
+        <h1 class="name">{{ item.name }}</h1>
         <button @click.stop="toggleItem(item)">
           <FontAwesomeIcon
             v-if="item.cart"
-            :icon="['fas', 'cart-shopping']"
+            :icon="['fas', 'trash-can']"
             class="ic"
           />
         </button>
@@ -23,10 +23,15 @@
         nesse campo, descrevendo tal produto.
       </p>
 
-      <sapn class="botton">
-        <button @click.stop="console.log('clicou')">count 1</button>
-        <p class="price">R${{ item.price }}</p>
-      </sapn>
+      <span class="bottom">
+        <span style="display: flex">
+          <select v-model="quanty" @click.stop>
+            <option v-for="n in 3" :key="n" :value="n">{{ n }}</option>
+          </select>
+        </span>
+
+        <h2 class="price">R${{ item.price }}</h2>
+      </span>
     </section>
   </div>
 </template>
@@ -46,6 +51,7 @@ import productApi from '@/services/productApi'
 })
 export default class CartItems extends Vue {
   public store = baseStore()
+  public quanty = 1
 
   viewProductDetails(item: Product) {
     localStorage.setItem('selectedProduct', JSON.stringify(item))
@@ -108,9 +114,13 @@ button {
   }
 
   .ic {
-    height: 20px;
-    width: 20px;
-    color: var(--color-primary);
+    height: 18px;
+    width: 18px;
+    color: rgb(66, 66, 66);
+
+    &:hover {
+      color: black;
+    }
   }
 }
 
@@ -143,22 +153,22 @@ button {
     line-height: 1.4;
   }
 
-  .botton {
+  .bottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    button {
-      padding: 8px 12px;
-      background-color: var(--color-primary);
-      color: white;
-      border-radius: 4px;
+    select {
+      padding: 8px;
       font-size: 14px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      background-color: #f8f8f8;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: all 0.3s ease;
 
       &:hover {
-        background-color: var(--color-primary);
+        background-color: #e0e0e0;
       }
     }
 

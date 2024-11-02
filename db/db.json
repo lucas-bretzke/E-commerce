@@ -9,7 +9,7 @@
       "price": 100.99,
       "discount": 10,
       "cart": false,
-      "quanty": 5,
+      "quantity": 5,
       "category": "mugs"
     },
     {
@@ -21,7 +21,7 @@
       "price": 45.99,
       "discount": 5,
       "cart": true,
-      "quanty": 5,
+      "quantity": 5,
       "category": "t-shirts"
     },
     {
@@ -33,7 +33,7 @@
       "price": 66.99,
       "discount": 12,
       "cart": false,
-      "quanty": 5,
+      "quantity": 5,
       "category": "mugs"
     },
     {
@@ -45,7 +45,7 @@
       "price": 24.99,
       "discount": 33,
       "cart": false,
-      "quanty": 5,
+      "quantity": 5,
       "category": "t-shirts"
     },
     {
@@ -57,7 +57,7 @@
       "price": 39.99,
       "discount": 0,
       "cart": false,
-      "quanty": 5,
+      "quantity": 5,
       "category": "t-shirts"
     },
     {
@@ -69,7 +69,7 @@
       "price": 97.99,
       "discount": 17,
       "cart": false,
-      "quanty": 5,
+      "quantity": 5,
       "category": "mugs"
     },
     {
@@ -81,7 +81,7 @@
       "price": 52.99,
       "discount": 0,
       "cart": false,
-      "quanty": 5,
+      "quantity": 5,
       "category": "t-shirts"
     },
     {
@@ -93,7 +93,7 @@
       "price": 71.99,
       "discount": 0,
       "cart": false,
-      "quanty": 5,
+      "quantity": 5,
       "category": "mugs"
     },
     {
@@ -105,7 +105,7 @@
       "price": 26.99,
       "discount": 15,
       "cart": true,
-      "quanty": 5,
+      "quantity": 5,
       "category": "mugs"
     },
     {
@@ -117,7 +117,7 @@
       "price": 73.99,
       "discount": 0,
       "cart": false,
-      "quanty": 5,
+      "quantity": 5,
       "category": "t-shirts"
     },
     {
@@ -129,7 +129,7 @@
       "price": 100.99,
       "discount": 10,
       "cart": false,
-      "quanty": 5,
+      "quantity": 5,
       "category": "mugs"
     },
     {
@@ -141,7 +141,7 @@
       "price": 46.99,
       "discount": 0,
       "cart": false,
-      "quanty": 5,
+      "quantity": 5,
       "category": "t-shirts"
     },
     {
@@ -153,7 +153,7 @@
       "price": 100.99,
       "discount": 10,
       "cart": false,
-      "quanty": 5,
+      "quantity": 5,
       "category": "mugs"
     },
     {
@@ -165,7 +165,7 @@
       "price": 45.99,
       "discount": 5,
       "cart": false,
-      "quanty": 5,
+      "quantity": 5,
       "category": "t-shirts"
     },
     {
@@ -177,7 +177,7 @@
       "price": 66.99,
       "discount": 12,
       "cart": false,
-      "quanty": 5,
+      "quantity": 5,
       "category": "mugs"
     },
     {
@@ -189,7 +189,7 @@
       "price": 24.99,
       "discount": 33,
       "cart": true,
-      "quanty": 5,
+      "quantity": 5,
       "category": "t-shirts"
     },
     {
@@ -201,7 +201,7 @@
       "price": 39.99,
       "discount": 0,
       "cart": false,
-      "quanty": 5,
+      "quantity": 5,
       "category": "t-shirts"
     },
     {
@@ -213,7 +213,7 @@
       "price": 97.99,
       "discount": 17,
       "cart": false,
-      "quanty": 5,
+      "quantity": 5,
       "category": "mugs"
     },
     {
@@ -225,7 +225,7 @@
       "price": 52.99,
       "discount": 0,
       "cart": false,
-      "quanty": 5,
+      "quantity": 5,
       "category": "t-shirts"
     },
     {
@@ -237,7 +237,7 @@
       "price": 71.99,
       "discount": 0,
       "cart": false,
-      "quanty": 5,
+      "quantity": 5,
       "category": "mugs"
     },
     {
@@ -249,7 +249,7 @@
       "price": 26.99,
       "discount": 15,
       "cart": false,
-      "quanty": 5,
+      "quantity": 5,
       "category": "mugs"
     },
     {
@@ -261,7 +261,7 @@
       "price": 73.99,
       "discount": 0,
       "cart": false,
-      "quanty": 5,
+      "quantity": 5,
       "category": "t-shirts"
     },
     {
@@ -273,7 +273,7 @@
       "price": 100.99,
       "discount": 10,
       "cart": false,
-      "quanty": 5,
+      "quantity": 5,
       "category": "mugs"
     },
     {
@@ -285,7 +285,7 @@
       "price": 46.99,
       "discount": 0,
       "cart": false,
-      "quanty": 5,
+      "quantity": 5,
       "category": "t-shirts"
     }
   ],

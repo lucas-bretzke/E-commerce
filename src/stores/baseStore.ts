@@ -14,6 +14,7 @@ export const baseStore = defineStore('my-baseStore', {
       uid: ''
     },
     baseProducts: [] as Product[],
+    productsInCart: [] as Product[],
     showLoginScreen: false,
     favoritesCounter: 0,
     cartCounter: 0,
