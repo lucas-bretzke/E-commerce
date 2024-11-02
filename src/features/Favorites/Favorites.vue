@@ -30,7 +30,7 @@ import { Options, Vue } from 'vue-class-component'
 
 // Components
 import CardItems from '@/components/base/CardItem.vue'
-import BackToTopButton from '@/components/BackToTopButton.vue'
+import BackToTopButton from '@/components/base/BackToTopButton.vue'
 
 // Types
 import { Product } from '@/types'

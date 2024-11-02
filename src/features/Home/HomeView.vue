@@ -33,10 +33,10 @@ import { Options, Vue } from 'vue-class-component'
 
 // Components.
 import Alert from '@/components/alerts/Alert.vue'
-import ProductGrid from '@/components/base/ProductGrid.vue'
-import ImageSlider from '../../components/ImageSlider.vue'
-import ProductCarousel from '@/components/ProductCarousel.vue'
-import BackToTopButton from '@/components/BackToTopButton.vue'
+import ProductGrid from '@/components/common/ProductGrid.vue'
+import ImageSlider from '../../components/base/ImageSlider.vue'
+import ProductCarousel from '@/components/common/ProductCarousel.vue'
+import BackToTopButton from '@/components/base/BackToTopButton.vue'
 
 @Options({
   components: {

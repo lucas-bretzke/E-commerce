@@ -41,9 +41,9 @@ import { baseStore } from '@/stores/baseStore'
 import { Options, Vue } from 'vue-class-component'
 
 // Components.
-import Cookies from '@/components/Cookies.vue'
-import BaseNavBar from '@/components/base/BaseNavBar.vue'
-import Counter from '@/components/Counter.vue'
+import Cookies from '@/components/layout/Cookies.vue'
+import BaseNavBar from '@/components/layout/BaseNavBar.vue'
+import Counter from '@/components/base/Counter.vue'
 
 @Options({
   components: { BaseNavBar, Counter, Cookies },
