@@ -27,7 +27,7 @@ import { baseStore } from '@/stores/baseStore'
 import { Vue, Options } from 'vue-class-component'
 
 // Components.
-import CardItem from '@/components/base/CardItem.vue'
+import CardItem from '@/components/common/CardItem.vue'
 
 @Options({
   components: {

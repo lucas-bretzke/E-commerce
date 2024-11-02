@@ -29,7 +29,7 @@ import { baseStore } from '@/stores/baseStore'
 import { Options, Vue } from 'vue-class-component'
 
 // Components
-import CardItems from '@/components/base/CardItem.vue'
+import CardItems from '@/components/common/CardItem.vue'
 import BackToTopButton from '@/components/base/BackToTopButton.vue'
 
 // Types

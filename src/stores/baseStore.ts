@@ -38,9 +38,16 @@ export const baseStore = defineStore('my-baseStore', {
         this.baseProducts = data
 
         this.updateCounters()
+        this.dataCartItems()
       } catch (error) {
         console.error('Erro ao obter produtos:', error)
       }
+    },
+
+    dataCartItems() {
+      this.productsInCart = this.baseProducts.filter(
+        (product: Product) => product.cart === true
+      )
     },
 
     updateCounters() {

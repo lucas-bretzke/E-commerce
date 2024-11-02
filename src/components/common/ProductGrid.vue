@@ -95,7 +95,7 @@ import { Options, Vue } from 'vue-class-component'
 import Paginate from 'vuejs-paginate-next'
 
 // Components.
-import CardItem from '../base/CardItem.vue'
+import CardItem from '../common/CardItem.vue'
 
 // Types.
 interface Product {
