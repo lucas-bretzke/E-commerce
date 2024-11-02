@@ -17,11 +17,11 @@
       "name": "Camiseta not today.",
       "description": "Aqui vem um texto descritivo do produto, esta caixa de texto servirá apenas de exemplo para que simule algum texto que venha a ser inserido nesse campo, descrevendo tal produto.",
       "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/camiseta-05.jpg",
-      "favorites": true,
+      "favorites": false,
       "price": 45.99,
       "discount": 5,
       "quantity": 5,
-      "cart": true,
+      "cart": false,
       "category": "t-shirts"
     },
     {
@@ -41,11 +41,11 @@
       "name": "Camiseta Broken Saints",
       "description": "Aqui vem um texto descritivo do produto, esta caixa de texto servirá apenas de exemplo para que simule algum texto que venha a ser inserido nesse campo, descrevendo tal produto.",
       "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/camiseta-03.jpg",
-      "favorites": false,
+      "favorites": true,
       "price": 24.99,
       "discount": 33,
       "quantity": 5,
-      "cart": false,
+      "cart": true,
       "category": "t-shirts"
     },
     {
@@ -185,11 +185,11 @@
       "name": "Camiseta Broken Saints",
       "description": "Aqui vem um texto descritivo do produto, esta caixa de texto servirá apenas de exemplo para que simule algum texto que venha a ser inserido nesse campo, descrevendo tal produto.",
       "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/camiseta-03.jpg",
-      "favorites": true,
+      "favorites": false,
       "price": 24.99,
       "discount": 33,
       "quantity": 5,
-      "cart": true,
+      "cart": false,
       "category": "t-shirts"
     },
     {
@@ -197,7 +197,7 @@
       "name": "Camiseta Outcast",
       "description": "Aqui vem um texto descritivo do produto, esta caixa de texto servirá apenas de exemplo para que simule algum texto que venha a ser inserido nesse campo, descrevendo tal produto.",
       "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/camiseta-06.jpg",
-      "favorites": false,
+      "favorites": true,
       "price": 39.99,
       "discount": 0,
       "quantity": 5,
@@ -281,11 +281,11 @@
       "name": "Camiseta Ramones",
       "description": "Aqui vem um texto descritivo do produto, esta caixa de texto servirá apenas de exemplo para que simule algum texto que venha a ser inserido nesse campo, descrevendo tal produto.",
       "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/camiseta-04.jpg",
-      "favorites": false,
+      "favorites": true,
       "price": 46.99,
       "discount": 0,
       "quantity": 5,
-      "cart": false,
+      "cart": true,
       "category": "t-shirts"
     }
   ],
