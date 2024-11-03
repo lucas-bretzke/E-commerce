@@ -46,9 +46,8 @@ export const baseStore = defineStore('my-baseStore', {
 
     async getAllProducts(forceUpdate = false) {
       if (!forceUpdate && this.baseProducts.length) {
-        this.syncCartItems()
+        this.syncOrderData()
         this.updateCounters()
-        this.calculateTotalOrder()
         return
       }
 
@@ -64,18 +63,18 @@ export const baseStore = defineStore('my-baseStore', {
           this.baseProducts = data
           localStorage.setItem('baseProducts', JSON.stringify(data))
         }
-        this.syncCartItems()
+        this.syncOrderData()
         this.updateCounters()
-        this.calculateTotalOrder()
       } catch (error) {
         console.error('Error fetching products:', error)
       }
     },
 
-    syncCartItems() {
+    syncOrderData() {
       this.productsInCart = this.baseProducts.filter(product => product.cart)
 
       this.calculateTotalCartValue()
+      this.calculateTotalOrder()
 
       this.updateLocalStorage()
     },
@@ -102,8 +101,7 @@ export const baseStore = defineStore('my-baseStore', {
       )
       if (index !== -1) {
         this.baseProducts[index] = updatedData
-        this.syncCartItems()
-        this.calculateTotalOrder()
+        this.syncOrderData()
       }
     },
 
