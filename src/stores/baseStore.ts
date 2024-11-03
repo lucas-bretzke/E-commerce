@@ -46,7 +46,7 @@ export const baseStore = defineStore('my-baseStore', {
 
     async getAllProducts(forceUpdate = false) {
       if (!forceUpdate && this.baseProducts.length) {
-        this.dataCartItems()
+        this.syncCartItems()
         this.updateCounters()
         this.calculateTotalOrder()
         return
@@ -56,6 +56,7 @@ export const baseStore = defineStore('my-baseStore', {
         const cachedProducts = JSON.parse(
           localStorage.getItem('baseProducts') || '[]'
         )
+
         if (cachedProducts.length && !forceUpdate) {
           this.baseProducts = cachedProducts
         } else {
@@ -63,8 +64,7 @@ export const baseStore = defineStore('my-baseStore', {
           this.baseProducts = data
           localStorage.setItem('baseProducts', JSON.stringify(data))
         }
-
-        this.dataCartItems()
+        this.syncCartItems()
         this.updateCounters()
         this.calculateTotalOrder()
       } catch (error) {
@@ -72,19 +72,25 @@ export const baseStore = defineStore('my-baseStore', {
       }
     },
 
-    dataCartItems() {
-      this.productsInCart = this.baseProducts.filter(
-        (product: Product) => product.cart
-      )
+    syncCartItems() {
+      this.productsInCart = this.baseProducts.filter(product => product.cart)
+
       this.calculateTotalCartValue()
+
+      this.updateLocalStorage()
     },
 
     async toggleProduct(item: Product, type: 'favorites' | 'cart') {
       try {
         const updatedProduct = { ...item, [type]: !item[type] }
+
         await productApi.setProduct(item.id, updatedProduct)
+
         this.updateProductLocally(item.id, updatedProduct)
+
         this.updateCounters()
+
+        this.updateLocalStorage()
       } catch (error) {
         console.error(`Error updating product ${item.id}:`, error)
       }
@@ -96,7 +102,7 @@ export const baseStore = defineStore('my-baseStore', {
       )
       if (index !== -1) {
         this.baseProducts[index] = updatedData
-        this.dataCartItems()
+        this.syncCartItems()
         this.calculateTotalOrder()
       }
     },
