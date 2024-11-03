@@ -53,7 +53,6 @@ library.add(
   faChevronLeft,
   faChevronRight,
   faCartShopping,
-  faCartShopping,
   faTriangleExclamation
 )
 

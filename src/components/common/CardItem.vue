@@ -8,11 +8,9 @@
     <span class="container-buttons">
       <button @click.stop="store.toggleProduct(item, 'favorites')">
         <FontAwesomeIcon
-          v-if="!item.favorites"
-          icon="fa-regular fa-heart"
+          :icon="[item.favorites ? 'fas' : 'far', 'heart']"
           class="ic"
         />
-        <FontAwesomeIcon v-else icon="fa-solid fa-heart" class="ic" />
       </button>
 
       <button @click.stop="store.toggleProduct(item, 'cart')">

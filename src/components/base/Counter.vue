@@ -9,7 +9,7 @@ import { Options, Vue } from 'vue-class-component'
 
 @Options({
   props: {
-    children: { type: String, required: true }
+    children: { type: Number, required: true }
   }
 })
 export default class Counter extends Vue {}

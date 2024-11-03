@@ -57,10 +57,6 @@ export default class Cart extends Vue {
   mounted() {
     this.store.loadCartData() // Carregar os dados salvos
     this.store.calculateTotalOrder() // Recalcular o total com base nos dados carregados
-
-    console.log('Total:', this.store.order.total)
-    console.log('Frete:', this.store.order.deliveryValue)
-    console.log('Valor do carrinho:', this.store.order.totalCartValue)
   }
 }
 </script>
