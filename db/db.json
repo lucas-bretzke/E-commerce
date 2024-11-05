@@ -8,7 +8,8 @@
       "favorites": false,
       "price": 100.99,
       "discount": 10,
-      "cart": true,
+      "quantity": 5,
+      "cart": false,
       "category": "mugs"
     },
     {
@@ -19,6 +20,7 @@
       "favorites": false,
       "price": 45.99,
       "discount": 5,
+      "quantity": 5,
       "cart": false,
       "category": "t-shirts"
     },
@@ -30,7 +32,8 @@
       "favorites": false,
       "price": 66.99,
       "discount": 12,
-      "cart": true,
+      "quantity": 5,
+      "cart": false,
       "category": "mugs"
     },
     {
@@ -41,7 +44,8 @@
       "favorites": true,
       "price": 24.99,
       "discount": 33,
-      "cart": false,
+      "quantity": 5,
+      "cart": true,
       "category": "t-shirts"
     },
     {
@@ -52,6 +56,7 @@
       "favorites": false,
       "price": 39.99,
       "discount": 0,
+      "quantity": 5,
       "cart": false,
       "category": "t-shirts"
     },
@@ -60,9 +65,10 @@
       "name": "Caneca The Grounds",
       "description": "Aqui vem um texto descritivo do produto, esta caixa de texto servirá apenas de exemplo para que simule algum texto que venha a ser inserido nesse campo, descrevendo tal produto.",
       "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/caneca-05.jpg",
-      "favorites": true,
+      "favorites": false,
       "price": 97.99,
       "discount": 17,
+      "quantity": 5,
       "cart": false,
       "category": "mugs"
     },
@@ -74,7 +80,8 @@
       "favorites": false,
       "price": 52.99,
       "discount": 0,
-      "cart": true,
+      "quantity": 5,
+      "cart": false,
       "category": "t-shirts"
     },
     {
@@ -85,6 +92,7 @@
       "favorites": false,
       "price": 71.99,
       "discount": 0,
+      "quantity": 5,
       "cart": false,
       "category": "mugs"
     },
@@ -96,7 +104,8 @@
       "favorites": true,
       "price": 26.99,
       "discount": 15,
-      "cart": false,
+      "quantity": 5,
+      "cart": true,
       "category": "mugs"
     },
     {
@@ -107,6 +116,7 @@
       "favorites": false,
       "price": 73.99,
       "discount": 0,
+      "quantity": 5,
       "cart": false,
       "category": "t-shirts"
     },
@@ -118,6 +128,7 @@
       "favorites": false,
       "price": 100.99,
       "discount": 10,
+      "quantity": 5,
       "cart": false,
       "category": "mugs"
     },
@@ -129,7 +140,8 @@
       "favorites": false,
       "price": 46.99,
       "discount": 0,
-      "cart": true,
+      "quantity": 5,
+      "cart": false,
       "category": "t-shirts"
     },
     {
@@ -140,6 +152,7 @@
       "favorites": false,
       "price": 100.99,
       "discount": 10,
+      "quantity": 5,
       "cart": false,
       "category": "mugs"
     },
@@ -148,9 +161,10 @@
       "name": "Camiseta not today.",
       "description": "Aqui vem um texto descritivo do produto, esta caixa de texto servirá apenas de exemplo para que simule algum texto que venha a ser inserido nesse campo, descrevendo tal produto.",
       "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/camiseta-05.jpg",
-      "favorites": true,
+      "favorites": false,
       "price": 45.99,
       "discount": 5,
+      "quantity": 5,
       "cart": false,
       "category": "t-shirts"
     },
@@ -162,6 +176,7 @@
       "favorites": false,
       "price": 66.99,
       "discount": 12,
+      "quantity": 5,
       "cart": false,
       "category": "mugs"
     },
@@ -173,6 +188,7 @@
       "favorites": false,
       "price": 24.99,
       "discount": 33,
+      "quantity": 5,
       "cart": false,
       "category": "t-shirts"
     },
@@ -184,7 +200,8 @@
       "favorites": true,
       "price": 39.99,
       "discount": 0,
-      "cart": false,
+      "quantity": 5,
+      "cart": true,
       "category": "t-shirts"
     },
     {
@@ -195,6 +212,7 @@
       "favorites": false,
       "price": 97.99,
       "discount": 17,
+      "quantity": 5,
       "cart": false,
       "category": "mugs"
     },
@@ -206,6 +224,7 @@
       "favorites": false,
       "price": 52.99,
       "discount": 0,
+      "quantity": 5,
       "cart": false,
       "category": "t-shirts"
     },
@@ -217,6 +236,7 @@
       "favorites": false,
       "price": 71.99,
       "discount": 0,
+      "quantity": 5,
       "cart": false,
       "category": "mugs"
     },
@@ -228,7 +248,8 @@
       "favorites": false,
       "price": 26.99,
       "discount": 15,
-      "cart": true,
+      "quantity": 5,
+      "cart": false,
       "category": "mugs"
     },
     {
@@ -239,6 +260,7 @@
       "favorites": false,
       "price": 73.99,
       "discount": 0,
+      "quantity": 5,
       "cart": false,
       "category": "t-shirts"
     },
@@ -250,6 +272,7 @@
       "favorites": false,
       "price": 100.99,
       "discount": 10,
+      "quantity": 5,
       "cart": false,
       "category": "mugs"
     },
@@ -258,10 +281,11 @@
       "name": "Camiseta Ramones",
       "description": "Aqui vem um texto descritivo do produto, esta caixa de texto servirá apenas de exemplo para que simule algum texto que venha a ser inserido nesse campo, descrevendo tal produto.",
       "image_url": "https://storage.googleapis.com/xesque-dev/challenge-images/camiseta-04.jpg",
-      "favorites": false,
+      "favorites": true,
       "price": 46.99,
       "discount": 0,
-      "cart": false,
+      "quantity": 5,
+      "cart": true,
       "category": "t-shirts"
     }
   ],

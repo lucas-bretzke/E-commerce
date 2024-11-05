@@ -20,7 +20,11 @@
           <p class="description-header">DESCRIÇÃO</p>
           <p class="product-description">{{ product.description }}</p>
 
-          <button @click="addToCart">ADICIONAR AO CARRINHO</button>
+          <button @click.stop="toggleProduct">
+            {{
+              !product.cart ? ' ADICIONAR AO CARRINHO' : ' REMOVER DO CARRINHO'
+            }}
+          </button>
         </div>
       </span>
     </section>
@@ -28,15 +32,33 @@
 </template>
 
 <script lang="ts">
+import { baseStore } from '@/stores/baseStore'
+import { Product } from '@/types'
 import { Options, Vue } from 'vue-class-component'
 
 @Options({
-  props: {
-    itemId: { type: Number, required: true }
-  }
+  props: {}
 })
 export default class ProductPage extends Vue {
-  public product: any = {}
+  public store = baseStore()
+  public product: Product = {
+    id: 0,
+    name: '',
+    description: '',
+    image_url: '',
+    favorites: false,
+    price: 0,
+    discount: 0,
+    cart: false,
+    category: ''
+  }
+
+  toggleProduct() {
+    this.store.toggleProduct(this.product, 'cart')
+    this.product.cart = !this.product.cart
+
+    localStorage.setItem('selectedProduct', JSON.stringify(this.product))
+  }
 
   mounted() {
     try {
@@ -44,12 +66,7 @@ export default class ProductPage extends Vue {
       this.product = selectedProduct ? JSON.parse(selectedProduct) : {}
     } catch (error) {
       console.error('Error parsing product data from localStorage:', error)
-      this.product = {}
     }
-  }
-
-  addToCart() {
-    console.log('Product added to cart:', this.product.name)
   }
 }
 </script>

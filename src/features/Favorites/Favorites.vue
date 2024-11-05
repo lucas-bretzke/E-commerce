@@ -2,7 +2,7 @@
   <div class="favorites-page">
     <BackToTopButton />
     <main class="content-wrapper">
-      <section class="catalog-filters"></section>
+      <!-- <section class="catalog-filters"></section> -->
       <section class="favorites-list">
         <p v-if="favoritesCount === 0" class="msg-error">
           <FontAwesomeIcon
@@ -29,8 +29,8 @@ import { baseStore } from '@/stores/baseStore'
 import { Options, Vue } from 'vue-class-component'
 
 // Components
-import CardItems from '@/components/base/CardItem.vue'
-import BackToTopButton from '@/components/BackToTopButton.vue'
+import CardItems from '@/components/common/CardItem.vue'
+import BackToTopButton from '@/components/base/BackToTopButton.vue'
 
 // Types
 import { Product } from '@/types'

@@ -1,5 +1,7 @@
 <template>
   <NavBar />
+  <Login v-show="store.showLoginScreen" />
+
   <router-view />
 </template>
 
@@ -9,10 +11,12 @@ import { Options, Vue } from 'vue-class-component'
 
 // Components.
 import NavBar from '@/features/NavBar/NavBar.vue'
+import Login from './features/Login/Login.vue'
 
 @Options({
   components: {
-    NavBar
+    NavBar,
+    Login
   }
 })
 export default class App extends Vue {
@@ -22,7 +26,7 @@ export default class App extends Vue {
     const user = localStorage.getItem('user')
     if (user) this.store.user = JSON.parse(user)
 
-    this.store.getAllProducts()
+    this.store.getAllProducts(true)
   }
 }
 </script>

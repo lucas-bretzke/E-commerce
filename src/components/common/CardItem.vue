@@ -6,16 +6,14 @@
     ></div>
 
     <span class="container-buttons">
-      <button @click.stop="toggleItem(item, 'favorites')">
+      <button @click.stop="store.toggleProduct(item, 'favorites')">
         <FontAwesomeIcon
-          v-if="!item.favorites"
-          icon="fa-regular fa-heart"
+          :icon="[item.favorites ? 'fas' : 'far', 'heart']"
           class="ic"
         />
-        <FontAwesomeIcon v-else icon="fa-solid fa-heart" class="ic" />
       </button>
 
-      <button @click.stop="toggleItem(item, 'cart')">
+      <button @click.stop="store.toggleProduct(item, 'cart')">
         <FontAwesomeIcon
           v-if="item.cart"
           :icon="['fas', 'cart-shopping']"
@@ -55,20 +53,6 @@ export default class CardItems extends Vue {
   viewProductDetails(item: Product) {
     localStorage.setItem('selectedProduct', JSON.stringify(item))
     this.$router.push('ProductPage')
-  }
-
-  async toggleItem(item: Product, type: 'favorites' | 'cart') {
-    const updatedData = {
-      ...item,
-      [type]: !item[type]
-    }
-
-    try {
-      const updatedProduct = await productApi.setProduct(item.id, updatedData)
-      console.log('Produto atualizado:', updatedProduct)
-    } catch (error) {
-      console.error('Erro ao atualizar o produto:', error)
-    }
   }
 }
 </script>

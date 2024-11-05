@@ -19,6 +19,7 @@ import {
   faCaretUp,
   faSpinner,
   faCartPlus,
+  faTrashCan,
   faCircleInfo,
   faArrowRight,
   faChevronDown,
@@ -28,7 +29,7 @@ import {
   faCartShopping,
   faChevronRight,
   faHeart as solidHeart,
-  faTriangleExclamation
+  faTriangleExclamation,
 } from '@fortawesome/free-solid-svg-icons'
 import { faGoogle } from '@fortawesome/free-brands-svg-icons'
 
@@ -42,6 +43,7 @@ library.add(
   faCartPlus,
   solidHeart,
   faEyeSlash,
+  faTrashCan,
   faArrowRight,
   faCircleInfo,
   regularHeart,
@@ -50,7 +52,6 @@ library.add(
   faCircleXmark,
   faChevronLeft,
   faChevronRight,
-  faCartShopping,
   faCartShopping,
   faTriangleExclamation
 )
